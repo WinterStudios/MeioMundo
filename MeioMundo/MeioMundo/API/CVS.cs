@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using System.Data;
 using System.Windows.Forms;
 using System.IO;
+using System.Text.RegularExpressions;
 
 namespace MeioMundo.API
 {
@@ -67,8 +68,7 @@ namespace MeioMundo.API
 
                 for (int i = 1; i < rows.Length; i++)
                 {
-                    string rowString = rows[i].Replace('"', ' ').Replace("/","");
-                    string[] colluns = rowString.Split(',');
+                    string[] colluns = Regex.Split(rows[i], ",(?=(?:[^\"]*\"[^\"]*\")*[^\"]*$)");
                     DataRow row = dataTable.NewRow();
                     row["ID"] = colluns[0];
                     row["REF"] = colluns[1];
@@ -77,17 +77,10 @@ namespace MeioMundo.API
 
                     float m_s = 0;
                     float.TryParse(colluns[4], out m_s);
+                    row["Stock"] = m_s;
 
 
-                    row["Stock"] = m
-                    string preco = "";
-                    if (colluns.Length > 6)
-                        preco = colluns[5] + "," + colluns[6];
-                    else
-                        preco = colluns[5];
-                    float m_p = 0;
-                    float.TryParse(preco, out m_p);
-                    row["Preço"] = m_p;
+                    row["Preço"] = float.Parse(Regex.Matches(colluns[5], "[+-]?([0-9]*[.])?[0-9]+").ToString());
                     dataTable.Rows.Add(row);
                 }
                 return dataTable;
