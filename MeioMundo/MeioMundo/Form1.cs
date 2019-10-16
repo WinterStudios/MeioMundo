@@ -16,5 +16,17 @@ namespace MeioMundo
         {
             InitializeComponent();
         }
+
+        private void exitToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
+        }
+
+        private void updateStockToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Controls.UpdateStockControl updateStockControl = new Controls.UpdateStockControl();
+            updateStockControl.Dock = DockStyle.Fill;
+            panel_window.Controls.Add(updateStockControl);
+        }
     }
 }
