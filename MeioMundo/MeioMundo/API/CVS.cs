@@ -79,8 +79,11 @@ namespace MeioMundo.API
                     float.TryParse(colluns[4], out m_s);
                     row["Stock"] = m_s;
 
-
-                    row["Preço"] = float.Parse(Regex.Matches(colluns[5], "[+-]?([0-9]*[.])?[0-9]+").ToString());
+                    var m_p = Regex.Matches(colluns[5], @"\d+(\,\d+)");
+                    float f_p = 0;
+                    if(m_p.Count > 0)
+                        float.TryParse(m_p[0].Value,out f_p);
+                    row["Preço"] = f_p;
                     dataTable.Rows.Add(row);
                 }
                 return dataTable;
