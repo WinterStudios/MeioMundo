@@ -35,6 +35,7 @@
             this.updateStockToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.panel_tabs = new System.Windows.Forms.Panel();
             this.panel_window = new System.Windows.Forms.Panel();
+            this.barcodesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -55,20 +56,21 @@
             this.fIleToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.exitToolStripMenuItem});
             this.fIleToolStripMenuItem.Name = "fIleToolStripMenuItem";
-            this.fIleToolStripMenuItem.Size = new System.Drawing.Size(46, 26);
+            this.fIleToolStripMenuItem.Size = new System.Drawing.Size(46, 24);
             this.fIleToolStripMenuItem.Text = "FIle";
             // 
             // exitToolStripMenuItem
             // 
             this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-            this.exitToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.exitToolStripMenuItem.Size = new System.Drawing.Size(116, 26);
             this.exitToolStripMenuItem.Text = "Exit";
             this.exitToolStripMenuItem.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
             // 
             // toolsToolStripMenuItem
             // 
             this.toolsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.updateStockToolStripMenuItem});
+            this.updateStockToolStripMenuItem,
+            this.barcodesToolStripMenuItem});
             this.toolsToolStripMenuItem.Name = "toolsToolStripMenuItem";
             this.toolsToolStripMenuItem.Size = new System.Drawing.Size(58, 24);
             this.toolsToolStripMenuItem.Text = "Tools";
@@ -97,6 +99,13 @@
             this.panel_window.Size = new System.Drawing.Size(1134, 475);
             this.panel_window.TabIndex = 2;
             // 
+            // barcodesToolStripMenuItem
+            // 
+            this.barcodesToolStripMenuItem.Name = "barcodesToolStripMenuItem";
+            this.barcodesToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.barcodesToolStripMenuItem.Text = "Barcodes";
+            this.barcodesToolStripMenuItem.Click += new System.EventHandler(this.barcodesToolStripMenuItem_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -124,6 +133,7 @@
         private System.Windows.Forms.ToolStripMenuItem updateStockToolStripMenuItem;
         private System.Windows.Forms.Panel panel_tabs;
         private System.Windows.Forms.Panel panel_window;
+        private System.Windows.Forms.ToolStripMenuItem barcodesToolStripMenuItem;
     }
 }
 

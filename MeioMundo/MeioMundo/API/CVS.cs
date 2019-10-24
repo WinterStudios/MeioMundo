@@ -61,7 +61,7 @@ namespace MeioMundo.API
                 dataTable.Columns.Add(m_stock);
 
                 DataColumn m_preço = new DataColumn();
-                m_preço.DataType = Type.GetType("System.Single");
+                m_preço.DataType = Type.GetType("System.String");
                 m_preço.ColumnName = "Preço";
                 dataTable.Columns.Add(m_preço);
                    

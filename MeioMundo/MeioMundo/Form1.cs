@@ -28,5 +28,12 @@ namespace MeioMundo
             updateStockControl.Dock = DockStyle.Fill;
             panel_window.Controls.Add(updateStockControl);
         }
+
+        private void barcodesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Controls.Barcode barcodes = new Controls.Barcode();
+            barcodes.Dock = DockStyle.Fill;
+            panel_window.Controls.Add(barcodes);
+        }
     }
 }

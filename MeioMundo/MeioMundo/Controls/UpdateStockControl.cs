@@ -128,7 +128,7 @@ namespace MeioMundo.Controls
             {
                 dataGridView2.Rows[i].Cells[4].Style.BackColor = Color.Aqua;
                 dataGridView2.Rows[i].Cells[4].Value = site_Stock_Update[i]._Stock;
-                dataGridView2.Rows[i].Cells[5].Value = site_Stock_Update[i]._Preço.ToString();
+                dataGridView2.Rows[i].Cells[5].Value = site_Stock_Update[i]._Preço.ToString().Replace(',','.');
             }
             
         }
