@@ -33,9 +33,8 @@
             this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.updateStockToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.panel_tabs = new System.Windows.Forms.Panel();
-            this.panel_window = new System.Windows.Forms.Panel();
             this.barcodesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.tabSystem1 = new MeioMundo.Components.TabSystem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -78,41 +77,35 @@
             // updateStockToolStripMenuItem
             // 
             this.updateStockToolStripMenuItem.Name = "updateStockToolStripMenuItem";
-            this.updateStockToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.updateStockToolStripMenuItem.Size = new System.Drawing.Size(181, 26);
             this.updateStockToolStripMenuItem.Text = "Update Stock";
             this.updateStockToolStripMenuItem.Click += new System.EventHandler(this.updateStockToolStripMenuItem_Click);
-            // 
-            // panel_tabs
-            // 
-            this.panel_tabs.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel_tabs.Location = new System.Drawing.Point(0, 28);
-            this.panel_tabs.Margin = new System.Windows.Forms.Padding(0);
-            this.panel_tabs.Name = "panel_tabs";
-            this.panel_tabs.Size = new System.Drawing.Size(1134, 32);
-            this.panel_tabs.TabIndex = 1;
-            // 
-            // panel_window
-            // 
-            this.panel_window.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel_window.Location = new System.Drawing.Point(0, 60);
-            this.panel_window.Name = "panel_window";
-            this.panel_window.Size = new System.Drawing.Size(1134, 475);
-            this.panel_window.TabIndex = 2;
             // 
             // barcodesToolStripMenuItem
             // 
             this.barcodesToolStripMenuItem.Name = "barcodesToolStripMenuItem";
-            this.barcodesToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.barcodesToolStripMenuItem.Size = new System.Drawing.Size(181, 26);
             this.barcodesToolStripMenuItem.Text = "Barcodes";
             this.barcodesToolStripMenuItem.Click += new System.EventHandler(this.barcodesToolStripMenuItem_Click);
+            // 
+            // tabSystem1
+            // 
+            this.tabSystem1.AllowDrop = true;
+            this.tabSystem1.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.tabSystem1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tabSystem1.FormParent = null;
+            this.tabSystem1.Location = new System.Drawing.Point(0, 28);
+            this.tabSystem1.Name = "tabSystem1";
+            this.tabSystem1.Size = new System.Drawing.Size(1134, 507);
+            this.tabSystem1.TabIndex = 1;
+            this.tabSystem1.Load += new System.EventHandler(this.tabSystem1_Load);
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1134, 535);
-            this.Controls.Add(this.panel_window);
-            this.Controls.Add(this.panel_tabs);
+            this.Controls.Add(this.tabSystem1);
             this.Controls.Add(this.menuStrip1);
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "Form1";
@@ -131,9 +124,8 @@
         private System.Windows.Forms.ToolStripMenuItem exitToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem toolsToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem updateStockToolStripMenuItem;
-        private System.Windows.Forms.Panel panel_tabs;
-        private System.Windows.Forms.Panel panel_window;
         private System.Windows.Forms.ToolStripMenuItem barcodesToolStripMenuItem;
+        private Components.TabSystem tabSystem1;
     }
 }
 

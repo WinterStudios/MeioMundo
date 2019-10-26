@@ -15,6 +15,7 @@ namespace MeioMundo
         public Form1()
         {
             InitializeComponent();
+            tabSystem1.FormParent = this;
         }
 
         private void exitToolStripMenuItem_Click(object sender, EventArgs e)
@@ -26,14 +27,21 @@ namespace MeioMundo
         {
             Controls.UpdateStockControl updateStockControl = new Controls.UpdateStockControl();
             updateStockControl.Dock = DockStyle.Fill;
-            panel_window.Controls.Add(updateStockControl);
+            //panel_window.Controls.Add(updateStockControl);
         }
 
         private void barcodesToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Controls.Barcode barcodes = new Controls.Barcode();
-            barcodes.Dock = DockStyle.Fill;
-            panel_window.Controls.Add(barcodes);
+            Controls.Barcode barcodes = new Controls.Barcode
+            {
+                Dock = DockStyle.Fill
+            };
+            // panel_window.Controls.Add(barcodes);
+        }
+
+        private void tabSystem1_Load(object sender, EventArgs e)
+        {
+            tabSystem1.SetComponets();
         }
     }
 }
