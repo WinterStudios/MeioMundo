@@ -22,11 +22,16 @@ namespace MeioMundo.API
                 if (openFileDialog.ShowDialog() == DialogResult.OK)
                 {
                     output = openFileDialog.FileName;
+                    return output;
                 }
-                return output;
+                else
+                    return null;
+                
             }
             public static DataTable Read(string fileSource)
             {
+                if (fileSource == null)
+                    return null;
                 StreamReader reader = new StreamReader(fileSource);
 
                 string content = reader.ReadToEnd();

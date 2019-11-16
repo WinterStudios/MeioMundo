@@ -28,10 +28,12 @@ namespace MeioMundo.Controls
         {
             string fileSource = string.Empty;
             OpenFileDialog openFileDialog = new OpenFileDialog();
-            if(openFileDialog.ShowDialog() == DialogResult.OK) 
+            if (openFileDialog.ShowDialog() == DialogResult.OK)
             {
                 fileSource = openFileDialog.FileName;
             }
+            else
+                return;
 
 
             using (var stream = File.Open(fileSource, FileMode.Open, FileAccess.Read))
