@@ -20,9 +20,20 @@ namespace MeioMundoWPF
     /// </summary>
     public partial class MainWindow : Window
     {
+        int d = 0;
         public MainWindow()
         {
             InitializeComponent();
+        }
+
+        private void Close_Application(object sender, RoutedEventArgs e)
+        {
+            Application.Current.Shutdown();
+        }
+
+        private void Rectangle_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            DragMove();
         }
     }
 }
