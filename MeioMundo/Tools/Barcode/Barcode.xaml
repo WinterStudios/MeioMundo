@@ -1,0 +1,39 @@
+﻿<UserControl x:Class="Tools.Barcode.Barcode"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Tools.Barcode"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="130"/>
+            <ColumnDefinition Width="500"/>
+        </Grid.ColumnDefinitions>
+        <ToolBar Height="30" VerticalAlignment="Top">
+            <Button Content="Preview"/>
+        </ToolBar>
+        <GroupBox Grid.Column="0" x:Name="GroupBoxCodes" Header="Tipo" Height="131" Margin="0,30,0,0" VerticalAlignment="Top">
+            <StackPanel x:Name="ListOfCodeTypess" Orientation="Vertical" ScrollViewer.CanContentScroll="True">
+                
+            </StackPanel>
+           
+        </GroupBox>
+        <GroupBox Height="100" Grid.Column="1" VerticalAlignment="Top">
+            <StackPanel Orientation="Vertical">
+                <StackPanel Orientation="Horizontal">
+                    <Label Content="Codigo:"/>
+                    <TextBox Height="30" Width="250" VerticalContentAlignment="Center"/>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal">
+                    <Label Content="Preview:"/>
+                    <TextBlock FontFamily="{DynamicResource Code_39}"  />
+                </StackPanel>
+            </StackPanel>
+            
+        </GroupBox>
+
+    </Grid>
+</UserControl>

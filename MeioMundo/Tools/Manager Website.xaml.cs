@@ -16,11 +16,11 @@ using System.Windows.Shapes;
 namespace Tools
 {
     /// <summary>
-    /// Interaction logic for Barcode.xaml
+    /// Interaction logic for Manager_Website.xaml
     /// </summary>
-    public partial class Barcode : UserControl
+    public partial class Manager_Website : UserControl
     {
-        public Barcode()
+        public Manager_Website()
         {
             InitializeComponent();
         }

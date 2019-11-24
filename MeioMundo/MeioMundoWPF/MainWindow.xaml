@@ -76,7 +76,7 @@
             </Grid>
         </StackPanel>
 
-        <StackPanel x:Name="Panel" Grid.Row="1" Background="Black">
+        <StackPanel x:Name="Panel" Grid.Row="1" Background="White">
             
         </StackPanel>
     </Grid>
