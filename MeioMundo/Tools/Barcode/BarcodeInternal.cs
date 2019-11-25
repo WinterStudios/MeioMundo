@@ -89,5 +89,15 @@ namespace Tools.Barcode
             FlowDocument fd = new FlowDocument();
             
         }
+        public class CODE_39
+        {
+            public static string GetCode(string data)
+            {
+                if (data.Length > 0)
+                    return "*" + data + "*";
+                else
+                    return "";
+            }
+        }
     }
 }

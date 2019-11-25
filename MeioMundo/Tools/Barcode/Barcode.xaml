@@ -34,7 +34,7 @@
                 </StackPanel>
                 <StackPanel Orientation="Horizontal" Background="White">
                     <Label Content="Preview:"/>
-                    <TextBlock x:Name="Code_Priview" Text="0" FontFamily="/Tools;component/Barcode/Fonts/#Code 39" FontSize="11" VerticalAlignment="Center" FontStretch="UltraExpanded" />
+                    <TextBlock x:Name="Code_Priview" Text="0" FontFamily="/Tools;component/Barcode/Fonts/#Code 39" FontSize="18" VerticalAlignment="Center" FontStretch="UltraExpanded" />
                 </StackPanel>
             </StackPanel>
             
