@@ -35,5 +35,10 @@ namespace Tools.Barcode
                 ListOfCodeTypess.Children.Add(button);
             }
         }
+
+        private void Code_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            Code_Priview.Text = "*" + Code.Text + "*";
+        }
     }
 }

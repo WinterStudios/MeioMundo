@@ -72,7 +72,8 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <Resource Include="Barcode\Font\Code_39.ttf" />
+    <Resource Include="Barcode\Fonts\Code_39.ttf" />
+    <Resource Include="Barcode\Fonts\Code 39.ttf" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -80,10 +81,6 @@
   </ItemGroup>
   <ItemGroup>
     <Page Include="Barcode\Barcode.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Barcode\Resources_All.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
