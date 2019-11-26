@@ -108,13 +108,14 @@ namespace Tools.Barcode
             {
                 public string GetFullCode(string data)
                 {
-
+                    return "";
                 }
                 private int _CheckSum(string data)
                 {
                     if (data.Length != 7 && data.Length != 8)
                         return -1;
-                    int _sum;
+                    int _sum = 0;
+                    return _sum;
                 }
             }
             public class EAN_13
@@ -133,11 +134,11 @@ namespace Tools.Barcode
             {
                 public string GetFullCode(string data)
                 {
-
+                    return "";
                 }
                 private int CheckDig()
                 {
-
+                    return 0;
                 }
             }
         }

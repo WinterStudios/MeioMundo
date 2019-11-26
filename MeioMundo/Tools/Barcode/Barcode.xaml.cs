@@ -85,6 +85,7 @@ namespace Tools.Barcode
                     break;
                 case BarcodeInternal.TypesOfCodes.Code_39:
                     Code_Priview.FontFamily = BarcodeInternal.CODE_39._FONT;
+                    Code_Priview.Text = DrawPreview(Code.Text, _TypesOfCodes);
                     break;
                 case BarcodeInternal.TypesOfCodes.ISBN_10:
                     break;
@@ -97,6 +98,7 @@ namespace Tools.Barcode
                 default:
                     break;
             }
+            
         }
     }
 }
