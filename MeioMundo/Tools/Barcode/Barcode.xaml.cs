@@ -84,9 +84,7 @@ namespace Tools.Barcode
                 case BarcodeInternal.TypesOfCodes.Codebar:
                     break;
                 case BarcodeInternal.TypesOfCodes.Code_39:
-                    Uri uri = new Uri("pack://application:,,,/Tools;Component/");
-                    FontFamily font = new FontFamily(uri, "./Barcode/Fonts/#Code 39");
-                    Code_Priview.FontFamily = font;
+                    Code_Priview.FontFamily = BarcodeInternal.CODE_39._FONT;
                     break;
                 case BarcodeInternal.TypesOfCodes.ISBN_10:
                     break;

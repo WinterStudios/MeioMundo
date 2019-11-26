@@ -78,7 +78,7 @@ namespace Tools.Barcode
         }
         public struct TypeCode
         {
-            
+
         }
 
         /// <summary>
@@ -87,10 +87,11 @@ namespace Tools.Barcode
         public void Print()
         {
             FlowDocument fd = new FlowDocument();
-            
+
         }
         public class CODE_39
         {
+            public static FontFamily _FONT = new FontFamily(new Uri("pack://application:,,,/Tools;Component/"), "./Barcode/Fonts/#Code 39");
             public static string GetCode(string data)
             {
                 if (data.Length > 0)
@@ -99,5 +100,47 @@ namespace Tools.Barcode
                     return "";
             }
         }
+        public class EAN
+        {
+
+
+            public class EAN_8
+            {
+                public string GetFullCode(string data)
+                {
+
+                }
+                private int _CheckSum(string data)
+                {
+                    if (data.Length != 7 && data.Length != 8)
+                        return -1;
+                    int _sum;
+                }
+            }
+            public class EAN_13
+            {
+
+            }
+        }
+        public class ISBN
+        {
+            public struct ISBN_10
+            {
+
+            }
+
+            public struct ISBN_13
+            {
+                public string GetFullCode(string data)
+                {
+
+                }
+                private int CheckDig()
+                {
+
+                }
+            }
+        }
+
     }
 }
