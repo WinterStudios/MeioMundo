@@ -91,7 +91,13 @@ namespace Tools.Barcode
         }
         public class CODE_39
         {
-            public static FontFamily _FONT = new FontFamily(new Uri("pack://application:,,,/Tools;Component/"), "./Barcode/Fonts/#Code 39");
+            public static FontFamily _FONT 
+            {
+                get 
+                { 
+                    return new FontFamily(new Uri("pack://application:,,,/Tools;Component/"), "./Barcode/Fonts/#Code 39"); 
+                }
+            }
             public static string GetCode(string data)
             {
                 if (data.Length > 0)
@@ -106,11 +112,11 @@ namespace Tools.Barcode
 
             public class EAN_8
             {
-                public string GetFullCode(string data)
+                public static string GetFullCode(string data)
                 {
                     return "";
                 }
-                private int _CheckSum(string data)
+                public static int _CheckSum(string data)
                 {
                     if (data.Length != 7 && data.Length != 8)
                         return -1;
