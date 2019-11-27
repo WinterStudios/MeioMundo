@@ -54,6 +54,7 @@ namespace Tools.Barcode
                 case BarcodeInternal.TypesOfCodes.Codebar:
                     break;
                 case BarcodeInternal.TypesOfCodes.Code_39:
+                    Code.MaxLength = 100;
                     preview = BarcodeInternal.CODE_39.GetCode(data);
                     break;
                 case BarcodeInternal.TypesOfCodes.ISBN_10:
@@ -61,13 +62,18 @@ namespace Tools.Barcode
                 case BarcodeInternal.TypesOfCodes.ISNB_13:
                     break;
                 case BarcodeInternal.TypesOfCodes.EAN_8:
+                    Code.MaxLength = 7;
+                    if (Code.Text.Length == 7)
+                        preview = BarcodeInternal.EAN.EAN_8.GetCode(Code.Text);
                     break;
                 case BarcodeInternal.TypesOfCodes.EAN_13:
+                    Code.MaxLength = 12;
+                    if (Code.Text.Length == 12)
+                        preview = BarcodeInternal.EAN.EAN_13.GetCode(Code.Text);
                     break;
                 default:
                     break;
             }
-
             return preview;
         }
 
@@ -92,13 +98,37 @@ namespace Tools.Barcode
                 case BarcodeInternal.TypesOfCodes.ISNB_13:
                     break;
                 case BarcodeInternal.TypesOfCodes.EAN_8:
+                    Code_Priview.FontFamily = BarcodeInternal.EAN._Font;
+                    if (Code.Text.Length == 7)
+                        Code_Priview.Text = BarcodeInternal.EAN.EAN_8.GetCode(Code.Text);
+                    if (Code.Text.Length > 7)
+                    {
+                        Code.Text = Code.Text.Remove(7);
+                        Code_Priview.Text = BarcodeInternal.EAN.EAN_8.GetCode(Code.Text);
+                        Code_Priview.Text = DrawPreview(Code.Text, _TypesOfCodes);
+                    }
                     break;
                 case BarcodeInternal.TypesOfCodes.EAN_13:
+                    Code_Priview.FontFamily = BarcodeInternal.EAN._Font;
+                    if (Code.Text.Length == 12)
+                        Code_Priview.Text = BarcodeInternal.EAN.EAN_13.GetCode(Code.Text);
+                    if (Code.Text.Length > 12)
+                    {
+                        Code.Text = Code.Text.Remove(12);
+                        Code_Priview.Text = BarcodeInternal.EAN.EAN_13.GetCode(Code.Text);
+                        Code_Priview.Text = DrawPreview(Code.Text, _TypesOfCodes);
+                    }
                     break;
                 default:
                     break;
             }
             
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            var windows = new Window1();
+            windows.ShowDialog();
         }
     }
 }

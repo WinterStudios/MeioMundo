@@ -106,27 +106,90 @@ namespace Tools.Barcode
                     return "";
             }
         }
-        public class EAN
+        public static class EAN
         {
-
-
-            public class EAN_8
+            public static FontFamily _Font { get { return new FontFamily(); } }
+            public struct EAN_8
             {
-                public static string GetFullCode(string data)
-                {
-                    return "";
-                }
+                /// <summary>
+                /// Returna o codigo completo se não tiver o 8 elemento, ou seja calcula o 8º numero (Codigo de confirmaçao)
+                /// </summary>
+                /// <param name="input"></param>
+                /// <returns>Codigo completo</returns>
+                public static string GetCode(string input) => input + _CheckSum(input).ToString();
+
+                /// <summary>
+                /// Calcula o ultimo digito para o codigo
+                /// </summary>
+                /// <param name="data">Codigo para criar de 7 digitos </param>
+                /// <returns>Return o check_digit (Codigo de confirmação)</returns>
                 public static int _CheckSum(string data)
                 {
                     if (data.Length != 7 && data.Length != 8)
-                        return -1;
-                    int _sum = 0;
-                    return _sum;
+                        return 1;
+
+                    for (int i = 0; i < data.Length; i++)
+                    {
+                        if (data[i] < 0x30 || data[i] > 0x39)
+                            return -1;
+                    }
+
+                    int sum = 0;
+
+                    for (int i = 6; i >= 0; i--)
+                    {
+                        int digit = data[i] - 0x30;
+                        if ((i & 0x01) == 1)
+                            sum += digit;
+                        else
+                            sum += digit * 3;
+                    }
+
+                    int mod = sum % 10;
+
+                    return mod == 0 ? 0 : 10 - mod;
                 }
             }
-            public class EAN_13
+            public struct EAN_13
             {
+                /// <summary>
+                /// Returna o codigo completo se não tiver o 13 elemento, ou seja calcula o 13º numero (Codigo de confirmaçao)
+                /// </summary>
+                /// <param name="input"></param>
+                /// <returns>Codigo completo</returns>
+                public static string GetCode(string input) => input + _CheckSum(input).ToString();
 
+                /// <summary>
+                /// Calcula o ultimo digito para o codigo
+                /// </summary>
+                /// <param name="data">Codigo para criar de 12 digitos </param>
+                /// <returns>Return o check_digit (Codigo de confirmação)</returns>
+                public static int _CheckSum(string data)
+                {
+                    if (data.Length != 12 && data.Length != 13)
+                        return 1;
+
+                    for (int i = 0; i < data.Length; i++)
+                    {
+                        if (data[i] < 0x30 || data[i] > 0x39)
+                            return -1;
+                    }
+
+                    int sum = 0;
+
+                    for (int i = 11; i >= 0; i--)
+                    {
+                        int digit = data[i] - 0x30;
+                        if ((i & 0x01) == 1)
+                            sum += digit;
+                        else
+                            sum += digit * 3;
+                    }
+
+                    int mod = sum % 10;
+
+                    return mod == 0 ? 0 : 10 - mod;
+                }
             }
         }
         public class ISBN
