@@ -42,7 +42,8 @@ namespace Tools.Barcode
         private void Code_TextChanged(object sender, TextChangedEventArgs e)
         {
 
-             Code_Priview.Text = DrawPreview(Code.Text, _TypesOfCodes);
+            // Code_Priview.Text = DrawPreview(Code.Text, _TypesOfCodes);
+            Code_Priview.Text = Code.Text.ToString();
         }
 
         private string DrawPreview(string data, BarcodeInternal.TypesOfCodes types)
@@ -67,8 +68,8 @@ namespace Tools.Barcode
                         preview = BarcodeInternal.EAN.EAN_8.GetCode(Code.Text);
                     break;
                 case BarcodeInternal.TypesOfCodes.EAN_13:
-                    Code.MaxLength = 12;
-                    if (Code.Text.Length == 12)
+                    Code.MaxLength = 13;
+                    if (Code.Text.Length == 13 || Code.Text.Length == 12)
                         preview = BarcodeInternal.EAN.EAN_13.GetCode(Code.Text);
                     break;
                 default:
@@ -110,11 +111,11 @@ namespace Tools.Barcode
                     break;
                 case BarcodeInternal.TypesOfCodes.EAN_13:
                     Code_Priview.FontFamily = BarcodeInternal.EAN._Font;
-                    if (Code.Text.Length == 12)
+                    if (Code.Text.Length == 13)
                         Code_Priview.Text = BarcodeInternal.EAN.EAN_13.GetCode(Code.Text);
-                    if (Code.Text.Length > 12)
+                    if (Code.Text.Length > 13)
                     {
-                        Code.Text = Code.Text.Remove(12);
+                        Code.Text = Code.Text.Remove(13);
                         Code_Priview.Text = BarcodeInternal.EAN.EAN_13.GetCode(Code.Text);
                         Code_Priview.Text = DrawPreview(Code.Text, _TypesOfCodes);
                     }
@@ -129,6 +130,11 @@ namespace Tools.Barcode
         {
             var windows = new Window1();
             windows.ShowDialog();
+        }
+
+        private void Button_Click_1(object sender, RoutedEventArgs e)
+        {
+            BarcodeInternal.Print();
         }
     }
 }

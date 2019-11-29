@@ -84,9 +84,19 @@ namespace Tools.Barcode
         /// <summary>
         /// Layout para imprimir
         /// </summary>
-        public void Print()
+        public static void Print()
         {
-            FlowDocument fd = new FlowDocument();
+            var visual = new DrawingVisual();
+            using(var o = visual.RenderOpen())
+            {
+                o.DrawText(new FormattedText("HEADER!! *0123456789*", new System.Globalization.CultureInfo("PT-pt"), FlowDirection.LeftToRight, new Typeface(CODE_39._FONT, FontStyles.Normal, FontWeights.Normal,FontStretches.Normal), 11, Brushes.Black),new Point(0,10));
+            }
+
+            PrintDialog print = new PrintDialog();
+            if(print.ShowDialog() == true)
+            {
+                print.PrintVisual(visual,"DA");
+            }
 
         }
         public class CODE_39
@@ -108,7 +118,7 @@ namespace Tools.Barcode
         }
         public static class EAN
         {
-            public static FontFamily _Font { get { return new FontFamily(); } }
+            public static FontFamily _Font { get { return new FontFamily(new Uri("pack://application:,,,/Tools;Component/"), "./Barcode/Fonts/#EAN 13"); } }
             public struct EAN_8
             {
                 /// <summary>
@@ -157,7 +167,20 @@ namespace Tools.Barcode
                 /// </summary>
                 /// <param name="input"></param>
                 /// <returns>Codigo completo</returns>
-                public static string GetCode(string input) => input + _CheckSum(input).ToString();
+                public static string GetCode(string input)
+                {
+                    if (input.Length == 13)
+                    {
+                        string data = input.Remove(12);
+                        int _checkum = _CheckSum(data);
+                        if (_checkum == input[12])
+                            return input;
+                        else
+                            return data + _checkum;
+                    }
+                    else
+                        return input + _CheckSum(input).ToString();
+                }
 
                 /// <summary>
                 /// Calcula o ultimo digito para o codigo
@@ -189,6 +212,19 @@ namespace Tools.Barcode
                     int mod = sum % 10;
 
                     return mod == 0 ? 0 : 10 - mod;
+                }
+            }
+
+            public static string _ConvertTextToBarcode(string input)
+            {
+                return "";
+            }
+
+            public class Print
+            {
+                public void PrintLayout()
+                {
+
                 }
             }
         }
