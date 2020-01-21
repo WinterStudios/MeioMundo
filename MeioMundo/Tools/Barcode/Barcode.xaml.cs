@@ -21,10 +21,16 @@ namespace Tools.Barcode
     public partial class Barcode : UserControl
     {
         public BarcodeInternal.TypesOfCodes _TypesOfCodes;
+
+        public List<CodeInfo> _codes { get; set; }
+
         public Barcode()
         {
+            _codes = new List<CodeInfo> { new CodeInfo { _produt = "Pro 1", _reference = "00001" }, new CodeInfo { _produt = "Pro 2", _reference = "00012" } };
             InitializeComponent();
             LoadListOfCodeTypes();
+            table.ItemsSource = _codes;
+            
         }
 
         private void LoadListOfCodeTypes()

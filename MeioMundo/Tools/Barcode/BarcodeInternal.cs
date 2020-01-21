@@ -22,6 +22,9 @@ namespace Tools.Barcode
             EAN_8,
             EAN_13
         }
+
+        
+
         public string GetTypeOfCode(TypesOfCodes type)
         {
             string str = string.Empty;
@@ -87,6 +90,7 @@ namespace Tools.Barcode
         public static void Print()
         {
             var visual = new DrawingVisual();
+            
             using(var o = visual.RenderOpen())
             {
                 o.DrawText(new FormattedText("HEADER!! *0123456789*", new System.Globalization.CultureInfo("PT-pt"), FlowDirection.LeftToRight, new Typeface(CODE_39._FONT, FontStyles.Normal, FontWeights.Normal,FontStretches.Normal), 11, Brushes.Black),new Point(0,10));

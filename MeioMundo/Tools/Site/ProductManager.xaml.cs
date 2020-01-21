@@ -13,14 +13,14 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace Tools
+namespace Tools.Site
 {
     /// <summary>
-    /// Interaction logic for Manager_Website.xaml
+    /// Interaction logic for ProductManager.xaml
     /// </summary>
-    public partial class Manager_Website : UserControl
+    public partial class ProductManager : Page
     {
-        public Manager_Website()
+        public ProductManager()
         {
             InitializeComponent();
         }

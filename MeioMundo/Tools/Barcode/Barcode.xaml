@@ -11,8 +11,17 @@
 
         <FontFamily x:Key="Code_39">pack://application:,,,/Barcode/Fonts/#Code_39</FontFamily>
         <FontFamily x:Key="EAN_13">"pack://application:,,,/Barcode/Fonts/#EAN 13</FontFamily>
+
+        <DataTemplate x:Key="PrintTable" DataType="{x:Type local:CodeInfo}" >
+            <StackPanel Orientation="Vertical" Width="300">
+                <TextBlock Text="{Binding _produt}" FontSize="9"/>
+                <TextBlock Text="{Binding Path=_reference}" FontSize="12"/>
+            </StackPanel>
+        </DataTemplate>
     </UserControl.Resources>
-    
+
+
+
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="130"/>
@@ -24,9 +33,9 @@
         </ToolBar>
         <GroupBox Grid.Column="0" x:Name="GroupBoxCodes" Header="Tipo" Height="131" Margin="0,30,0,0" VerticalAlignment="Top">
             <StackPanel x:Name="ListOfCodeTypess" Orientation="Vertical" ScrollViewer.CanContentScroll="True">
-                
+
             </StackPanel>
-           
+
         </GroupBox>
         <GroupBox Height="100" Grid.Column="1" VerticalAlignment="Top">
             <StackPanel Orientation="Vertical">
@@ -39,8 +48,24 @@
                     <TextBlock x:Name="Code_Priview" FontFamily="/Tools;component/Barcode/Fonts/#EAN 13" FontSize="18" VerticalAlignment="Center" Text="0x20"/>
                 </StackPanel>
             </StackPanel>
-            
+
         </GroupBox>
+        <ListView x:Name="table" Grid.Column="1" HorizontalAlignment="Left" Height="184" Margin="62.6,219,0,0" VerticalAlignment="Top" Width="311">
+            <ListView.ItemTemplate>
+                <DataTemplate DataType="{x:Type local:CodeInfo}">
+                    <StackPanel Orientation="Vertical">
+                        <TextBlock Text="{Binding _produt}" FontSize="9"/>
+                        <TextBlock Text="{Binding Path=_reference}" FontSize="12"/>
+                    </StackPanel>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+            <ListView.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <WrapPanel />
+                </ItemsPanelTemplate>
+            </ListView.ItemsPanel>
+        </ListView>
+
 
     </Grid>
 </UserControl>
