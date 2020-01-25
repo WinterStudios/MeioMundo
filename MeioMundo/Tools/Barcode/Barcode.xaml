@@ -6,65 +6,27 @@
              xmlns:local="clr-namespace:Tools.Barcode"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
-
-    <UserControl.Resources>
-
-        <FontFamily x:Key="Code_39">pack://application:,,,/Barcode/Fonts/#Code_39</FontFamily>
-        <FontFamily x:Key="EAN_13">"pack://application:,,,/Barcode/Fonts/#EAN 13</FontFamily>
-
-        <DataTemplate x:Key="PrintTable" DataType="{x:Type local:CodeInfo}" >
-            <StackPanel Orientation="Vertical" Width="300">
-                <TextBlock Text="{Binding _produt}" FontSize="9"/>
-                <TextBlock Text="{Binding Path=_reference}" FontSize="12"/>
-            </StackPanel>
-        </DataTemplate>
-    </UserControl.Resources>
-
-
-
     <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="26"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="130"/>
-            <ColumnDefinition Width="500"/>
+            <ColumnDefinition Width="2*"/>
+            <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
-        <ToolBar Height="30" VerticalAlignment="Top">
-            <Button Content="Preview" Click="Button_Click"/>
-            <Button Content="dd" Click="Button_Click_1"/>
+        <ToolBar Grid.Row="0" Grid.ColumnSpan="2">
+            <Button Content="Teste" Click="Button_Click"/>
         </ToolBar>
-        <GroupBox Grid.Column="0" x:Name="GroupBoxCodes" Header="Tipo" Height="131" Margin="0,30,0,0" VerticalAlignment="Top">
-            <StackPanel x:Name="ListOfCodeTypess" Orientation="Vertical" ScrollViewer.CanContentScroll="True">
+        <DataGrid Grid.Row="1">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="ID" Width="30"/>
+                <DataGridTextColumn Header="REF" Width="80"/>
+                <DataGridTextColumn Header="Descrição" Width="*"/>
+                <DataGridTextColumn Header="Qtd" Width="Auto" />
+            </DataGrid.Columns>
+        </DataGrid>
 
-            </StackPanel>
-
-        </GroupBox>
-        <GroupBox Height="100" Grid.Column="1" VerticalAlignment="Top">
-            <StackPanel Orientation="Vertical">
-                <StackPanel Orientation="Horizontal">
-                    <Label Content="Codigo:"/>
-                    <TextBox x:Name="Code" Height="30" Width="250" VerticalContentAlignment="Center" TextChanged="Code_TextChanged" />
-                </StackPanel>
-                <StackPanel Orientation="Horizontal" Background="White">
-                    <Label Content="Preview:"/>
-                    <TextBlock x:Name="Code_Priview" FontFamily="/Tools;component/Barcode/Fonts/#EAN 13" FontSize="18" VerticalAlignment="Center" Text="0x20"/>
-                </StackPanel>
-            </StackPanel>
-
-        </GroupBox>
-        <ListView x:Name="table" Grid.Column="1" HorizontalAlignment="Left" Height="184" Margin="62.6,219,0,0" VerticalAlignment="Top" Width="311">
-            <ListView.ItemTemplate>
-                <DataTemplate DataType="{x:Type local:CodeInfo}">
-                    <StackPanel Orientation="Vertical">
-                        <TextBlock Text="{Binding _produt}" FontSize="9"/>
-                        <TextBlock Text="{Binding Path=_reference}" FontSize="12"/>
-                    </StackPanel>
-                </DataTemplate>
-            </ListView.ItemTemplate>
-            <ListView.ItemsPanel>
-                <ItemsPanelTemplate>
-                    <WrapPanel />
-                </ItemsPanelTemplate>
-            </ListView.ItemsPanel>
-        </ListView>
 
 
     </Grid>

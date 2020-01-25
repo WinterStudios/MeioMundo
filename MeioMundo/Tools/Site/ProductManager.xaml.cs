@@ -12,17 +12,27 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-
+using System.Data;
 namespace Tools.Site
 {
     /// <summary>
     /// Interaction logic for ProductManager.xaml
     /// </summary>
-    public partial class ProductManager : Page
+    /// 
+    
+    public partial class ProductManager : UserControl
     {
+        public static bool ShowMenu = true;
         public ProductManager()
         {
             InitializeComponent();
+        }
+        private void OpenSiteFileWindow(object sender, RoutedEventArgs e)
+        {
+            string File = FileManager.Window.OpenFileWindowDialog(FileManager.Window.Extensions.CSV);
+
+            SiteList.ItemsSource = FileManager.CSV.ReadFileToTable(File).AsDataView();
+
         }
     }
 }

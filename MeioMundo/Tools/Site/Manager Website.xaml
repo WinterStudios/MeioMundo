@@ -11,17 +11,15 @@
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
-            <RowDefinition Height="30"/>
-            <RowDefinition Height="200"/>
+            <RowDefinition Height="Auto"/>
             <RowDefinition Height="*"/>
-            <RowDefinition Height="30"/>
         </Grid.RowDefinitions>
         <Menu Grid.Row="0" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" >
             <MenuItem Header="File">
                 <MenuItem Header="Exit"/>
             </MenuItem>
             <MenuItem Header="Site">
-                <MenuItem Header="Open Site File" Click="OpenSiteFileWindow"/>
+                <MenuItem Header="Open Site File"/>
                 <MenuItem Header="Open SAGE File"/>
             </MenuItem>
             <MenuItem Header="Manager">
@@ -29,28 +27,7 @@
                 <MenuItem/>
             </MenuItem>
         </Menu>
-        <TabControl x:Name="TabManager" Grid.Row="1" HorizontalAlignment="Stretch" Grid.RowSpan="2" VerticalAlignment="Top">
-            <TabItem Header="TabItem">
-                <Grid Background="#FFE5E5E5"/>
-            </TabItem>
-            <TabItem Header="TabItem">
-                <Grid Background="#FFE5E5E5"/>
-            </TabItem>
+        <TabControl x:Name="TabManager" Grid.Row="1" HorizontalAlignment="Stretch" Grid.RowSpan="2" VerticalAlignment="Stretch" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch" ScrollViewer.HorizontalScrollBarVisibility="Auto" ScrollViewer.VerticalScrollBarVisibility="Auto">
         </TabControl>
-        <Grid Grid.Row="2" MaxHeight="400">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="*"/>
-                <ColumnDefinition Width="*"/>
-            </Grid.ColumnDefinitions>
-            <DataGrid Grid.Column="0" x:Name="SiteList" VerticalScrollBarVisibility="Visible" ItemsSource="{Binding }"/>
-        </Grid>
-
-
-
-        <StatusBar Grid.Row="3" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
-            <ProgressBar Width="200" VerticalAlignment="Stretch" Height="24" Value="100" />
-        </StatusBar>
-
-
     </Grid>
 </UserControl>

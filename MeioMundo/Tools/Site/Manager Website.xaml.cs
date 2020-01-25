@@ -22,22 +22,22 @@ namespace Tools
     /// </summary>
     public partial class Manager_Website : UserControl
     {
+        public static bool ShowMenu { get { return true; } }
         public Manager_Website()
         {
             InitializeComponent();
         }
 
-        private void OpenSiteFileWindow(object sender, RoutedEventArgs e)
-        {
-            string File = FileManager.Window.OpenFileWindowDialog(FileManager.Window.Extensions.CSV);
 
-            SiteList.ItemsSource = FileManager.CSV.ReadFileToTable(File).AsDataView();
-
-
-        }
         private void ManagerProducts(object sender, RoutedEventArgs e)
         {
-
+            TabItem tab = new TabItem();
+            tab.Content = new ProductManager();
+            tab.Header = "Gerir Produtos";
+            tab.HorizontalContentAlignment = HorizontalAlignment.Stretch;
+            tab.VerticalContentAlignment = VerticalAlignment.Stretch;
+            tab.VerticalAlignment = VerticalAlignment.Stretch;
+            TabManager.Items.Add(tab);
         }
     }
 }

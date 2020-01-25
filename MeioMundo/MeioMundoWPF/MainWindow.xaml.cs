@@ -23,23 +23,41 @@ namespace MeioMundoWPF
     public partial class MainWindow : Window
     {
         int d = 0;
+        public double m_width;
+        public double m_height;
+        public static bool m_maximized;
         public MainWindow()
         {
             InitializeComponent();
+            m_width = this.Width;
+            m_height = this.Height;
+
             Console.WriteLine(System.IO.Directory.GetCurrentDirectory());
             var asm = Assembly.LoadFile(System.IO.Directory.GetCurrentDirectory() + "/Tools.dll");
             var types = asm.GetTypes().Where(x => x.IsSubclassOf(typeof(UserControl)));
             foreach (var item in types)
             {
-                MenuItem i = new MenuItem();
-                var menuItem = new MenuItem();
-                menuItem.Click += (sender, e) =>
+                try
                 {
-                    object tool = Activator.CreateInstance(item);
-                    Panel.Children.Add(tool as UserControl);
-                };
-                menuItem.Header = item.Name;
-                MenuItemTools.Items.Add(menuItem);
+                    bool show = (bool)item.GetProperty("ShowMenu").GetValue(this, null);
+                    if (show)
+                    {
+
+                        MenuItem i = new MenuItem();
+                        var menuItem = new MenuItem();
+                        menuItem.Click += (sender, e) =>
+                        {
+                            object tool = Activator.CreateInstance(item);
+                            var tt = tool as UserControl;
+                            tt.VerticalAlignment = VerticalAlignment.Stretch;
+                            tt.HorizontalAlignment = HorizontalAlignment.Stretch;
+                            Panel.Children.Add(tt);
+                        };
+                        menuItem.Header = item.Name;
+                        MenuItemTools.Items.Add(menuItem);
+                    }
+                }
+                catch { }
             }            
         }
 
@@ -49,10 +67,21 @@ namespace MeioMundoWPF
         }
         private void MaximazeWindowEvent(object sender, RoutedEventArgs e)
         {
-            if (WindowState == WindowState.Normal)
-                WindowState = WindowState.Maximized;
+            if (!m_maximized)
+            {
+                this.Height = SystemParameters.WorkArea.Height;
+                this.Width = SystemParameters.WorkArea.Width;
+                m_maximized = true;
+                this.Left = 0;
+                this.Top = 0;
+            }
             else
-                WindowState = WindowState.Normal;
+            {
+                this.Width = m_width;
+                this.Height = m_height;
+                m_maximized = false;
+            }
+
         }
         private void Rectangle_MouseDown(object sender, MouseButtonEventArgs e)
         {

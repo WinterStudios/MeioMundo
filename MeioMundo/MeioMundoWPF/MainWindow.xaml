@@ -76,9 +76,9 @@
             </Grid>
         </StackPanel>
 
-        <StackPanel x:Name="Panel" Grid.Row="1" Background="White">
+        <DockPanel x:Name="Panel" Grid.Row="1" Background="White" ScrollViewer.CanContentScroll="True">
             
-        </StackPanel>
+        </DockPanel>
     </Grid>
 </Window>
 
