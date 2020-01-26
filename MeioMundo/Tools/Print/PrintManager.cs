@@ -29,8 +29,13 @@ namespace Tools.Print
                     pd.OriginAtMargins = true;
                     Margins margins = new Margins(30,30,30,30);
                     pd.DefaultPageSettings.Margins = margins;
-                    pd.Print();
 
+                    PrintPreviewDialog printPrvDlg = new PrintPreviewDialog();
+
+                    // preview the assigned document or you can create a different previewButton for it
+                    printPrvDlg.Document = pd;
+                    printPrvDlg.ShowDialog();
+                    pd.Print();
                 }
                 catch (Exception ex)
                 {
@@ -63,10 +68,10 @@ namespace Tools.Print
                     int centerPointY = t_celula_altura / 2;
 
                     SizeF desc_size = ev.Graphics.MeasureString(_CODES[z].m_Descrição, printFont);
-
+                    SizeF ref_size = ev.Graphics.MeasureString("*" + _CODES[z].m_Referencia + "*", Barcode.BarcodeInternal.CODE_39.Font);
                     // Frist Collmn
                     ev.Graphics.DrawString(_CODES[z].m_Descrição, printFont, Brushes.Black, centerPointX * 0 + ((centerPointX - desc_size.Width) / 2), 15 + t_celula_altura * z);
-                    ev.Graphics.DrawString("*" + _CODES[z].m_Referencia + "*", Barcode.BarcodeInternal.CODE_39.Font , Brushes.Black, centerPointX * 0 + ((centerPointX - desc_size.Width) / 2), 30 + t_celula_altura * z);
+                    ev.Graphics.DrawString("*" + _CODES[z].m_Referencia + "*", Barcode.BarcodeInternal.CODE_39.Font , Brushes.Black, ((centerPointX - ref_size.Width)/2) + centerPointX * 0, 30 + t_celula_altura * z);
                     ev.Graphics.DrawString(_CODES[z].m_Referencia, printFont, Brushes.Black, centerPointX * 0 + ((centerPointX - desc_size.Width) / 2), 50 + t_celula_altura * z);
 
 

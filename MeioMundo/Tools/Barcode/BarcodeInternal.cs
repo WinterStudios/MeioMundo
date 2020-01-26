@@ -101,7 +101,7 @@ namespace Tools.Barcode
                     System.Runtime.InteropServices.Marshal.Copy(fontData, 0, fontPtr, fontData.Length);
                     var fonts = new PrivateFontCollection();
                     fonts.AddMemoryFont(fontPtr, Properties.Resources.Code_39.Length);
-                    return new Font(fonts.Families[0], 16.0F);
+                    return new Font(fonts.Families[0], 13.0F);
                 }
             }
             public static System.Windows.Media.FontFamily _FONT 
