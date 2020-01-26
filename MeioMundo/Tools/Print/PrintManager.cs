@@ -64,7 +64,13 @@ namespace Tools.Print
 
                     SizeF desc_size = ev.Graphics.MeasureString(_CODES[z].m_Descrição, printFont);
 
-                    ev.Graphics.DrawString(_CODES[z].m_Descrição, printFont, Brushes.Black, centerPointX * 0 + ((centerPointX - desc_size.Width) /2 ), 15 + t_celula_altura*z );
+                    // Frist Collmn
+                    ev.Graphics.DrawString(_CODES[z].m_Descrição, printFont, Brushes.Black, centerPointX * 0 + ((centerPointX - desc_size.Width) / 2), 15 + t_celula_altura * z);
+                    ev.Graphics.DrawString("*" + _CODES[z].m_Referencia + "*", Barcode.BarcodeInternal.CODE_39.Font , Brushes.Black, centerPointX * 0 + ((centerPointX - desc_size.Width) / 2), 30 + t_celula_altura * z);
+                    ev.Graphics.DrawString(_CODES[z].m_Referencia, printFont, Brushes.Black, centerPointX * 0 + ((centerPointX - desc_size.Width) / 2), 50 + t_celula_altura * z);
+
+
+
                     ev.Graphics.DrawString(_CODES[z].m_Descrição, printFont, Brushes.Black, centerPointX * 1 + ((centerPointX - desc_size.Width) / 2), 30 + t_celula_altura * z);
                     ev.Graphics.DrawString(_CODES[z].m_Descrição, printFont, Brushes.Black, centerPointX * 2 + ((centerPointX - desc_size.Width) / 2), 45 + t_celula_altura * z);
 

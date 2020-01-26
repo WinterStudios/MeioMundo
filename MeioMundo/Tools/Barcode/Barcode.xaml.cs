@@ -29,7 +29,7 @@ namespace Tools.Barcode
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             List<Print.PrintManager.CODE> _codes = new List<Print.PrintManager.CODE>();
-            _codes.Add(new Print.PrintManager.CODE { m_Descrição = "JIgfdresrasedrtf" });
+            _codes.Add(new Print.PrintManager.CODE { m_Descrição = "JIgfdresrasedrtf" , m_Referencia = "8542163465440" });
             _codes.Add(new Print.PrintManager.CODE { m_Descrição = "Pen 57" }); 
             _codes.Add(new Print.PrintManager.CODE { m_Descrição = "guarda chuva de floes fd metaklivp rosa" });
 

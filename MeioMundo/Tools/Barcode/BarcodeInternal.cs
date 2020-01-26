@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
+using System.Drawing.Text;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -83,33 +85,30 @@ namespace Tools.Barcode
         {
 
         }
+        
 
-        /// <summary>
-        /// Layout para imprimir
-        /// </summary>
-        public static void Print()
-        {
-            var visual = new DrawingVisual();
-            
-            using(var o = visual.RenderOpen())
-            {
-                o.DrawText(new FormattedText("HEADER!! *0123456789*", new System.Globalization.CultureInfo("PT-pt"), FlowDirection.LeftToRight, new Typeface(CODE_39._FONT, FontStyles.Normal, FontWeights.Normal,FontStretches.Normal), 11, Brushes.Black),new Point(0,10));
-            }
 
-            PrintDialog print = new PrintDialog();
-            if(print.ShowDialog() == true)
-            {
-                print.PrintVisual(visual,"DA");
-            }
 
-        }
         public class CODE_39
         {
-            public static FontFamily _FONT 
+            public static Font Font
+            {
+                get
+                {
+
+                    byte[] fontData = Properties.Resources.Code_39;
+                    IntPtr fontPtr = System.Runtime.InteropServices.Marshal.AllocCoTaskMem(fontData.Length);
+                    System.Runtime.InteropServices.Marshal.Copy(fontData, 0, fontPtr, fontData.Length);
+                    var fonts = new PrivateFontCollection();
+                    fonts.AddMemoryFont(fontPtr, Properties.Resources.Code_39.Length);
+                    return new Font(fonts.Families[0], 16.0F);
+                }
+            }
+            public static System.Windows.Media.FontFamily _FONT 
             {
                 get 
                 { 
-                    return new FontFamily(new Uri("pack://application:,,,/Tools;Component/"), "./Barcode/Fonts/#Code 39"); 
+                    return new System.Windows.Media.FontFamily(new Uri("pack://application:,,,/Tools;Component/"), "./Barcode/Fonts/#Code 39"); 
                 }
             }
             public static string GetCode(string data)
@@ -122,7 +121,7 @@ namespace Tools.Barcode
         }
         public static class EAN
         {
-            public static FontFamily _Font { get { return new FontFamily(new Uri("pack://application:,,,/Tools;Component/"), "./Barcode/Fonts/#EAN 13"); } }
+            public static System.Windows.Media.FontFamily _Font { get { return new System.Windows.Media.FontFamily(new Uri("pack://application:,,,/Tools;Component/"), "./Barcode/Fonts/#EAN 13"); } }
             public struct EAN_8
             {
                 /// <summary>
