@@ -31,7 +31,6 @@ namespace Tools.Site
         {
             string File = FileManager.Window.OpenFileWindowDialog(FileManager.Window.Extensions.CSV);
 
-            SiteList.ItemsSource = FileManager.CSV.ReadFileToTable(File).AsDataView();
 
         }
     }

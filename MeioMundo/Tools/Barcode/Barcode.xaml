@@ -18,30 +18,30 @@
         <ToolBar Grid.Row="0" Grid.ColumnSpan="2">
             <Button Content="Teste" Click="Button_Click"/>
         </ToolBar>
-        <DataGrid Grid.Row="1">
+        <DataGrid x:Name="refs_tabela" AutoGenerateColumns="False" CanUserAddRows="False" Grid.Row="1" ItemsSource="{Binding Path=_Codes}" >
             <DataGrid.Columns>
-                <DataGridTextColumn Header="ID" Width="30"/>
-                <DataGridTextColumn Header="REF" Width="80"/>
-                <DataGridTextColumn Header="Descrição" Width="*"/>
-                <DataGridTextColumn Header="Qtd" Width="Auto" />
+                <DataGridTextColumn Header="ID" Width="30" Binding="{Binding ID}" IsReadOnly="True"/>
+                <DataGridTextColumn Header="REF" Width="110" Binding="{Binding CODIGO}"/>
+                <DataGridTextColumn Header="Descrição" Width="*" Binding="{Binding DESCRIÇÂO}"/>
+                <DataGridTextColumn Header="Qtd" Width="Auto" Binding="{Binding Qtd}"/>
             </DataGrid.Columns>
         </DataGrid>
         <GroupBox Grid.Row="1" Grid.Column="1" Header="GroupBox">
             <StackPanel>
                 <GroupBox Header="Descrição">
-                    <TextBox Text="TextBlock"/>
+                    <TextBox x:Name="txt_box_Desc" Text="TextBlock"/>
                 </GroupBox>
                 <GroupBox Header="Referencia">
-                    <TextBox TextWrapping="Wrap" Text="TextBlock"/>
+                    <TextBox x:Name="txt_box_Ref" TextWrapping="Wrap" Text="8639562952846"/>
                 </GroupBox>
-                <GroupBox Header="GroupBox">
+                <GroupBox Header="Quantidade">
                     <StackPanel Orientation="Horizontal">
-                        <TextBox Width="50"/>
+                        <TextBox x:Name="txt_box_Qtd" Text="1" Width="50"/>
                         <Button Content="+" Width="15"/>
                         <Button Content="-" Width="15"/>
                     </StackPanel>
                 </GroupBox>
-
+                <Button x:Name="Add_Button" Content="Adicionar Codigo" Click="Add_Button_Click"/>
 
             </StackPanel>
 

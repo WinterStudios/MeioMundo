@@ -9,7 +9,8 @@ using Microsoft.VisualBasic.FileIO;
 using System.Text.RegularExpressions;
 using System.Data.OleDb;
 using System.Globalization;
-using CsvHelper;
+using Tools.Extensions;
+using ExcelDataReader;
 
 namespace Tools.Site
 {
@@ -21,7 +22,7 @@ namespace Tools.Site
             public enum Extensions
             {
                 CSV = 0,
-                XLXS = 1,
+                XLSX = 1,
             }
             public static Extensions _extensions = Extensions.CSV;
 
@@ -31,8 +32,8 @@ namespace Tools.Site
                 {
                     case Extensions.CSV:
                         return "CSV Files (*.csv)|*.csv";
-                    case Extensions.XLXS:
-                        return "";
+                    case Extensions.XLSX:
+                        return "Excel Files (*.xlsx;*.xls)|*.xlsx;*.xls";
                     default:
                         return "";
                 }
@@ -40,9 +41,10 @@ namespace Tools.Site
 
             public static string OpenFileWindowDialog(Extensions FileExtension)
             {
+                _extensions = FileExtension;
                 Microsoft.Win32.OpenFileDialog dlg = new Microsoft.Win32.OpenFileDialog();
                 // Set filter for file extension and default file extension 
-                dlg.DefaultExt = ".csv";
+                //dlg.DefaultExt = ".csv";
                 dlg.Filter = m_extensions(FileExtension);
 
 
@@ -61,46 +63,105 @@ namespace Tools.Site
             }
         }
 
-        public static void OpenFile()
+        public static List<Dados.Site> GetDados(string path)
         {
+            string extension = path.Remove(0, path.LastIndexOf('.'));
+
+            string[] rows = new string[0];
+            switch (extension)
+            {
+                case ".csv":
+                    rows = CSV.CSVReader(path);
+                    break;
+                case ".XLSX":
+                    return XLSX.ExcelReader(path);
+                
+            }
+            List<Dados.Site> produtos = new List<Dados.Site>();
+            for (int i = 1; i < rows.Length; i++)
+            {
+                string[] collumns = rows[i].Split(',');
+                Dados.Site produto = new Dados.Site();
+                produto.ID = int.Parse(collumns[0]);
+                produto.Ref = collumns[1];
+                produto.Name = collumns[2];
+                int stock = 0;
+                int.TryParse(collumns[3], out stock);
+                produto.Stock = stock;
+                produto.Price = collumns[4];
+                produtos.Add(produto);
+            }
+
+            return produtos;
 
         }
 
-        public static class CSV
-        {
-            public static DataTable ReadFileToTable(string file)
-            {
-                using (var reader = new StreamReader(file))
-                using (var csv = new CsvReader(reader, CultureInfo.InvariantCulture))
-                {
-                    using (var dr = new CsvDataReader(csv))
-                    {
-                        var dt = new DataTable();
-                        
-                        dt.Load(dr);
 
-                        
-                        return dt;
+        public class CSV
+        {
+            public static string[] CSVReader(string path)
+            {
+                string[] rows = System.IO.File.ReadAllLines(path);
+                rows = rows.RemoveFrist();
+                for (int i = 0; i < rows.Length; i++)
+                {
+                    rows[i] = rows[i].Replace("\"", "");
+                    rows[i] = rows[i].Replace("'", "");
+
+                }
+                return rows;
+            }
+        }
+        public class XLSX
+        {
+            public static List<Dados.Site> ExcelReader(string path)
+            {
+
+                DataSet data = new DataSet();
+                using (var stream = File.Open(path, FileMode.Open, FileAccess.Read))
+                {
+                    // Auto-detect format, supports:
+                    //  - Binary Excel files (2.0-2003 format; *.xls)
+                    //  - OpenXml Excel files (2007 format; *.xlsx)
+                    using (var reader = ExcelReaderFactory.CreateReader(stream))
+                    {
+                        // Choose one of either 1 or 2:
+
+                        // 1. Use the reader methods
+                        do
+                        {
+                            while (reader.Read())
+                            {
+                                // reader.GetDouble(0);
+                            }
+                        } while (reader.NextResult());
+
+                        // 2. Use the AsDataSet extension method
+                        var result = reader.AsDataSet();
+
+                        data = result;
+
                     }
                 }
 
-                
-            }
-        
-            static DataColumn[] GetDataColumn()
-            {
-                List<DataColumn> Colluns = new List<DataColumn>();
-                Colluns.Add(new DataColumn("ID"));
-                Colluns.Add(new DataColumn("Nome"));
-                Colluns.Add(new DataColumn("Preço"));
-                Colluns.Add(new DataColumn("Stock"));
-                return Colluns.ToArray();
-            }
-            static DataRow[] GetDataRows(string path)
-            {
-                List<DataRow> rows = new List<DataRow>();
-                return rows.ToArray();
-               
+                List<Dados.Site> dados = new List<Dados.Site>();
+                DataTable table = data.Tables[0];
+                for (int i = 1; i < table.Rows.Count; i++)
+                {
+                    Dados.Site site = new Dados.Site();
+                    site.Name = table.Rows[i][1].ToString();
+                    site.Ref = table.Rows[i][0].ToString();
+                    site.Price = table.Rows[i][4].ToString();
+                    float stock = 0;
+                    bool canConvert = float.TryParse(table.Rows[i][10].ToString(), out stock);
+                    if (!canConvert)
+                        Debug.Error("[FILE_MANAGER][XLSX] - Fall to convert:" + table.Rows[i][10].ToString());
+                        site.Stock = stock;
+                    dados.Add(site);
+                }
+
+                return dados;
+
             }
         }
     }

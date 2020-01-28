@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MeioMundoWPF", "MeioMundoWP
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tools", "Tools\Tools.csproj", "{3966D7FC-C09E-477F-9BA2-26C69B3B04FC}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TesteConsole", "TesteConsole\TesteConsole.csproj", "{44F2B3E9-AA0B-4B51-9953-D1307482260B}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{3966D7FC-C09E-477F-9BA2-26C69B3B04FC}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3966D7FC-C09E-477F-9BA2-26C69B3B04FC}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3966D7FC-C09E-477F-9BA2-26C69B3B04FC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{44F2B3E9-AA0B-4B51-9953-D1307482260B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{44F2B3E9-AA0B-4B51-9953-D1307482260B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{44F2B3E9-AA0B-4B51-9953-D1307482260B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{44F2B3E9-AA0B-4B51-9953-D1307482260B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

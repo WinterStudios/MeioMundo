@@ -70,16 +70,18 @@ namespace Tools.Barcode
         /// <summary>
         /// Class que contem o essencial do tipo de codigo
         /// </summary>
-        public struct Code
+        public class Code
         {
+            public int ID { get; set; }
             /// <summary>
             /// Numero do codigo
             /// </summary>
-            public static string _Code { get; set; }
+            public string CODIGO { get; set; }
             /// <summary>
             /// Breve drescriçao do produto
             /// </summary>
-            public static string _Descrição { get; set; }
+            public string DESCRIÇÂO { get; set; }
+            public int Qtd { get; set; }
         }
         public struct TypeCode
         {

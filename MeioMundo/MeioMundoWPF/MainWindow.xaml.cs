@@ -28,21 +28,23 @@ namespace MeioMundoWPF
         public static bool m_maximized;
         public MainWindow()
         {
+            Debug.CheckLog();
             InitializeComponent();
+            Debug.Log("[MAINWINDOW] " + "Initializing");
             m_width = this.Width;
             m_height = this.Height;
-
-            Console.WriteLine(System.IO.Directory.GetCurrentDirectory());
             var asm = Assembly.LoadFile(System.IO.Directory.GetCurrentDirectory() + "/Tools.dll");
             var types = asm.GetTypes().Where(x => x.IsSubclassOf(typeof(UserControl)));
+            Debug.Log("[MAINWINDOW] " + "Loading Assemblies");
             foreach (var item in types)
             {
                 try
                 {
+                    Debug.Log("[MAINWINDOW] " + "[" + item.Name + "] - Loading");
                     bool show = (bool)item.GetProperty("ShowMenu").GetValue(this, null);
                     if (show)
                     {
-
+                        Debug.Log("[MAINWINDOW] " + "[" + item.Name + "] [MenuItem] - Loading ");
                         MenuItem i = new MenuItem();
                         var menuItem = new MenuItem();
                         menuItem.Click += (sender, e) =>
@@ -52,12 +54,18 @@ namespace MeioMundoWPF
                             tt.VerticalAlignment = VerticalAlignment.Stretch;
                             tt.HorizontalAlignment = HorizontalAlignment.Stretch;
                             Panel.Children.Add(tt);
+                            Debug.Log("[MAINWINDOW] [LOADWINDOW] [" + menuItem.Header + "]");
                         };
                         menuItem.Header = item.Name;
                         MenuItemTools.Items.Add(menuItem);
+                        Debug.Log("[MAINWINDOW] " + "[" + item.Name + "] [MenuItem] - Load");
                     }
+                    Debug.Log("[MAINWINDOW] " + "[" + item.Name + "] - Load");
                 }
-                catch { }
+                catch (Exception ex) 
+                {
+                    Debug.Error("[MAINWINDOW] [CLASS] - 'ShowMenu' not present");
+                }
             }            
         }
 

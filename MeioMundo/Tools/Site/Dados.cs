@@ -10,10 +10,11 @@ namespace Tools.Site
     {
         public class Site
         {
-            public int ID;
-            public string Name;
-            public string Price;
-            public int Stock;
+            public int ID { get; set; }
+            public string Ref { get; set; }
+            public string Name { get; set; }
+            public string Price { get; set; }
+            public float Stock { get; set; }
         }
     }
 }

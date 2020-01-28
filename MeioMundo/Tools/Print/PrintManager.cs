@@ -22,10 +22,10 @@ namespace Tools.Print
             {
                 try
                 {
-                    printFont = new Font("Arial", 10);
+                    printFont = new Font("Calibri Light", 8);
                     PrintDocument pd = new PrintDocument();
                     pd.PrintPage += new PrintPageEventHandler(pd_PrintPage);
-                    // Create a new instance of Margins with 1-inch margins.
+                    // Create a new instance of Margins with 1-inch margins. // ou nao!!
                     pd.OriginAtMargins = true;
                     Margins margins = new Margins(30,30,30,30);
                     pd.DefaultPageSettings.Margins = margins;
@@ -53,7 +53,7 @@ namespace Tools.Print
                     ev.MarginBounds.Width/3*3,
                 };
 
-                int t_celula_altura = 70;
+                int t_celula_altura = 51;
                 // Draw top Table Line
                 ev.Graphics.DrawLine(Pens.Black, 0, 0, ev.MarginBounds.Width, 0);
                 for (int z = 0; z < _CODES.Count; z++)
@@ -69,15 +69,19 @@ namespace Tools.Print
 
                     SizeF desc_size = ev.Graphics.MeasureString(_CODES[z].m_Descrição, printFont);
                     SizeF ref_size = ev.Graphics.MeasureString("*" + _CODES[z].m_Referencia + "*", Barcode.BarcodeInternal.CODE_39.Font);
+                    SizeF ref_size_num_only = ev.Graphics.MeasureString(_CODES[z].m_Referencia, printFont);
                     // Frist Collmn
-                    ev.Graphics.DrawString(_CODES[z].m_Descrição, printFont, Brushes.Black, centerPointX * 0 + ((centerPointX - desc_size.Width) / 2), 15 + t_celula_altura * z);
-                    ev.Graphics.DrawString("*" + _CODES[z].m_Referencia + "*", Barcode.BarcodeInternal.CODE_39.Font , Brushes.Black, ((centerPointX - ref_size.Width)/2) + centerPointX * 0, 30 + t_celula_altura * z);
-                    ev.Graphics.DrawString(_CODES[z].m_Referencia, printFont, Brushes.Black, centerPointX * 0 + ((centerPointX - desc_size.Width) / 2), 50 + t_celula_altura * z);
+                    ev.Graphics.DrawString(_CODES[z].m_Descrição, printFont, Brushes.Black, centerPointX * 0 + ((centerPointX - desc_size.Width) / 2), 5 + t_celula_altura * z);
+                    ev.Graphics.DrawString("*" + _CODES[z].m_Referencia + "*", Barcode.BarcodeInternal.CODE_39.Font , Brushes.Black, ((centerPointX - ref_size.Width)/2) + centerPointX * 0, 18 + t_celula_altura * z);
+                    ev.Graphics.DrawString(_CODES[z].m_Referencia, printFont, Brushes.Black, centerPointX * 0 + ((centerPointX - ref_size_num_only.Width) / 2), 35 + t_celula_altura * z);
 
+                    ev.Graphics.DrawString(_CODES[z].m_Descrição, printFont, Brushes.Black, centerPointX * 1 + ((centerPointX - desc_size.Width) / 2), 5 + t_celula_altura * z);
+                    ev.Graphics.DrawString("*" + _CODES[z].m_Referencia + "*", Barcode.BarcodeInternal.CODE_39.Font, Brushes.Black, ((centerPointX - ref_size.Width) / 2) + centerPointX * 1, 18 + t_celula_altura * z);
+                    ev.Graphics.DrawString(_CODES[z].m_Referencia, printFont, Brushes.Black, centerPointX * 1 + ((centerPointX - ref_size_num_only.Width) / 2), 35 + t_celula_altura * z);
 
-
-                    ev.Graphics.DrawString(_CODES[z].m_Descrição, printFont, Brushes.Black, centerPointX * 1 + ((centerPointX - desc_size.Width) / 2), 30 + t_celula_altura * z);
-                    ev.Graphics.DrawString(_CODES[z].m_Descrição, printFont, Brushes.Black, centerPointX * 2 + ((centerPointX - desc_size.Width) / 2), 45 + t_celula_altura * z);
+                    ev.Graphics.DrawString(_CODES[z].m_Descrição, printFont, Brushes.Black, centerPointX * 2 + ((centerPointX - desc_size.Width) / 2), 5 + t_celula_altura * z);
+                    ev.Graphics.DrawString("*" + _CODES[z].m_Referencia + "*", Barcode.BarcodeInternal.CODE_39.Font, Brushes.Black, ((centerPointX - ref_size.Width) / 2) + centerPointX * 2, 18 + t_celula_altura * z);
+                    ev.Graphics.DrawString(_CODES[z].m_Referencia, printFont, Brushes.Black, centerPointX * 2 + ((centerPointX - ref_size_num_only.Width) / 2), 35 + t_celula_altura * z);
 
 
                 }
