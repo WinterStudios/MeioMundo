@@ -66,7 +66,7 @@ namespace Tools.Site
         public static List<Dados.Site> GetDados(string path)
         {
             string extension = path.Remove(0, path.LastIndexOf('.'));
-
+            
             string[] rows = new string[0];
             switch (extension)
             {
