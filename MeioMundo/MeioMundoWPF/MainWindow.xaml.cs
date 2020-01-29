@@ -22,6 +22,9 @@ namespace MeioMundoWPF
     /// </summary>
     public partial class MainWindow : Window
     {
+        private static TabControl _tabControl;
+        public static TabControl TabControl { get { return _tabControl; } }
+
         int d = 0;
         public double m_width;
         public double m_height;
@@ -31,6 +34,7 @@ namespace MeioMundoWPF
             Debug.CheckLog();
             InitializeComponent();
             Debug.Log("[MAINWINDOW] " + "Initializing");
+            _tabControl = tab_UI;
             m_width = this.Width;
             m_height = this.Height;
             var asm = Assembly.LoadFile(System.IO.Directory.GetCurrentDirectory() + "/Tools.dll");
@@ -42,6 +46,15 @@ namespace MeioMundoWPF
                 {
                     Debug.Log("[MAINWINDOW] " + "[" + item.Name + "] - Loading");
                     bool show = (bool)item.GetProperty("ShowMenu").GetValue(this, null);
+                    string header = string.Empty;
+                    try
+                    {
+                        if (item.GetProperty("Header").CanRead)
+                            header = (string)item.GetProperty("Header").GetValue(this, null);
+                        else
+                            header = item.Name;
+                    }
+                    catch { }
                     if (show)
                     {
                         Debug.Log("[MAINWINDOW] " + "[" + item.Name + "] [MenuItem] - Loading ");
@@ -53,7 +66,11 @@ namespace MeioMundoWPF
                             var tt = tool as UserControl;
                             tt.VerticalAlignment = VerticalAlignment.Stretch;
                             tt.HorizontalAlignment = HorizontalAlignment.Stretch;
-                            Panel.Children.Add(tt);
+                            TabItem tab = new TabItem();
+                            tab.Content = tt;
+                            tab.Header = header;
+                            TabControl.Items.Add(tab);
+                            TabControl.SelectedItem = tab;
                             Debug.Log("[MAINWINDOW] [LOADWINDOW] [" + menuItem.Header + "]");
                         };
                         menuItem.Header = item.Name;

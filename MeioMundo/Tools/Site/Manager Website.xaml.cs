@@ -23,7 +23,7 @@ namespace Tools
     public partial class Manager_Website : UserControl
     {
         public static bool ShowMenu { get { return true; } }
-
+        public static string Header { get { return "Stock do site"; } }
 
         public List<Dados.Site> _produtosSite = new List<Dados.Site>();
         public List<Dados.Site> ProdutosSite { get { return _produtosSite; } set { _produtosSite = value; } }

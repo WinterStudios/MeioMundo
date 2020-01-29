@@ -17,7 +17,7 @@
             <RowDefinition Height="30"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
-        <StackPanel RenderOptions.EdgeMode="Unspecified" SnapsToDevicePixels="True" Grid.Row="0" Background="{DynamicResource WindowTopBar }">
+        <StackPanel RenderOptions.EdgeMode="Aliased"  SnapsToDevicePixels="True" Grid.Row="0" Background="{DynamicResource WindowTopBar }">
             <Grid>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="40"/>
@@ -76,9 +76,11 @@
             </Grid>
         </StackPanel>
 
-        <DockPanel x:Name="Panel" Grid.Row="1" Background="White" ScrollViewer.CanContentScroll="True">
-            
-        </DockPanel>
+        <TabControl x:Name="tab_UI" Grid.Row="1" >
+            <TabItem Header="Welcome">
+                <Grid Background="#FFE5E5E5"/>
+            </TabItem>
+        </TabControl>
     </Grid>
 </Window>
 
