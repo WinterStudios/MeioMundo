@@ -73,7 +73,7 @@ namespace MeioMundoWPF
                             TabControl.SelectedItem = tab;
                             Debug.Log("[MAINWINDOW] [LOADWINDOW] [" + menuItem.Header + "]");
                         };
-                        menuItem.Header = item.Name;
+                        menuItem.Header = header;
                         MenuItemTools.Items.Add(menuItem);
                         Debug.Log("[MAINWINDOW] " + "[" + item.Name + "] [MenuItem] - Load");
                     }
@@ -111,6 +111,11 @@ namespace MeioMundoWPF
         private void Rectangle_MouseDown(object sender, MouseButtonEventArgs e)
         {
             DragMove();
+        }
+
+        private void Image_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+
         }
     }
 }

@@ -21,6 +21,7 @@ namespace Tools.Barcode
     public partial class Barcode : UserControl
     {
         public static bool ShowMenu { get { return true; } }
+        public static string Header { get { return "Codigo de Barras"; } }
         public List<BarcodeInternal.Code> _Codes = new List<BarcodeInternal.Code>();
         public List<BarcodeInternal.Code> Codes { get { return _Codes; } set { _Codes = value; } }
         public Barcode()

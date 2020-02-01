@@ -8,10 +8,6 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800" WindowStyle="None" ResizeMode="NoResize">
 
-    <Window.Resources>
-        
-    </Window.Resources>
-
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="30"/>
@@ -77,9 +73,7 @@
         </StackPanel>
 
         <TabControl x:Name="tab_UI" Grid.Row="1" >
-            <TabItem Header="Welcome">
-                <Grid Background="#FFE5E5E5"/>
-            </TabItem>
+            <TabItem Header="Welcome" />
         </TabControl>
     </Grid>
 </Window>
