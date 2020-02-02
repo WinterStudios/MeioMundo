@@ -117,5 +117,15 @@ namespace MeioMundoWPF
         {
 
         }
+
+        private void MenuItem_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void tab_Close_Btn_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }

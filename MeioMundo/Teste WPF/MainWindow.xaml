@@ -1,0 +1,30 @@
+﻿<Window x:Class="Teste_WPF.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Teste_WPF"
+
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+    <Window.Resources>
+        <DataTemplate x:Key="DataTemplate1">
+            <Grid>
+                <StackPanel Orientation="Horizontal">
+                    <Ellipse Width="10" Height="10" Fill="DarkGray"/>
+
+                    <TextBlock Text="{Binding Key}"/>
+                    <TextBlock Text="{Binding Header}"/>
+                </StackPanel>
+            </Grid>
+
+        </DataTemplate>
+    </Window.Resources>
+    <Grid>
+        <TabControl HorizontalAlignment="Left" Height="283.632" VerticalAlignment="Top" Width="594.395">
+            <TabItem Header="ADD"/>
+            <TabItem Header="Hello" HeaderTemplate="{DynamicResource DataTemplate1}"/>
+            <TabItem HeaderTemplate="{DynamicResource DataTemplate1}"/>
+        </TabControl>
+    </Grid>
+</Window>
