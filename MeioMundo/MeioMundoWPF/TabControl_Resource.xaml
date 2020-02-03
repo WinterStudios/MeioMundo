@@ -1,0 +1,38 @@
+﻿<ResourceDictionary 
+    x:Class="MeioMundoWPF.TabControl_Resource"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="clr-namespace:MeioMundoWPF">
+    <DataTemplate x:Key="DataTemplate2">
+        <Grid>
+            <StackPanel Orientation="Horizontal">
+                <TextBlock Text="{Binding ''}"/>
+                <Button x:Name="tab_Close_Btn" Click="  tab_Close_Btn_Click" Tag="{Binding Mode=OneWay, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type TabItem}}}">
+                    <Button.Template>
+                        <ControlTemplate TargetType="{x:Type Button}">
+                            <StackPanel>
+                                <Path Data="M0,0 L8,8 M8,0 L0,8" StrokeThickness="1" VerticalAlignment="Center" Margin="5,4,0,2">
+                                    <Path.Style>
+                                        <Style TargetType="{x:Type Path}">
+                                            <Style.Triggers>
+                                                <Trigger Property="IsMouseOver" Value="False">
+                                                    <Setter Property="Stroke" Value="LightGray" />
+                                                </Trigger>
+                                                <Trigger Property="IsMouseOver" Value="True">
+                                                    <Setter Property="Stroke" Value="Black" />
+                                                </Trigger>
+                                            </Style.Triggers>
+                                        </Style>
+                                    </Path.Style>
+                                </Path>
+                            </StackPanel>
+                        </ControlTemplate>
+                    </Button.Template>
+                </Button>
+
+            </StackPanel>
+        </Grid>
+
+    </DataTemplate>
+
+</ResourceDictionary>

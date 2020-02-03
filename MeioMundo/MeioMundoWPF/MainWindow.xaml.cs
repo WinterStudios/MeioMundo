@@ -69,7 +69,7 @@ namespace MeioMundoWPF
                             TabItem tab = new TabItem();
                             tab.Content = tt;
                             tab.Header = header;
-                            tab.HeaderTemplate = this.Resources["DataTemplate1"] as DataTemplate;
+                            tab.HeaderTemplate = Application.Current.Resources["DataTemplate2"] as DataTemplate; // this.Resources["DataTemplate2"] as DataTemplate;
                             TabControl.Items.Add(tab);
                             TabControl.SelectedItem = tab;
                             Debug.Log("[MAINWINDOW] [LOADWINDOW] [" + menuItem.Header + "]");

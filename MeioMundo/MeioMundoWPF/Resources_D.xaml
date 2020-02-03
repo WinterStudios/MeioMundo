@@ -116,7 +116,7 @@
                 </Grid.ColumnDefinitions>
                 <ContentPresenter x:Name="Icon" ContentSource="Icon" HorizontalAlignment="Center" Height="16" Margin="3" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" VerticalAlignment="Center" Width="16"/>
                 <Path x:Name="GlyphPanel" Data="{StaticResource Checkmark}" Fill="{StaticResource Menu.Static.Foreground}" FlowDirection="LeftToRight" Margin="3" Visibility="Collapsed" VerticalAlignment="Center"/>
-                <ContentPresenter Grid.Column="1" ContentSource="Header" Margin="0" RecognizesAccessKey="True" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"/>
+                <ContentPresenter Grid.Column="1" ContentSource="Header" Margin="10,0" RecognizesAccessKey="True" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"/>
             </Grid>
         </Border>
         <ControlTemplate.Triggers>
@@ -210,9 +210,10 @@
         <Setter Property="VerticalContentAlignment" Value="{Binding VerticalContentAlignment, RelativeSource={RelativeSource AncestorType={x:Type ItemsControl}}}"/>
         <Setter Property="Background" Value="Transparent"/>
         <Setter Property="BorderBrush" Value="Transparent"/>
-        <Setter Property="BorderThickness" Value="1"/>
+        <Setter Property="BorderThickness" Value="0"/>
         <Setter Property="ScrollViewer.PanningMode" Value="Both"/>
         <Setter Property="Stylus.IsFlicksEnabled" Value="False"/>
+        <Setter Property="Padding" Value="10,0"/>
         <Setter Property="Template" Value="{DynamicResource {ComponentResourceKey ResourceId=SubmenuItemTemplateKey, TypeInTargetAssembly={x:Type MenuItem}}}"/>
         <Style.Triggers>
             <Trigger Property="Role" Value="TopLevelHeader">
