@@ -44,6 +44,7 @@ namespace Tools.Print
             }
             private void pd_PrintPage(object sender, PrintPageEventArgs ev)
             {
+                ev.HasMorePages = true;
                 // DO THE STUFF TO PRINT
                 int[] col = new int[]
                 {

@@ -69,6 +69,7 @@ namespace MeioMundoWPF
                             TabItem tab = new TabItem();
                             tab.Content = tt;
                             tab.Header = header;
+                            tab.HeaderTemplate = this.Resources["DataTemplate1"] as DataTemplate;
                             TabControl.Items.Add(tab);
                             TabControl.SelectedItem = tab;
                             Debug.Log("[MAINWINDOW] [LOADWINDOW] [" + menuItem.Header + "]");
@@ -125,7 +126,15 @@ namespace MeioMundoWPF
 
         private void tab_Close_Btn_Click(object sender, RoutedEventArgs e)
         {
-
+            if (sender is Button button && button.Tag is TabItem item)
+            {
+                var tabControl = (TabControl)item.Parent;
+                tabControl.Items.Remove(item); 
+                Console.WriteLine("re");
+            }
+            
+            int index = tab_UI.SelectedIndex;
+            //tab_UI.Items.Remove(item);
         }
     }
 }
