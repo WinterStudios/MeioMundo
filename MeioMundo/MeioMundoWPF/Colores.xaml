@@ -8,9 +8,17 @@
     <SolidColorBrush x:Key="ProgressBarColor" Color="#FFA0A0A0"/>
 
 
-    <SolidColorBrush x:Key="Button_Background" Color="#FF282828"/>
+    <SolidColorBrush x:Key="Button_Background" Color="#FF353535"/>
     <SolidColorBrush x:Key="Button_Background_Hightlight" Color="#FF404040"/>
     <SolidColorBrush x:Key="Button_Text_Normal" Color="#FF808080"/>
+
+
+    <SolidColorBrush x:Key="Work_Background" Color="#FF101010"/>
+    
+    <SolidColorBrush x:Key="Tab_Item_SelectLine" Color="#FF00DCFF"/>
+    <SolidColorBrush x:Key="Tab_Item_Select" Color="#FF141414"/>
+    <SolidColorBrush x:Key="Tab_Item_Normal" Color="#FF323232"/>
+
     <Style x:Key="FocusVisual">
         <Setter Property="Control.Template">
             <Setter.Value>
