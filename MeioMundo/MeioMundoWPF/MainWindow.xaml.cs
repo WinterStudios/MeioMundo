@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Reflection;
 using System.Text;
@@ -28,11 +29,17 @@ namespace MeioMundoWPF
         int d = 0;
         public double m_width;
         public double m_height;
-        public static bool m_maximized;
+        public static bool m_maximized { get; set; }
+        
+
         public MainWindow()
         {
+            if (System.Diagnostics.Debugger.IsAttached)
+                UpdateSystem.SetVersion();
             Debug.CheckLog();
             InitializeComponent();
+            this.DataContext = this;
+            SetUI();
             Debug.Log("[MAINWINDOW] " + "Initializing");
             _tabControl = tab_UI;
             m_width = this.Width;
@@ -87,28 +94,17 @@ namespace MeioMundoWPF
             }            
         }
 
+        private void SetUI()
+        {
+            txt_blockVersion.Text = "v" + UpdateSystem.Version;
+            
+        }
+
         private void Close_Application(object sender, RoutedEventArgs e)
         {
             Application.Current.Shutdown();
         }
-        private void MaximazeWindowEvent(object sender, RoutedEventArgs e)
-        {
-            if (!m_maximized)
-            {
-                this.Height = SystemParameters.WorkArea.Height;
-                this.Width = SystemParameters.WorkArea.Width;
-                m_maximized = true;
-                this.Left = 0;
-                this.Top = 0;
-            }
-            else
-            {
-                this.Width = m_width;
-                this.Height = m_height;
-                m_maximized = false;
-            }
 
-        }
         private void Rectangle_MouseDown(object sender, MouseButtonEventArgs e)
         {
             DragMove();
@@ -124,17 +120,29 @@ namespace MeioMundoWPF
 
         }
 
-        private void tab_Close_Btn_Click(object sender, RoutedEventArgs e)
+
+
+        // UI Control Manager
+        private void MaximazeWindowEvent(object sender, RoutedEventArgs e)
         {
-            if (sender is Button button && button.Tag is TabItem item)
-            {
-                var tabControl = (TabControl)item.Parent;
-                tabControl.Items.Remove(item); 
-                Console.WriteLine("re");
-            }
+            Button btn = sender as Button;
             
-            int index = tab_UI.SelectedIndex;
-            //tab_UI.Items.Remove(item);
+            if (!m_maximized)
+            {
+                this.Height = SystemParameters.WorkArea.Height;
+                this.Width = SystemParameters.WorkArea.Width;
+                m_maximized = true;
+                this.Left = 0;
+                this.Top = 0;
+            }
+            else
+            {
+                this.Width = m_width;
+                this.Height = m_height;
+                m_maximized = false;
+            }
+            btn.DataContext = m_maximized;
         }
+
     }
 }

@@ -10,9 +10,9 @@ using System.Windows;
 [assembly: AssemblyTitle("MeioMundoWPF")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("")]
+[assembly: AssemblyCompany("Papelaria Meio Mundo, Lda")]
 [assembly: AssemblyProduct("MeioMundoWPF")]
-[assembly: AssemblyCopyright("Copyright ©  2019")]
+[assembly: AssemblyCopyright("Copyright ©  2020")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 

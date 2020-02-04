@@ -1,6 +1,9 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-                    xmlns:local="clr-namespace:MeioMundoWPF">
+                    xmlns:local="clr-namespace:MeioMundoWPF"
+                    x:Class="MeioMundoWPF.Resources_D">
+    
+    <local:MainWindow x:Key="MainWindow"/>
 
     <SolidColorBrush x:Key="WindowTopBar" Color="#FF3C3C3C"/>
     <SolidColorBrush x:Key="WindowTopBar.Foreground" Color="#FFCCCCCC"/>
@@ -235,22 +238,102 @@
             </Trigger>
         </Style.Triggers>
     </Style>
-    <Style x:Key="ButtonsStyleClose" TargetType="Button">
-        <Setter Property="Background" Value="{StaticResource WindowTopBar}"/>
-        <Setter Property="Template">
+
+
+    <ControlTemplate x:Key="max_windows" TargetType="{x:Type Button}">
+        <Border x:Name="border" Background="{DynamicResource Button_Background}">
+            <Grid>
+                <Path x:Name="btn_MaxMin" VerticalAlignment="Center" HorizontalAlignment="Center" Data="M 0,0 10,0 10,10 0,10 Z" StrokeThickness="1" Stroke="{DynamicResource Button_Text_Normal}"/>
+                <!--<ContentPresenter x:Name="MyContentPresenter" Content="{TemplateBinding Content}" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0" />-->
+            </Grid>
+        </Border>
+        <ControlTemplate.Triggers>
+            <Trigger Property="IsMouseOver" Value="True">
+                <Setter Property="Background" TargetName="border" Value="{DynamicResource Button_Background_Hightlight}"/>
+            </Trigger>
+        </ControlTemplate.Triggers>
+    </ControlTemplate>
+    <ControlTemplate x:Key="min_window" TargetType="{x:Type Button}">
+        <Border x:Name="border" Background="{DynamicResource Button_Background}">
+            <Grid>
+                <Path RenderOptions.EdgeMode="Aliased" x:Name="btn_MaxMin" VerticalAlignment="Center" HorizontalAlignment="Center" Data="M 2,2 L 8,2 L 8,10 L 0,10 L 0,2 L 2,2 L 2,0 L 10,0 L 10,8 L 8,8" StrokeThickness="1" Stroke="{DynamicResource Button_Text_Normal}"/>
+                <!--<ContentPresenter x:Name="MyContentPresenter" Content="{TemplateBinding Content}" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0" />-->
+            </Grid>
+        </Border>
+        <ControlTemplate.Triggers>
+            <Trigger Property="IsMouseOver" Value="True">
+                <Setter Property="Background" TargetName="border" Value="{DynamicResource Button_Background_Hightlight}"/>
+            </Trigger>
+        </ControlTemplate.Triggers>
+    </ControlTemplate>
+
+    <Style x:Key="btn_Maximize_Window"  TargetType="{x:Type Button}">
+        <Setter Property="Background" Value="{DynamicResource Button_Background}" />
+        <Setter Property="Foreground" Value="White" />
+        <Setter Property="FontSize" Value="15" />
+        <Setter Property="SnapsToDevicePixels" Value="True" />
+        <Setter Property="Template" Value="{DynamicResource min_window}"/>
+        <Setter Property="RenderOptions.EdgeMode" Value="Aliased"/>
+        <Style.Triggers>
+            <DataTrigger Binding="{Binding }" Value="True">
+                <Setter Property="Template" Value="{DynamicResource max_windows}" />
+            </DataTrigger>
+            <DataTrigger Binding="{Binding }" Value="False">
+                <Setter Property="Template" Value="{DynamicResource min_window}" />
+            </DataTrigger>
+            <Trigger Property="IsMouseOver" Value="True">
+                <Setter Property="Background" Value="Green"/>
+            </Trigger>
+            
+        </Style.Triggers>
+
+    </Style>
+    <Style x:Key="Btn_Close_Path">
+        <Setter Property="Control.Template">
             <Setter.Value>
-                <ControlTemplate TargetType="{x:Type Button}">
-                    <Border Background="{TemplateBinding Background}" BorderBrush="Black" BorderThickness="0">
-                        <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                <ControlTemplate>
+                    <Border>
+                        <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
+                            <Path Stroke="{DynamicResource Button_Text_Normal}" StrokeThickness="1">
+                                <Path.Data>
+                                    <PathGeometry>
+                                        <PathGeometry.Figures>
+                                            <PathFigure StartPoint="0,0">
+                                                <LineSegment Point="10,10"/>
+                                            </PathFigure>
+                                            <PathFigure StartPoint="10,0">
+                                                <LineSegment Point="0,10"/>
+                                            </PathFigure>
+                                        </PathGeometry.Figures>
+                                    </PathGeometry>
+                                </Path.Data>
+                            </Path>
+                        </StackPanel>
                     </Border>
                 </ControlTemplate>
             </Setter.Value>
         </Setter>
+    </Style>
+    <Style x:Key="ButtonsStyleClose" TargetType="{x:Type Button}">
+        <Setter Property="Background" Value="{DynamicResource Button_Background}"/>
+        <Setter Property="RenderOptions.EdgeMode" Value="Aliased"/>
+        <Setter Property="SnapsToDevicePixels" Value="True"/>
         <Style.Triggers>
             <Trigger Property="IsMouseOver" Value="True">
-                <Setter Property="Background" Value="Red"/>
+                <Setter Property="Background" Value="Red" />
             </Trigger>
         </Style.Triggers>
     </Style>
-    <StreamGeometry x:Key="Geometry1">M 0,0 L 5,5 Z M 5,0 L 0,5 Z</StreamGeometry>
+    <Style x:Key="ButtonsStyleMinimaze" TargetType="{x:Type Button}">
+        <Setter Property="Background" Value="{DynamicResource Button_Background}"/>
+        <Setter Property="RenderOptions.EdgeMode" Value="Aliased"/>
+        <Setter Property="SnapsToDevicePixels" Value="True"/>
+        <Style.Triggers>
+            <Trigger Property="IsMouseOver" Value="True">
+                <Setter Property="Background" Value="{DynamicResource Text}" />
+            </Trigger>
+        </Style.Triggers>
+    </Style>
+
+
 </ResourceDictionary>
