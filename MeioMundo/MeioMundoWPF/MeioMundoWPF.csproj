@@ -74,6 +74,9 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Colores.xaml.cs">
+      <DependentUpon>Colores.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Resources_D.xaml.cs">
       <DependentUpon>Resources_D.xaml</DependentUpon>
     </Compile>

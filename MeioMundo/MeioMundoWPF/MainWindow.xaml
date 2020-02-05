@@ -14,7 +14,7 @@
             <RowDefinition Height="*"/>
             <RowDefinition Height="30"/>
         </Grid.RowDefinitions>
-        <StackPanel RenderOptions.EdgeMode="Unspecified"  SnapsToDevicePixels="False" Grid.Row="0" Background="{DynamicResource Background }">
+        <StackPanel RenderOptions.EdgeMode="Unspecified"  SnapsToDevicePixels="False" Grid.Row="0" Background="{DynamicResource TopNavegationBar_Background }">
             <Grid>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="40"/>
@@ -31,7 +31,7 @@
                         </DrawingImage>
                     </Image.Source>
                 </Image>
-                <Menu Grid.Column="1" x:Name="MenuBar" Height="30" VerticalAlignment="Top" Margin="0" Padding="0,0,0,0" Background="{DynamicResource WindowTopBar}" HorizontalAlignment="Left" >
+                <Menu Grid.Column="1" x:Name="MenuBar" Height="30" VerticalAlignment="Top" Margin="0" Padding="0,0,0,0" Background="{DynamicResource TopNavegationBar_Background}" HorizontalAlignment="Left" >
                     <MenuItem Header="File" Style="{DynamicResource MenuItemStyle1}" Height="30" VerticalAlignment="Center" Padding="10,0" BorderThickness="0">
                         <MenuItem Header="Open" Style="{DynamicResource MenuItemStyle1}" Padding="20,0" BorderThickness="0" VerticalAlignment="Center" VerticalContentAlignment="Center" ToolTip="Open something" />
                         <MenuItem Header="Save as " Style="{DynamicResource MenuItemStyle1}" Padding="20,0" BorderThickness="0"/>
@@ -47,7 +47,7 @@
                         
                     </MenuItem>
                 </Menu>
-                <Rectangle SnapsToDevicePixels="True" MouseDown="Rectangle_MouseDown" Grid.Column="2" Fill="{DynamicResource WindowTopBar}"/>
+                <Rectangle SnapsToDevicePixels="True" MouseDown="Rectangle_MouseDown" Grid.Column="2" Fill="{DynamicResource TopNavegationBar_Background}"/>
                 <TextBlock Text="App" Grid.Column="2" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="{DynamicResource WindowTopBar.Foreground}"/>
                 <StackPanel Orientation="Horizontal" Grid.Column="3">
                     <Button Style="{DynamicResource ButtonsStyleMinimaze}" Click="Close_Application" HorizontalAlignment="Left" VerticalAlignment="Top" Width="40" Height="30" BorderThickness="0">
@@ -60,7 +60,7 @@
         </StackPanel>
 
         <TabControl x:Name="tab_UI" Grid.Row="1" ItemTemplate="{StaticResource DataTemplate2}"  Style="{DynamicResource TabControlStyle1}" ItemsPanel="{DynamicResource ItemsPanelTemplate1}" ItemContainerStyle="{DynamicResource TabItemStyle1}" Foreground="{x:Null}">
-            <TabItem Header="Welcome" HeaderTemplate="{DynamicResource DataTemplate2}"/>
+            <TabItem Header="Welcome" HeaderTemplate="{DynamicResource DataTemplate2}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
         </TabControl>
         <StatusBar Grid.Row="2" Height="30" Style="{DynamicResource StatusBarStyle1}" >
             <StatusBar.ItemsPanel>

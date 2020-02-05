@@ -7,6 +7,7 @@
     <SolidColorBrush x:Key="Text_low" Color="#FF808080"/>
     <SolidColorBrush x:Key="ProgressBarColor" Color="#FFA0A0A0"/>
 
+    <SolidColorBrush x:Key="TopNavegationBar_Background" Color="#FF353535"/>
 
     <SolidColorBrush x:Key="Button_Background" Color="#FF353535"/>
     <SolidColorBrush x:Key="Button_Background_Hightlight" Color="#FF404040"/>

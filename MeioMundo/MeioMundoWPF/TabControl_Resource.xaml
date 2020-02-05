@@ -4,38 +4,36 @@
     xmlns:local="clr-namespace:MeioMundoWPF" xmlns:d="http://schemas.microsoft.com/expression/blend/2008" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" mc:Ignorable="d" 
     x:Class="MeioMundoWPF.TabControl_Resource"
     >
+
+    <Style x:Key="Tab_Control_Item_Close_Btn" TargetType="Button">
+        <Setter Property="Background" Value="Transparent"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate>
+                    <Border Width="16" Height="16" x:Name="border" BorderThickness="1" CornerRadius="8" >
+                        <Grid HorizontalAlignment="Center" VerticalAlignment="Center">
+                            <Path Data="M 0,0 L8,8 M8,0 L0,8" StrokeThickness="1" Stroke="White"/>
+                        </Grid>
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter TargetName="border" Property="Background" Value="#FF505050"/>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
     <DataTemplate x:Key="DataTemplate2">
         <Grid>
-            <StackPanel Orientation="Horizontal">
-                <TextBlock Text="{Binding ''}"/>
-                <Button x:Name="tab_Close_Btn" Click="  tab_Close_Btn_Click" Tag="{Binding Mode=OneWay, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type TabItem}}}">
-                    <Button.Template>
-                        <ControlTemplate TargetType="{x:Type Button}">
-                            <StackPanel>
-                                <Path Data="M0,0 L8,8 M8,0 L0,8" StrokeThickness="1" VerticalAlignment="Center" Margin="5,4,0,2">
-                                    <Path.Style>
-                                        <Style TargetType="{x:Type Path}">
-                                            <Style.Triggers>
-                                                <Trigger Property="IsMouseOver" Value="False">
-                                                    <Setter Property="Stroke" Value="LightGray" />
-                                                </Trigger>
-                                                <Trigger Property="IsMouseOver" Value="True">
-                                                    <Setter Property="Stroke" Value="Black" />
-                                                </Trigger>
-                                            </Style.Triggers>
-                                        </Style>
-                                    </Path.Style>
-                                </Path>
-                            </StackPanel>
-                        </ControlTemplate>
-                    </Button.Template>
-                </Button>
-
-            </StackPanel>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="20"/>
+            </Grid.ColumnDefinitions>
+            <TextBlock Grid.Column="0" Text="{Binding ''}" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+            <Button Grid.Column="1" x:Name="tab_Close_Btn" Style="{DynamicResource Tab_Control_Item_Close_Btn}" Click="tab_Close_Btn_Click" VerticalAlignment="Center" HorizontalAlignment="Center" Tag="{Binding Mode=OneWay, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type TabItem}}}"/>
         </Grid>
-
     </DataTemplate>
-
 
     <SolidColorBrush x:Key="TabItem.Selected.Background" Color="#FFFFFF"/>
     <SolidColorBrush x:Key="TabItem.Selected.Border" Color="#ACACAC"/>
