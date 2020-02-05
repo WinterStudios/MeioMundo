@@ -8,7 +8,6 @@
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="TabControl_Resource.xaml"/>
                 <ResourceDictionary Source="StatusBar.xaml"/>
-                <ResourceDictionary Source="Colores.xaml"/>
                 <ResourceDictionary Source="ResourceDictionary.xaml"/>
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>

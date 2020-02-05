@@ -38,6 +38,7 @@ namespace MeioMundoWPF
                 UpdateSystem.SetVersion();
             Debug.CheckLog();
             InitializeComponent();
+            Theme.LoadTheme(Properties.Settings.Default.Theme);
             this.DataContext = this;
             SetUI();
             Debug.Log("[MAINWINDOW] " + "Initializing");
@@ -144,5 +145,15 @@ namespace MeioMundoWPF
             btn.DataContext = m_maximized;
         }
 
+        private void MenuItem_PreferencesSettings_Click(object sender, RoutedEventArgs e)
+        {
+            TabItem tab = new TabItem();
+            Preferences.Settings settings = new Preferences.Settings();
+            tab.Content = settings;
+            tab.Header = "Settings";
+
+            TabControl.Items.Add(tab); 
+            TabControl.SelectedItem = tab;
+        }
     }
 }

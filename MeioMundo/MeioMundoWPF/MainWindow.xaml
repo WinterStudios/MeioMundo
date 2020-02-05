@@ -36,7 +36,7 @@
                         <MenuItem Header="Open" Style="{DynamicResource MenuItemStyle1}" Padding="20,0" BorderThickness="0" VerticalAlignment="Center" VerticalContentAlignment="Center" ToolTip="Open something" />
                         <MenuItem Header="Save as " Style="{DynamicResource MenuItemStyle1}" Padding="20,0" BorderThickness="0"/>
                         <MenuItem Header="Prerefrences" Style="{DynamicResource MenuItemStyle1}" BorderThickness="0" VerticalAlignment="Center" VerticalContentAlignment="Center" SnapsToDevicePixels="True">
-                            <MenuItem Header="Settings" Style="{DynamicResource MenuItemStyle1}"/>
+                            <MenuItem Header="Settings" Style="{DynamicResource MenuItemStyle1}" Click="MenuItem_PreferencesSettings_Click"/>
                         </MenuItem>
                         <MenuItem Header="Exit" Style="{DynamicResource MenuItemStyle1}" Click="Close_Application" Padding="20,0" BorderThickness="0" VerticalAlignment="Center" VerticalContentAlignment="Center" />
                     </MenuItem>

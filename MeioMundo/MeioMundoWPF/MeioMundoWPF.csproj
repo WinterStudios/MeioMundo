@@ -74,8 +74,8 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="Colores.xaml.cs">
-      <DependentUpon>Colores.xaml</DependentUpon>
+    <Compile Include="Preferences\Settings.xaml.cs">
+      <DependentUpon>Settings.xaml</DependentUpon>
     </Compile>
     <Compile Include="Resources_D.xaml.cs">
       <DependentUpon>Resources_D.xaml</DependentUpon>
@@ -83,8 +83,17 @@
     <Compile Include="TabControl_Resource.xaml.cs">
       <DependentUpon>TabControl_Resource.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Theme.cs" />
     <Compile Include="UpdateSystem.cs" />
-    <Page Include="Colores.xaml">
+    <Page Include="Preferences\Settings.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Themes\Dark.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Themes\Light.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
