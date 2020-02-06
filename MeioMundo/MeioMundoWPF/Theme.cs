@@ -61,9 +61,13 @@ namespace MeioMundoWPF
 
         public static void UpdateTheme(int index)
         {
-            Themes _themes = (Themes)index;
+            LoadTheme(index);
+
+        }
+        public static void UpdateTheme(Themes themes)
+        {
             ResourceDictionary dictionary = new ResourceDictionary();
-            switch (_themes)
+            switch (themes)
             {
                 case Themes.Light:
                     dictionary.Source = new Uri("Light.xaml", UriKind.Relative);
@@ -76,11 +80,6 @@ namespace MeioMundoWPF
                 default:
                     break;
             }
-
-        }
-        public static void UpdateTheme(Themes themes)
-        {
-
         }
     }
 }

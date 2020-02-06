@@ -4,7 +4,7 @@
     
     
     <SolidColorBrush x:Key="Text" Color="#FFCCCCCC"/>
-    <SolidColorBrush x:Key="Background" Color="#FF282828"/>
+    <SolidColorBrush x:Key="Background" Color="#FFF4F4F4"/>
     <SolidColorBrush x:Key="Text_low" Color="#FF808080"/>
     <SolidColorBrush x:Key="ProgressBarColor" Color="#FFA0A0A0"/>
 
@@ -15,7 +15,7 @@
     <SolidColorBrush x:Key="Button_Text_Normal" Color="#FF808080"/>
 
 
-    <SolidColorBrush x:Key="Work_Background" Color="#FF101010"/>
+    <SolidColorBrush x:Key="Work_Background" Color="White"/>
 
     <SolidColorBrush x:Key="Tab_Item_SelectLine" Color="#FF00DCFF"/>
     <SolidColorBrush x:Key="Tab_Item_Select" Color="#FF141414"/>
