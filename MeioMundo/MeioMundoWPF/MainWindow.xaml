@@ -26,7 +26,7 @@
                     <Image.Source>
                         <DrawingImage>
                             <DrawingImage.Drawing>
-                                <GeometryDrawing Geometry="{DynamicResource AppIcon}" Brush="{DynamicResource WindowTopBar.Foreground}"/>
+                                <GeometryDrawing Geometry="{DynamicResource AppIcon}" Brush="{DynamicResource TopNavegationBar_Text}"/>
                             </DrawingImage.Drawing>
                         </DrawingImage>
                     </Image.Source>
@@ -50,9 +50,7 @@
                 <Rectangle SnapsToDevicePixels="True" MouseDown="Rectangle_MouseDown" Grid.Column="2" Fill="{DynamicResource TopNavegationBar_Background}"/>
                 <TextBlock Text="App" Grid.Column="2" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="{DynamicResource WindowTopBar.Foreground}"/>
                 <StackPanel Orientation="Horizontal" Grid.Column="3">
-                    <Button Style="{DynamicResource ButtonsStyleMinimaze}" Click="Close_Application" HorizontalAlignment="Left" VerticalAlignment="Top" Width="40" Height="30" BorderThickness="0">
-                        <Path Data="M 0,5 L 10,5" StrokeThickness="1" Stroke="{DynamicResource Button_Text_Normal}"/>
-                    </Button>
+                    <Button x:Name="btn_minApp" Style="{DynamicResource ButtonsStyleMinimaze}" Click="Close_Application" HorizontalAlignment="Left" VerticalAlignment="Top" Width="40" Height="30" BorderThickness="0"/>
                     <Button x:Name="btn_Max_Min" Style="{DynamicResource btn_Maximize_Window}" Click="MaximazeWindowEvent" HorizontalAlignment="Left" VerticalAlignment="Top" Width="40" Height="30" BorderThickness="0"/>
                     <Button x:Name="btn_CloseApp" Style="{DynamicResource btnClose}" Click="Close_Application" HorizontalAlignment="Left" VerticalAlignment="Top" Width="40" Height="30" BorderThickness="0"/>
                 </StackPanel>
@@ -61,7 +59,7 @@
 
         <TabControl x:Name="tab_UI" Grid.Row="1" ItemTemplate="{StaticResource DataTemplate2}"  Style="{DynamicResource TabControlStyle1}" ItemsPanel="{DynamicResource ItemsPanelTemplate1}" ItemContainerStyle="{DynamicResource TabItemStyle1}" Foreground="{x:Null}">
             <TabItem Header="Welcome" HeaderTemplate="{DynamicResource DataTemplate2}" HorizontalAlignment="Center" VerticalAlignment="Center">
-                <DataGrid Style="{DynamicResource DataGridStyle2}">
+                <DataGrid Style="{DynamicResource DataGridStyle}">
                     <DataGrid.Columns>
                         <DataGridTextColumn Header="ID" Width="30" Binding="{Binding ID}" IsReadOnly="True"/>
                         <DataGridTextColumn Header="REF" Width="110" Binding="{Binding CODIGO}"/>

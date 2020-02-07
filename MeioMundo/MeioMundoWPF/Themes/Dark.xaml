@@ -2,6 +2,7 @@
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:local="clr-namespace:MeioMundoWPF">
 
+    
     <SolidColorBrush x:Key="Text" Color="#FFCCCCCC"/>
     <SolidColorBrush x:Key="Background" Color="#FF282828"/>
     <SolidColorBrush x:Key="Text_low" Color="#FF808080"/>
@@ -9,6 +10,13 @@
     <SolidColorBrush x:Key="Border" Color="#FF383838" />
 
     <SolidColorBrush x:Key="TopNavegationBar_Background" Color="#FF353535"/>
+    <SolidColorBrush x:Key="TopNavegationBar_Text" Color="#FF646464"/>
+
+    <SolidColorBrush x:Key="TopNavegationBar.MenuItem.Text" Color="#FFC8C8C8"/>
+    <SolidColorBrush x:Key="TopNavegationBar.MenuItem.Background" Color="#FF353535"/>
+    <SolidColorBrush x:Key="TopNavegationBar.MenuItem.Highlight.Background" Color="#FFE8E8E8"/>
+    <SolidColorBrush x:Key="TopNavegationBar.MenuItem.Highlight.Press" Color="#FFCBCBCB"/>
+
 
     <SolidColorBrush x:Key="Button_Background" Color="#FF353535"/>
     <SolidColorBrush x:Key="Button_Background_Hightlight" Color="#FF404040"/>

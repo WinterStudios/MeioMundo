@@ -18,7 +18,7 @@
         <ToolBar Grid.Row="0" Grid.ColumnSpan="2">
             <Button Content="Teste" Click="Button_Click"/>
         </ToolBar>
-        <DataGrid x:Name="refs_tabela" AutoGenerateColumns="False" CanUserAddRows="False" Grid.Row="1" ItemsSource="{Binding Path=_Codes}" Foreground="{DynamicResource Text}" Background="{x:Null}" BorderBrush="{DynamicResource Border}" >
+        <DataGrid x:Name="refs_tabela" AutoGenerateColumns="False" CanUserAddRows="False" Grid.Row="1" ItemsSource="{Binding Path=_Codes}" Background="{x:Null}" ColumnHeaderStyle="{DynamicResource DataGridColumnHeaderStyle1}" Style="{DynamicResource DataGridStyle}" >
             <DataGrid.Columns>
                 <DataGridTextColumn Header="ID" Width="30" Binding="{Binding ID}" IsReadOnly="True"/>
                 <DataGridTextColumn Header="REF" Width="110" Binding="{Binding CODIGO}"/>

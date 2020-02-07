@@ -9,10 +9,17 @@
     <SolidColorBrush x:Key="ProgressBarColor" Color="#FFA0A0A0"/>
     <SolidColorBrush x:Key="Border" Color="#FFC8C8C8"/>
 
-    <SolidColorBrush x:Key="TopNavegationBar_Background" Color="#FFF4F4F4"/>
+    <SolidColorBrush x:Key="TopNavegationBar_Background" Color="#FFCBCBCB"/>
+    <SolidColorBrush x:Key="TopNavegationBar_Text" Color="#FF646464"/>
 
-    <SolidColorBrush x:Key="Button_Background" Color="#FF353535"/>
-    <SolidColorBrush x:Key="Button_Background_Hightlight" Color="#FF404040"/>
+    <SolidColorBrush x:Key="TopNavegationBar.MenuItem.Text" Color="#FF282828"/>
+    <SolidColorBrush x:Key="TopNavegationBar.MenuItem.Background" Color="#FFDEDEDE"/>
+    <SolidColorBrush x:Key="TopNavegationBar.MenuItem.Highlight.Background" Color="#FFE8E8E8"/>
+    <SolidColorBrush x:Key="TopNavegationBar.MenuItem.Highlight.Press" Color="#FFCBCBCB"/>
+
+
+    <SolidColorBrush x:Key="Button_Background" Color="#FFCBCBCB"/>
+    <SolidColorBrush x:Key="Button_Background_Hightlight" Color="#FFBDBDBD"/>
     <SolidColorBrush x:Key="Button_Text_Normal" Color="#FF808080"/>
 
 
@@ -21,4 +28,8 @@
     <SolidColorBrush x:Key="Tab_Item_SelectLine" Color="#FF00DCFF"/>
     <SolidColorBrush x:Key="Tab_Item_Select" Color="#FF141414"/>
     <SolidColorBrush x:Key="Tab_Item_Normal" Color="#FF323232"/>
+
+    <SolidColorBrush x:Key="DataGridBorder" Color="Gray"/>
+    <SolidColorBrush x:Key="DataGridHeaderBorder" Color="#FFBFBFBF"/>
+    
 </ResourceDictionary>
