@@ -60,7 +60,17 @@
         </StackPanel>
 
         <TabControl x:Name="tab_UI" Grid.Row="1" ItemTemplate="{StaticResource DataTemplate2}"  Style="{DynamicResource TabControlStyle1}" ItemsPanel="{DynamicResource ItemsPanelTemplate1}" ItemContainerStyle="{DynamicResource TabItemStyle1}" Foreground="{x:Null}">
-            <TabItem Header="Welcome" HeaderTemplate="{DynamicResource DataTemplate2}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+            <TabItem Header="Welcome" HeaderTemplate="{DynamicResource DataTemplate2}" HorizontalAlignment="Center" VerticalAlignment="Center">
+                <DataGrid Style="{DynamicResource DataGridStyle2}">
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Header="ID" Width="30" Binding="{Binding ID}" IsReadOnly="True"/>
+                        <DataGridTextColumn Header="REF" Width="110" Binding="{Binding CODIGO}"/>
+                        <DataGridTextColumn Header="Descrição" Width="*" Binding="{Binding DESCRIÇÂO}"/>
+                        <DataGridTextColumn Header="Qtd" Width="Auto" Binding="{Binding Qtd}"/>
+                    </DataGrid.Columns>
+
+                </DataGrid>
+            </TabItem>
         </TabControl>
         <StatusBar Grid.Row="2" Height="30" Style="{DynamicResource StatusBarStyle1}" >
             <StatusBar.ItemsPanel>

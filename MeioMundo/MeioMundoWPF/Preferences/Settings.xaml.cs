@@ -45,6 +45,7 @@ namespace MeioMundoWPF.Preferences
             int index = themeDropbox.SelectedIndex;
             _themes = (Theme.Themes)index;
             Properties.Settings.Default.Theme = index;
+            Properties.Settings.Default.Save();
             Theme.UpdateTheme(index);
         }
     }

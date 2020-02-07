@@ -3,10 +3,11 @@
                     xmlns:local="clr-namespace:MeioMundoWPF">
     
     
-    <SolidColorBrush x:Key="Text" Color="#FFCCCCCC"/>
+    <SolidColorBrush x:Key="Text" Color="#FF282828"/>
     <SolidColorBrush x:Key="Background" Color="#FFF4F4F4"/>
     <SolidColorBrush x:Key="Text_low" Color="#FF808080"/>
     <SolidColorBrush x:Key="ProgressBarColor" Color="#FFA0A0A0"/>
+    <SolidColorBrush x:Key="Border" Color="#FFC8C8C8"/>
 
     <SolidColorBrush x:Key="TopNavegationBar_Background" Color="#FFF4F4F4"/>
 
