@@ -16,6 +16,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using Tools;
 
+
 namespace MeioMundoWPF
 {
     /// <summary>
@@ -31,6 +32,7 @@ namespace MeioMundoWPF
         public double m_height;
         public static bool m_maximized { get; set; }
         
+        public static TextBlock InfoText { get; set; }
 
         public MainWindow()
         {
@@ -40,6 +42,7 @@ namespace MeioMundoWPF
             InitializeComponent();
             Theme.LoadTheme(Properties.Settings.Default.Theme);
             this.DataContext = this;
+            InfoText = InfoText;
             SetUI();
             Debug.Log("[MAINWINDOW] " + "Initializing");
             _tabControl = tab_UI;
@@ -98,7 +101,6 @@ namespace MeioMundoWPF
         private void SetUI()
         {
             txt_blockVersion.Text = "v" + UpdateSystem.Version;
-            
         }
 
         private void Close_Application(object sender, RoutedEventArgs e)

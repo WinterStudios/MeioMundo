@@ -12,9 +12,10 @@
         <Grid.RowDefinitions>
             <RowDefinition Height="30"/>
             <RowDefinition Height="*"/>
+            <RowDefinition Height="15"/>
             <RowDefinition Height="30"/>
         </Grid.RowDefinitions>
-        <StackPanel RenderOptions.EdgeMode="Unspecified"  SnapsToDevicePixels="False" Grid.Row="0" Background="{DynamicResource TopNavegationBar_Background }">
+        <StackPanel RenderOptions.EdgeMode="Aliased"  SnapsToDevicePixels="True" Grid.Row="0" Background="{DynamicResource TopNavegationBar_Background }">
             <Grid>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="40"/>
@@ -22,7 +23,7 @@
                     <ColumnDefinition Width="*"/>
                     <ColumnDefinition Width="Auto"/>
                 </Grid.ColumnDefinitions>
-                <Image Grid.Column="0" Margin="2">
+                <Image Grid.Column="0" Margin="0" SnapsToDevicePixels="False">
                     <Image.Source>
                         <DrawingImage>
                             <DrawingImage.Drawing>
@@ -50,9 +51,9 @@
                 <Rectangle SnapsToDevicePixels="True" MouseDown="Rectangle_MouseDown" Grid.Column="2" Fill="{DynamicResource TopNavegationBar_Background}"/>
                 <TextBlock Text="App" Grid.Column="2" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="{DynamicResource WindowTopBar.Foreground}"/>
                 <StackPanel Orientation="Horizontal" Grid.Column="3">
-                    <Button x:Name="btn_minApp" Style="{DynamicResource ButtonsStyleMinimaze}" Click="Close_Application" HorizontalAlignment="Left" VerticalAlignment="Top" Width="40" Height="30" BorderThickness="0"/>
+                    <Button x:Name="btn_minApp" Style="{DynamicResource ButtonsStyleMinimaze}" Click="Close_Application" HorizontalAlignment="Left" VerticalAlignment="Stretch" Width="40"/>
                     <Button x:Name="btn_Max_Min" Style="{DynamicResource btn_Maximize_Window}" Click="MaximazeWindowEvent" HorizontalAlignment="Left" VerticalAlignment="Top" Width="40" Height="30" BorderThickness="0"/>
-                    <Button x:Name="btn_CloseApp" Style="{DynamicResource btnClose}" Click="Close_Application" HorizontalAlignment="Left" VerticalAlignment="Top" Width="40" Height="30" BorderThickness="0"/>
+                    <Button x:Name="btn_CloseApp" Style="{DynamicResource btnClose}" Click="Close_Application" HorizontalAlignment="Left" VerticalAlignment="Stretch" Width="40" Height="30" BorderThickness="0"/>
                 </StackPanel>
             </Grid>
         </StackPanel>
@@ -70,7 +71,12 @@
                 </DataGrid>
             </TabItem>
         </TabControl>
-        <StatusBar Grid.Row="2" Height="30" Style="{DynamicResource StatusBarStyle1}" >
+
+        <StackPanel Grid.Row="2" Margin="5,0">
+            <TextBlock x:Name="infoText" FontSize="10" />
+        </StackPanel>
+        
+        <StatusBar Grid.Row="3" Height="30" Style="{DynamicResource StatusBarStyle1}" >
             <StatusBar.ItemsPanel>
                 <ItemsPanelTemplate>
                     <Grid>
@@ -88,20 +94,26 @@
                             <ColumnDefinition Width="Auto"/>
                             <ColumnDefinition Width="Auto"/>
                             <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="Auto"/>
                         </Grid.ColumnDefinitions>
                     </Grid>
                 </ItemsPanelTemplate>
             </StatusBar.ItemsPanel>
             <Separator Width="1" Grid.Column="1"/>
             <StatusBarItem Grid.Column="2">
-                <ProgressBar Width="100" Height="20" Value="90" Background="{DynamicResource Background}" BorderBrush="{DynamicResource Text_low}" Foreground="{DynamicResource ProgressBarColor}"  />
+                <TextBlock Text="test" x:Name="status_info"/>
             </StatusBarItem>
             <Separator Width="1" Grid.Column="3"/>
             <StatusBarItem Grid.Column="4">
+                <ProgressBar Width="100" Height="20" Value="90" Background="{DynamicResource Background}" BorderBrush="{DynamicResource Text_low}" Foreground="{DynamicResource ProgressBarColor}"  />
+            </StatusBarItem>
+            <Separator Width="1" Grid.Column="5"/>
+            <StatusBarItem Grid.Column="6">
                 <Image Width="20" Height="20"/>
             </StatusBarItem>
-            <Separator Width="1" Grid.Column="5" Background="{DynamicResource Text_low}"/>
-            <StatusBarItem Grid.Column="6">
+            <Separator Width="1" Grid.Column="7" Background="{DynamicResource Text_low}"/>
+            <StatusBarItem Grid.Column="8">
                 <TextBlock x:Name="txt_blockVersion" Padding="10,0" Text="v####.##.##"/>
             </StatusBarItem>
         </StatusBar>

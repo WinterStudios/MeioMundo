@@ -224,14 +224,14 @@
             <Trigger Property="Role" Value="TopLevelHeader">
                 <Setter Property="Background" Value="Transparent"/>
                 <Setter Property="BorderBrush" Value="Transparent"/>
-                <Setter Property="Foreground" Value="{DynamicResource TopNavegationBar_MenuItem_Text}"/>
+                <Setter Property="Foreground" Value="{DynamicResource TopNavegationBar.MenuItem.Text}"/>
                 <Setter Property="Template" Value="{DynamicResource {ComponentResourceKey ResourceId=TopLevelHeaderTemplateKey, TypeInTargetAssembly={x:Type MenuItem}}}"/>
                 <Setter Property="Padding" Value="10,0"/>
             </Trigger>
             <Trigger Property="Role" Value="TopLevelItem">
                 <Setter Property="Background" Value="{DynamicResource  TopNavegationBar_Background}"/>
                 <Setter Property="BorderBrush" Value="{StaticResource Menu.Static.Border}"/>
-                <Setter Property="Foreground" Value="{DynamicResource TopNavegationBar_MenuItem_Text}"/>
+                <Setter Property="Foreground" Value="{DynamicResource TopNavegationBar.MenuItem.Text}"/>
                 <Setter Property="Template" Value="{DynamicResource {ComponentResourceKey ResourceId=TopLevelItemTemplateKey, TypeInTargetAssembly={x:Type MenuItem}}}"/>
                 <Setter Property="Padding" Value="10,0"/>
             </Trigger>
@@ -319,7 +319,7 @@
     <Style x:Key="ButtonsStyleClose" TargetType="{x:Type Button}">
         <Setter Property="Background" Value="{DynamicResource Button_Background}"/>
         <Setter Property="RenderOptions.EdgeMode" Value="Aliased"/>
-        <Setter Property="SnapsToDevicePixels" Value="True"/>
+        <Setter Property="SnapsToDevicePixels" Value="False"/>
         <Style.Triggers>
             <Trigger Property="IsMouseOver" Value="True">
                 <Setter Property="Background" Value="Red" />
@@ -328,7 +328,7 @@
     </Style>
 
     <ControlTemplate x:Key="minimize_btn_template" TargetType="{x:Type Button}">
-        <Border x:Name="border" Background="{DynamicResource Button_Background}">
+        <Border x:Name="border" BorderBrush="{DynamicResource Button_Background}"  Background="{DynamicResource Button_Background}" BorderThickness="0">
             <Path Data="M 0,5 L 10,5" StrokeThickness="1" Stroke="{DynamicResource Button_Text_Normal}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
         </Border>
         <ControlTemplate.Triggers>
@@ -339,7 +339,7 @@
     </ControlTemplate>
     
     <Style x:Key="ButtonsStyleMinimaze" TargetType="{x:Type Button}">
-        <Setter Property="Background" Value="Red"/>
+        <Setter Property="Background" Value="{DynamicResource Button_Background}"/>
         <Setter Property="RenderOptions.EdgeMode" Value="Aliased"/>
         <Setter Property="SnapsToDevicePixels" Value="True"/>
         <Setter Property="Template" Value="{DynamicResource minimize_btn_template}" />

@@ -26,7 +26,7 @@
                 <DataGridTextColumn Header="Qtd" Width="Auto" Binding="{Binding Qtd}"/>
             </DataGrid.Columns>
         </DataGrid>
-        <GroupBox Grid.Row="1" Grid.Column="1" Header="GroupBox" BorderBrush="{DynamicResource Border}" Foreground="{DynamicResource Text}" BorderThickness="1" Style="{DynamicResource GroupBoxStyle1}" Margin="10,0,0,0">
+        <GroupBox Grid.Row="1" Grid.Column="1" Header="GroupBox" Style="{DynamicResource GroupBoxStyle}" Margin="10,0,0,0">
             <StackPanel>
                 <GroupBox Header="Descrição" Style="{DynamicResource GroupBoxStyle}" >
                     <TextBox x:Name="txt_box_Desc" Text="TextBlock" Foreground="{DynamicResource Text}" Background="{x:Null}" BorderBrush="{DynamicResource Border}"/>

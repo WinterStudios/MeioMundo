@@ -81,7 +81,7 @@
     <Compile Include="Resources_D.xaml.cs">
       <DependentUpon>Resources_D.xaml</DependentUpon>
     </Compile>
-    <Compile Include="TabControl_Resource.xaml.cs">
+    <Compile Include="Styles\TabControl_Resource.xaml.cs">
       <DependentUpon>TabControl_Resource.xaml</DependentUpon>
     </Compile>
     <Compile Include="Theme.cs" />
@@ -130,7 +130,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="TabControl_Resource.xaml">
+    <Page Include="Styles\TabControl_Resource.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

@@ -10,11 +10,11 @@
     <SolidColorBrush x:Key="Border" Color="#FF383838" />
 
     <SolidColorBrush x:Key="TopNavegationBar_Background" Color="#FF353535"/>
-    <SolidColorBrush x:Key="TopNavegationBar_Text" Color="#FF646464"/>
+    <SolidColorBrush x:Key="TopNavegationBar_Text" Color="#FFC59292"/>
 
     <SolidColorBrush x:Key="TopNavegationBar.MenuItem.Text" Color="#FFC8C8C8"/>
     <SolidColorBrush x:Key="TopNavegationBar.MenuItem.Background" Color="#FF353535"/>
-    <SolidColorBrush x:Key="TopNavegationBar.MenuItem.Highlight.Background" Color="#FFE8E8E8"/>
+    <SolidColorBrush x:Key="TopNavegationBar.MenuItem.Highlight.Background" Color="#FF1D1D1D"/>
     <SolidColorBrush x:Key="TopNavegationBar.MenuItem.Highlight.Press" Color="#FFCBCBCB"/>
 
 
@@ -22,12 +22,24 @@
     <SolidColorBrush x:Key="Button_Background_Hightlight" Color="#FF404040"/>
     <SolidColorBrush x:Key="Button_Text_Normal" Color="#FF808080"/>
 
+    
+    <SolidColorBrush x:Key="GroupBox.Text" Color="#FFC8C8C8"/>
+
 
     <SolidColorBrush x:Key="Work_Background" Color="#FF101010"/>
     
     <SolidColorBrush x:Key="Tab_Item_SelectLine" Color="#FF00DCFF"/>
     <SolidColorBrush x:Key="Tab_Item_Select" Color="#FF141414"/>
     <SolidColorBrush x:Key="Tab_Item_Normal" Color="#FF323232"/>
-    
-    
+
+    <SolidColorBrush x:Key="DataGrid.Border" Color="Gray"/>
+    <SolidColorBrush x:Key="DataGrid.Text" Color="#FFBFBFBF"/>
+    <SolidColorBrush x:Key="DataGrid.Bacground" Color="#FF282828"/>
+    <SolidColorBrush x:Key="DataGrid.Header.Border" Color="#FFBFBFBF"/>
+    <SolidColorBrush x:Key="DataGrid.Header.Text" Color="#FFBFBFBF"/>
+
+
+    <SolidColorBrush x:Key="TabControl.TabItem.Background" Color="#FF1A1A1A"/>
+    <SolidColorBrush x:Key="TabControl.TabItem.Text" Color="#FFD7D7D7"/>
+
 </ResourceDictionary>

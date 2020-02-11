@@ -6,7 +6,7 @@
     <Application.Resources>
         <ResourceDictionary Source="Resources_D.xaml">
             <ResourceDictionary.MergedDictionaries>
-                <ResourceDictionary Source="TabControl_Resource.xaml"/>
+                <ResourceDictionary Source="/Styles/TabControl_Resource.xaml"/>
                 <ResourceDictionary Source="StatusBar.xaml"/>
                 <ResourceDictionary Source="ResourceDictionary.xaml"/>
                 <ResourceDictionary Source="/Styles/ControlsStyles.xaml"/>

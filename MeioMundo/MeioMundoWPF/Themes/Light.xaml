@@ -23,13 +23,22 @@
     <SolidColorBrush x:Key="Button_Text_Normal" Color="#FF808080"/>
 
 
+    <SolidColorBrush x:Key="GroupBox.Text" Color="#FF282828"/>
+
+
     <SolidColorBrush x:Key="Work_Background" Color="White"/>
 
     <SolidColorBrush x:Key="Tab_Item_SelectLine" Color="#FF00DCFF"/>
     <SolidColorBrush x:Key="Tab_Item_Select" Color="#FF141414"/>
     <SolidColorBrush x:Key="Tab_Item_Normal" Color="#FF323232"/>
 
-    <SolidColorBrush x:Key="DataGridBorder" Color="Gray"/>
-    <SolidColorBrush x:Key="DataGridHeaderBorder" Color="#FFBFBFBF"/>
-    
+
+    <SolidColorBrush x:Key="DataGrid.Border" Color="Gray"/>
+    <SolidColorBrush x:Key="DataGrid.Text" Color="#FF5A5A5A"/>
+    <SolidColorBrush x:Key="DataGrid.Bacground" Color="#FFCDCDCD"/>
+    <SolidColorBrush x:Key="DataGrid.Header.Border" Color="#FFBFBFBF"/>
+    <SolidColorBrush x:Key="DataGrid.Header.Text" Color="#FF3C3C3C"/>
+
+    <SolidColorBrush x:Key="TabControl.TabItem.Background" Color="#FFDFDFDF"/>
+    <SolidColorBrush x:Key="TabControl.TabItem.Text" Color="#FF282828"/>
 </ResourceDictionary>
