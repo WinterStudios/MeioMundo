@@ -66,6 +66,9 @@
     <Compile Include="Debug\Log.cs" />
     <Compile Include="Extensions\Extensions.cs" />
     <Compile Include="Print\PrintManager.cs" />
+    <Compile Include="Site\AddProdut.xaml.cs">
+      <DependentUpon>AddProdut.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Site\API.cs" />
     <Compile Include="Site\Dados.cs" />
     <Compile Include="Site\FileManager.cs" />
@@ -94,12 +97,16 @@
     <Compile Include="Site\ProductManager.xaml.cs">
       <DependentUpon>ProductManager.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Site\ProductPreview.xaml.cs">
+      <DependentUpon>ProductPreview.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Window1.xaml.cs">
       <DependentUpon>Window1.xaml</DependentUpon>
     </Compile>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <Resource Include="Barcode\Fonts\Code 39.ttf">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
@@ -116,6 +123,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Site\AddProdut.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Site\Gestao.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -129,6 +140,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Site\ProductManager.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Site\ProductPreview.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -174,11 +189,6 @@
     <PackageReference Include="System.Threading.Tasks.Extensions">
       <Version>4.6.0-preview.18571.3</Version>
     </PackageReference>
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="Site\JavaScript1.js">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

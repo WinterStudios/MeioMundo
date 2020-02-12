@@ -121,7 +121,4 @@
   <data name="Code_39" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Barcode\Fonts\Code 39.ttf;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="JavaScript1" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\site\javascript1.js;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
-  </data>
 </root>

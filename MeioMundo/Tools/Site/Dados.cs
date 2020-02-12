@@ -16,5 +16,11 @@ namespace Tools.Site
             public string Price { get; set; }
             public float Stock { get; set; }
         }
+
+        public class Produto
+        {
+            public string REF { get; set; }
+            public string Nome { get; set; }
+        }
     }
 }

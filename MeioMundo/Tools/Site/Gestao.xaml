@@ -12,7 +12,45 @@
             <RowDefinition Height="*"/>
             <RowDefinition Height="30"/>
         </Grid.RowDefinitions>
-        <StatusBar Grid.Row="2">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="2*"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <TabControl Grid.Row="0" Grid.ColumnSpan="2" Height="90">
+            <TabItem Header="TabItem">
+                <ToolBar >
+                    <Button x:Name="btn_Add_Prod" VerticalAlignment="Stretch" BorderBrush="#FFDEDEDE" Click="btn_Add_Prod_Click">
+                        <Button.Content>
+                            <StackPanel HorizontalAlignment="Center">
+                                <TextBlock Text="Adcionar Produto" HorizontalAlignment="Center"/>
+                                <TextBlock Text="+" HorizontalAlignment="Center"/>
+                            </StackPanel>
+                        </Button.Content>
+                    </Button>
+                </ToolBar>
+            </TabItem>
+            <TabItem Header="TabItem">
+                <Grid Background="#FFE5E5E5"/>
+            </TabItem>
+        </TabControl>
+
+        <DataGrid x:Name="tabela_produtos" Grid.Row="1" Style="{DynamicResource DataGridStyle}" ItemsSource="{Binding Path=Produtos}" AutoGenerateColumns="False">
+            <DataGrid.Columns>
+                <DataGridTextColumn Binding="{Binding REF}" Header="Referencia"/>
+                <DataGridTextColumn Binding="{Binding Nome}" Header="Nome"/>
+                <DataGridTextColumn Header="Visivivel"/>
+                <DataGridTextColumn Header="Descrição Curta"/>
+                <DataGridTextColumn Header="Descrição"/>
+                <DataGridTextColumn Header="Situação Fiscal"/>
+                <DataGridTextColumn Header="Control de Stock"/>
+                <DataGridTextColumn Header="Stock"/>
+                <DataGridTextColumn Header="Peso"/>
+                <DataGridTextColumn Header="Dimesões CxLxA"/>
+                <DataGridTextColumn Header="Preço"/>
+                <DataGridTextColumn Header="Categoria"/>
+            </DataGrid.Columns>
+        </DataGrid>
+        <StatusBar Grid.Row="2" Grid.ColumnSpan="2">
             <StatusBar.ItemsPanel>
                 <ItemsPanelTemplate>
                     <Grid>
@@ -28,6 +66,10 @@
                 <ProgressBar Width="100" Height="20" Value="95"/>
             </StatusBarItem>
         </StatusBar>
+
+        <Viewbox Grid.Row="1" Grid.Column="1">
+            <local:ProductPreview Grid.Row="1" Grid.Column="1" />
+        </Viewbox>
 
     </Grid>
 </UserControl>

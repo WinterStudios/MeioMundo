@@ -41,4 +41,5 @@
 
     <SolidColorBrush x:Key="TabControl.TabItem.Background" Color="#FFDFDFDF"/>
     <SolidColorBrush x:Key="TabControl.TabItem.Text" Color="#FF282828"/>
+    <SolidColorBrush x:Key="TabControl.TabItem.Select" Color="#FF979797"/>
 </ResourceDictionary>

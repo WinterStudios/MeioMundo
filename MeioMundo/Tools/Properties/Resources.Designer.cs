@@ -69,14 +69,5 @@ namespace Tools.Properties {
                 return ((byte[])(obj));
             }
         }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to .
-        /// </summary>
-        internal static string JavaScript1 {
-            get {
-                return ResourceManager.GetString("JavaScript1", resourceCulture);
-            }
-        }
     }
 }
