@@ -32,7 +32,7 @@ namespace Tools.Site
             {
                 TextBox box = (TextBox)e.OriginalSource;
                 if (box.Text.Length > 0)
-                    box.Background = Brushes.Transparent;
+                    box.Background = new SolidColorBrush(Color.FromArgb(1, 0, 0, 0));
                 else
                     box.Background = new SolidColorBrush(Color.FromRgb(200, 200, 200));
             }
