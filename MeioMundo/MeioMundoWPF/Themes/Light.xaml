@@ -42,4 +42,6 @@
     <SolidColorBrush x:Key="TabControl.TabItem.Background" Color="#FFDFDFDF"/>
     <SolidColorBrush x:Key="TabControl.TabItem.Text" Color="#FF282828"/>
     <SolidColorBrush x:Key="TabControl.TabItem.Select" Color="#FF979797"/>
+
+    <SolidColorBrush x:Key="TextBox.Background" Color="#FFC8C8C8"/>
 </ResourceDictionary>

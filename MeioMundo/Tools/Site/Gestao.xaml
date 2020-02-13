@@ -68,7 +68,7 @@
         </StatusBar>
 
         <Viewbox Grid.Row="1" Grid.Column="1">
-            <local:ProductPreview Grid.Row="1" Grid.Column="1" />
+            <local:ProductPreview Grid.Row="1" Grid.Column="1" IsEnabled="False" />
         </Viewbox>
 
     </Grid>

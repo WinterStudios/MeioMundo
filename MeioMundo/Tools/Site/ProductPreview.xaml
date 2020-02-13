@@ -49,8 +49,7 @@
                 <RowDefinition Height="Auto"/>
             </Grid.RowDefinitions>
             <StackPanel >
-                <TextBox x:Name="_NOME" Text="" Height="40" FontSize="14" Background="#FFC8C8C8" BorderThickness="0" TextChanged="TextChanged"/>
-                <Rectangle Height="40" Width="200" Fill="#FFC8C8C8" HorizontalAlignment="Left" Margin="0,10,0,0"/>
+                <TextBox x:Name="_NOME" Height="90" FontSize="26" FontWeight="Bold" Background="{DynamicResource TextBox.Background}" BorderThickness="0" TextChanged="TextChanged" TextWrapping="Wrap"/>
             </StackPanel>
             <StackPanel Grid.Row="1" Margin="0,10,0,0" >
                 <Rectangle HorizontalAlignment="Left" Height="20" Width="150" Fill="#FFC8C8C8"/>
