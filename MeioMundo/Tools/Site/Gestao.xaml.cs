@@ -1,17 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace Tools.Site
 {
@@ -39,13 +28,13 @@ namespace Tools.Site
             ProductPreview productPreview = new ProductPreview();
             AddProdut addProdut = new AddProdut(productPreview);
             addProdut.SizeToContent = SizeToContent.WidthAndHeight;
-            if(addProdut.ShowDialog() == true)
+            if (addProdut.ShowDialog() == true)
             {
                 Dados.Produto produto = addProdut.product.Produto;
                 Produtos.Add(produto);
                 tabela_produtos.Items.Refresh();
             }
-            
+
         }
     }
 }

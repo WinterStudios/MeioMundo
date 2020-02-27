@@ -1,14 +1,10 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 
 namespace MeioMundoWPF
 {
-    public partial class TabControl_Resource 
+    public partial class TabControl_Resource
     {
         private void tab_Close_Btn_Click(object sender, RoutedEventArgs e)
         {

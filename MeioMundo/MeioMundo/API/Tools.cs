@@ -1,8 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace MeioMundo.API
 {
@@ -19,10 +16,10 @@ namespace MeioMundo.API
                     Console.WriteLine(ref_sage);
                 }
                 return m_exits;
-                
+
             }
 
-            public static Classes.Produtos[] UpdateStock(Classes.Produtos[] m_sage, Classes.Produtos[]m_website, out int[] arrayMod)
+            public static Classes.Produtos[] UpdateStock(Classes.Produtos[] m_sage, Classes.Produtos[] m_website, out int[] arrayMod)
             {
                 List<int> arrayToMod = new List<int>();
                 for (int i = 0; i < m_sage.Length; i++)

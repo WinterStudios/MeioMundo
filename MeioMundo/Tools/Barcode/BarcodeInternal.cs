@@ -2,14 +2,6 @@
 using System.Collections.Generic;
 using System.Drawing;
 using System.Drawing.Text;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Media;
 
 namespace Tools.Barcode
 {
@@ -25,7 +17,7 @@ namespace Tools.Barcode
             EAN_13
         }
 
-        
+
 
         public string GetTypeOfCode(TypesOfCodes type)
         {
@@ -87,7 +79,7 @@ namespace Tools.Barcode
         {
 
         }
-        
+
 
 
 
@@ -106,11 +98,11 @@ namespace Tools.Barcode
                     return new Font(fonts.Families[0], 13.0F);
                 }
             }
-            public static System.Windows.Media.FontFamily _FONT 
+            public static System.Windows.Media.FontFamily _FONT
             {
-                get 
-                { 
-                    return new System.Windows.Media.FontFamily(new Uri("pack://application:,,,/Tools;Component/"), "./Barcode/Fonts/#Code 39"); 
+                get
+                {
+                    return new System.Windows.Media.FontFamily(new Uri("pack://application:,,,/Tools;Component/"), "./Barcode/Fonts/#Code 39");
                 }
             }
             public static string GetCode(string data)

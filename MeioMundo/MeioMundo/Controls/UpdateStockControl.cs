@@ -1,16 +1,14 @@
-﻿using System;
+﻿using ExcelDataReader;
+using MeioMundo.API;
+using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Drawing;
 using System.Data;
+using System.Drawing;
+using System.Globalization;
+using System.IO;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using ExcelDataReader;
-using System.IO;
-using MeioMundo.API;
-using System.Globalization;
 
 namespace MeioMundo.Controls
 {
@@ -58,7 +56,7 @@ namespace MeioMundo.Controls
                         dataGridView1.Columns[i].HeaderText = result.Tables[0].Rows[0].ItemArray[i].ToString();
                     }
                     dataGridView1.Rows.RemoveAt(0);
-                    
+
                 }
             }
         }
@@ -94,14 +92,14 @@ namespace MeioMundo.Controls
                     int.TryParse(dataGridView1.Rows[i].Cells[5].Value.ToString(), out t);
                     i1 = t;
                 }
-                if(dataGridView1.Rows[i].Cells[3].Value != null)
+                if (dataGridView1.Rows[i].Cells[3].Value != null)
                 {
                     float f = 0;
                     float.TryParse(dataGridView1.Rows[i].Cells[3].Value.ToString(), out f);
                     f1 = f;
                 }
-                m_sage.Add(new Classes.Produtos { _Ref = t1, _Stock = i1 , _Preço = f1});
-                    
+                m_sage.Add(new Classes.Produtos { _Ref = t1, _Stock = i1, _Preço = f1 });
+
             }
             for (int i = 0; i < m_numberOfReferncesWeb; i++)
             {
@@ -122,7 +120,7 @@ namespace MeioMundo.Controls
                     float.TryParse(dataGridView2.Rows[i].Cells[5].Value.ToString(), out f);
                     f1 = f;
                 }
-                m_website.Add(new Classes.Produtos { _Ref = t1, _Stock = i1 , _Preço = f1});
+                m_website.Add(new Classes.Produtos { _Ref = t1, _Stock = i1, _Preço = f1 });
             }
             int[] m_siteMod;
             Classes.Produtos[] site_Stock_Update = Tools.Stock.UpdateStock(m_sage.ToArray(), m_website.ToArray(), out m_siteMod);
@@ -130,9 +128,9 @@ namespace MeioMundo.Controls
             {
                 dataGridView2.Rows[i].Cells[4].Style.BackColor = Color.Aqua;
                 dataGridView2.Rows[i].Cells[4].Value = site_Stock_Update[i]._Stock;
-                dataGridView2.Rows[i].Cells[5].Value = site_Stock_Update[i]._Preço.ToString().Replace(',','.');
+                dataGridView2.Rows[i].Cells[5].Value = site_Stock_Update[i]._Preço.ToString().Replace(',', '.');
             }
-            
+
         }
 
         private void toolStripButton1_Click(object sender, EventArgs e)

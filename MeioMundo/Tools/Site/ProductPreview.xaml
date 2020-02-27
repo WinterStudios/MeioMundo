@@ -6,6 +6,9 @@
              xmlns:local="clr-namespace:Tools.Site"
              mc:Ignorable="d" 
              d:DesignHeight="824" d:DesignWidth="1170">
+    <UserControl.Resources>
+        <ResourceDictionary Source="/Tools;component/site/ToolResourceDictionary.xaml"/>
+    </UserControl.Resources>
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*" MinWidth="500"/>
@@ -24,7 +27,7 @@
                     <ColumnDefinition Width="Auto"/>
                 </Grid.ColumnDefinitions>
                 <TextBlock Margin="5" Grid.Column="0" Text="Recente" Foreground="White" Background="#FFFFAF00"/>
-                <Rectangle Margin="5" Grid.Column="2" Width="20" Height="20" Fill="#FFB9B9B9" />
+                <Image Margin="5" Grid.Column="2" Width="20" Height="20"  />
             </Grid>
             <Rectangle Height="438" Margin="10" Fill="#FFC9C9C9" />
             <Grid Margin="5">
@@ -48,30 +51,29 @@
                 <RowDefinition Height="Auto"/>
                 <RowDefinition Height="Auto"/>
             </Grid.RowDefinitions>
-            <StackPanel >
-                <TextBox x:Name="_NOME" Height="90" FontSize="26" FontWeight="Bold" Background="{DynamicResource TextBox.Background}" BorderThickness="0" TextChanged="TextChanged" TextWrapping="Wrap"/>
+            <StackPanel MaxWidth="430" Margin="0,0,0,10">
+                <TextBox x:Name="_NOME" MinHeight="38" MaxHeight="90" FontSize="26" FontWeight="Bold" BorderThickness="0" TextChanged="TextChanged"  TextWrapping="WrapWithOverflow" Background="{StaticResource PP.TextBox.Background}" />
             </StackPanel>
-            <StackPanel Grid.Row="1" Margin="0,10,0,0" >
-                <Rectangle HorizontalAlignment="Left" Height="20" Width="150" Fill="#FFC8C8C8"/>
+            <StackPanel Grid.Row="1" Margin="0,10" Orientation="Horizontal">
+                <Image HorizontalAlignment="Left" Height="30" Width="30" Source="/Tools;component/Icons/star.png" />
+                <Image HorizontalAlignment="Left" Height="30" Width="30" Source="/Tools;component/Icons/star.png" />
+                <Image HorizontalAlignment="Left" Height="30" Width="30" Source="/Tools;component/Icons/star.png" />
+                <Image HorizontalAlignment="Left" Height="30" Width="30" Source="/Tools;component/Icons/star.png" />
+                <Image HorizontalAlignment="Left" Height="30" Width="30" Source="/Tools;component/Icons/star.png" />
             </StackPanel>
-            <StackPanel Orientation="Horizontal"  Grid.Row="2" Margin="0,20,0,0">
-                <TextBlock VerticalAlignment="Center" Text="€" FontSize="20px" Foreground="#FF0074FF" Margin="0,0,10,0"/>
-                <Rectangle HorizontalAlignment="Left" Width="100" Height="30" Fill="#FFC8C8C8"/>
+            <StackPanel Orientation="Horizontal"  Grid.Row="2" Margin="0,0,0,15">
+                <TextBlock VerticalAlignment="Center" Height="35" Text="€" FontSize="20px" Foreground="#FF0074FF" Margin="0,0,10,0" />
+                <TextBox x:Name="_PREÇO" HorizontalAlignment="Left" VerticalContentAlignment="Center" Width="100" Height="35" FontSize="20px" BorderThickness="1" Background="White"/>
             </StackPanel>
             <StackPanel Grid.Row="3">
-                <Rectangle Height="23" Fill="#FFC8C8C8" Margin="0,20,0,10"/>
-                <TextBlock Text="Em Stock" FontSize="14px" Margin="0,10,0,10" Foreground="#FF46FF00"/>
+                <TextBox x:Name="_DESCRIÇÃO_BREVE" Height="22" FontSize="14" VerticalContentAlignment="Center"  BorderThickness="0" TextChanged="TextChanged" />
+                <TextBlock x:Name="_Stock_Info" Text="Em Stock" FontSize="14px" Margin="0,10,0,10" Foreground="#FF46FF00"/>
                 <Separator Height="1" Margin="0,0,0,10"/>
                 <StackPanel Orientation="Horizontal">
-                    <Button Width="100" Height="40" HorizontalAlignment="Left" BorderThickness="0" IsEnabled="False">
-                        <Button.Content>
-                            <StackPanel Orientation="Horizontal">
-                                <TextBlock Text="-" Margin="10,0"/>
-                                <TextBlock Text="1" Margin="10,0"/>
-                                <TextBlock Text="+" Margin="10,0"/>
-                            </StackPanel>
-                        </Button.Content>
-                    </Button>
+                    <StackPanel Orientation="Horizontal"  Height="40">
+                        <TextBlock Text="QTD:" VerticalAlignment="Center" />
+                        <TextBox x:Name="_STOCK" Text="0" Width="50" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" TextChanged="_STOCK_TextChanged" />
+                    </StackPanel>
                     <Button Content="Comprar" Width="150" Margin="10,0" Background="#FF00B9FF" BorderThickness="0" IsEnabled="False"/>
                 </StackPanel>
                 <Separator Height="1" Margin="0,10,0,10"/>

@@ -1,17 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
+﻿using System.Windows.Controls;
 using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace Tools.Site
 {
@@ -43,6 +31,45 @@ namespace Tools.Site
             Produto = new Dados.Produto();
             Produto.REF = _REF.Text;
             Produto.Nome = _NOME.Text;
+            Produto.Preço = _PREÇO.Text;
+            Produto.DescriçãoBreve = _DESCRIÇÃO_BREVE.Text;
+        }
+
+        private void _STOCK_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            if (e.OriginalSource != null)
+            {
+                TextBox box = (TextBox)e.OriginalSource;
+                int n = 0;
+
+                if (box.Text.Length < 1)
+                {
+                    box.Text = "0";
+                    box.SelectionStart = 1;
+                    return;
+                }
+                box.SelectionStart = box.Text.Length;
+                if (box.Text[0] == '0')
+                {
+                    string txt = box.Text;
+                    txt = txt.Remove(0, 1);
+                    int.TryParse(txt, out n);
+                }
+                else
+                    int.TryParse(box.Text, out n);
+
+                _STOCK.Text = n.ToString();
+                if (n < 1)
+                {
+                    _Stock_Info.Foreground = new SolidColorBrush(Color.FromRgb(255, 0, 0));
+                    _Stock_Info.Text = "Esgotado";
+                }
+                else
+                {
+                    _Stock_Info.Foreground = new SolidColorBrush(Color.FromRgb(0, 255, 0));
+                    _Stock_Info.Text = "Em Stock";
+                }
+            }
         }
     }
 }

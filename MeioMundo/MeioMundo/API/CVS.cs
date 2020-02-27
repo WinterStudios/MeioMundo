@@ -1,12 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Data;
-using System.Windows.Forms;
 using System.IO;
 using System.Text.RegularExpressions;
+using System.Windows.Forms;
 
 namespace MeioMundo.API
 {
@@ -26,7 +22,7 @@ namespace MeioMundo.API
                 }
                 else
                     return null;
-                
+
             }
             public static DataTable Read(string fileSource)
             {
@@ -69,7 +65,7 @@ namespace MeioMundo.API
                 m_preço.DataType = Type.GetType("System.String");
                 m_preço.ColumnName = "Preço";
                 dataTable.Columns.Add(m_preço);
-                   
+
 
                 for (int i = 1; i < rows.Length; i++)
                 {
@@ -86,8 +82,8 @@ namespace MeioMundo.API
 
                     var m_p = Regex.Matches(colluns[5], @"\d+(\,\d+)");
                     float f_p = 0;
-                    if(m_p.Count > 0)
-                        float.TryParse(m_p[0].Value,out f_p);
+                    if (m_p.Count > 0)
+                        float.TryParse(m_p[0].Value, out f_p);
                     row["Preço"] = f_p;
                     dataTable.Rows.Add(row);
                 }

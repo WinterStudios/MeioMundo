@@ -1,9 +1,8 @@
 ﻿using System;
-using System.IO;
+using System.Collections.Generic;
 using System.Drawing;
 using System.Drawing.Printing;
 using System.Windows.Forms;
-using System.Collections.Generic;
 
 namespace Tools.Print
 {
@@ -27,7 +26,7 @@ namespace Tools.Print
                     pd.PrintPage += new PrintPageEventHandler(pd_PrintPage);
                     // Create a new instance of Margins with 1-inch margins. // ou nao!!
                     pd.OriginAtMargins = true;
-                    Margins margins = new Margins(30,30,30,30);
+                    Margins margins = new Margins(30, 30, 30, 30);
                     pd.DefaultPageSettings.Margins = margins;
 
                     PrintPreviewDialog printPrvDlg = new PrintPreviewDialog();
@@ -44,7 +43,7 @@ namespace Tools.Print
             }
             private void pd_PrintPage(object sender, PrintPageEventArgs ev)
             {
-                ev.HasMorePages = true;
+                ev.HasMorePages = false;
                 // DO THE STUFF TO PRINT
                 int[] col = new int[]
                 {
@@ -73,7 +72,7 @@ namespace Tools.Print
                     SizeF ref_size_num_only = ev.Graphics.MeasureString(_CODES[z].m_Referencia, printFont);
                     // Frist Collmn
                     ev.Graphics.DrawString(_CODES[z].m_Descrição, printFont, Brushes.Black, centerPointX * 0 + ((centerPointX - desc_size.Width) / 2), 5 + t_celula_altura * z);
-                    ev.Graphics.DrawString("*" + _CODES[z].m_Referencia + "*", Barcode.BarcodeInternal.CODE_39.Font , Brushes.Black, ((centerPointX - ref_size.Width)/2) + centerPointX * 0, 18 + t_celula_altura * z);
+                    ev.Graphics.DrawString("*" + _CODES[z].m_Referencia + "*", Barcode.BarcodeInternal.CODE_39.Font, Brushes.Black, ((centerPointX - ref_size.Width) / 2) + centerPointX * 0, 18 + t_celula_altura * z);
                     ev.Graphics.DrawString(_CODES[z].m_Referencia, printFont, Brushes.Black, centerPointX * 0 + ((centerPointX - ref_size_num_only.Width) / 2), 35 + t_celula_altura * z);
 
                     ev.Graphics.DrawString(_CODES[z].m_Descrição, printFont, Brushes.Black, centerPointX * 1 + ((centerPointX - desc_size.Width) / 2), 5 + t_celula_altura * z);

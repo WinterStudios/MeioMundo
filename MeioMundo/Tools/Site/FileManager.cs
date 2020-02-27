@@ -1,16 +1,9 @@
-﻿using System;
+﻿using ExcelDataReader;
+using System;
 using System.Collections.Generic;
 using System.Data;
-using System.Linq;
 using System.IO;
-using System.Text;
-using System.Threading.Tasks;
-using Microsoft.VisualBasic.FileIO;
-using System.Text.RegularExpressions;
-using System.Data.OleDb;
-using System.Globalization;
 using Tools.Extensions;
-using ExcelDataReader;
 
 namespace Tools.Site
 {
@@ -66,7 +59,7 @@ namespace Tools.Site
         public static List<Dados.Site> GetDados(string path)
         {
             string extension = path.Remove(0, path.LastIndexOf('.'));
-            
+
             string[] rows = new string[0];
             switch (extension)
             {
@@ -75,7 +68,7 @@ namespace Tools.Site
                     break;
                 case ".XLSX":
                     return XLSX.ExcelReader(path);
-                
+
             }
             List<Dados.Site> produtos = new List<Dados.Site>();
             for (int i = 1; i < rows.Length; i++)
@@ -156,7 +149,7 @@ namespace Tools.Site
                     bool canConvert = float.TryParse(table.Rows[i][10].ToString(), out stock);
                     if (!canConvert)
                         Debug.Error("[FILE_MANAGER][XLSX] - Fall to convert:" + table.Rows[i][10].ToString());
-                        site.Stock = stock;
+                    site.Stock = stock;
                     dados.Add(site);
                 }
 

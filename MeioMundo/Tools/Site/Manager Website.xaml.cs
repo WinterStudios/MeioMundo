@@ -1,19 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 using Tools.Site;
-using System.Data;
 
 namespace Tools
 {
@@ -29,7 +17,7 @@ namespace Tools
         public List<Dados.Site> ProdutosSite { get { return _produtosSite; } set { _produtosSite = value; } }
 
         public List<Dados.Site> _produtosSage = new List<Dados.Site>();
-        public List<Dados.Site> ProdutosSage { get { return _produtosSage; }set { _produtosSage = value; } }
+        public List<Dados.Site> ProdutosSage { get { return _produtosSage; } set { _produtosSage = value; } }
 
         public Manager_Website()
         {
@@ -41,7 +29,7 @@ namespace Tools
 
         private void ManagerProducts(object sender, RoutedEventArgs e)
         {
-            
+
         }
 
         private void btn_OpenSite_Click(object sender, RoutedEventArgs e)

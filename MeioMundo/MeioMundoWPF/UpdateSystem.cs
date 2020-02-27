@@ -1,14 +1,10 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace MeioMundoWPF
 {
     public static class UpdateSystem
     {
-        public static string Version 
+        public static string Version
         {
             get
             {
@@ -25,6 +21,6 @@ namespace MeioMundoWPF
             Properties.Settings.Default.Version = string.Format("{0}.{1}.{2}.{3}", major, minor, build, revision);
             Properties.Settings.Default.Save();
         }
-        
+
     }
 }

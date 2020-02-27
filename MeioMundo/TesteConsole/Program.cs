@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace TesteConsole
 {
@@ -16,7 +12,7 @@ namespace TesteConsole
 
             for (int i = 0; i < rows.Length; i++)
             {
-                rows[i] = rows[i].Replace("\"","");
+                rows[i] = rows[i].Replace("\"", "");
                 Console.WriteLine(rows[i]);
             }
             Console.ReadLine();

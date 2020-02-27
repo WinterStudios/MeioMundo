@@ -1,19 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Linq;
 using System.Reflection;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 using Tools;
 
 
@@ -31,7 +21,7 @@ namespace MeioMundoWPF
         public double m_width;
         public double m_height;
         public static bool m_maximized { get; set; }
-        
+
         public static TextBlock InfoText { get; set; }
 
         public MainWindow()
@@ -91,11 +81,11 @@ namespace MeioMundoWPF
                     }
                     Debug.Log("[MAINWINDOW] " + "[" + item.Name + "] - Load");
                 }
-                catch (Exception ex) 
+                catch (Exception ex)
                 {
                     Debug.Error("[MAINWINDOW] [CLASS] - 'ShowMenu' not present");
                 }
-            }            
+            }
         }
 
         private void SetUI()
@@ -129,7 +119,7 @@ namespace MeioMundoWPF
         private void MaximazeWindowEvent(object sender, RoutedEventArgs e)
         {
             Button btn = sender as Button;
-            
+
             if (!m_maximized)
             {
                 this.Height = SystemParameters.WorkArea.Height;
@@ -154,7 +144,7 @@ namespace MeioMundoWPF
             tab.Content = settings;
             tab.Header = "Settings";
 
-            TabControl.Items.Add(tab); 
+            TabControl.Items.Add(tab);
             TabControl.SelectedItem = tab;
         }
     }
