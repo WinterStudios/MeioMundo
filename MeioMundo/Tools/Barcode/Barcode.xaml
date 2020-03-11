@@ -16,7 +16,7 @@
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
         <ToolBar Grid.Row="0" Grid.ColumnSpan="2">
-            <Button Content="Teste" Click="Button_Click"/>
+            <Button Content="Prevializar" Click="Button_Click"/>
         </ToolBar>
         <DataGrid x:Name="refs_tabela" AutoGenerateColumns="False" CanUserAddRows="False" Grid.Row="1" ItemsSource="{Binding Path=_Codes}" Background="{x:Null}" ColumnHeaderStyle="{DynamicResource DataGridColumnHeaderStyle1}" Style="{DynamicResource DataGridStyle}" >
             <DataGrid.Columns>
@@ -28,17 +28,29 @@
         </DataGrid>
         <GroupBox Grid.Row="1" Grid.Column="1" Header="GroupBox" Style="{DynamicResource GroupBoxStyle}" Margin="10,0,0,0">
             <StackPanel>
+                
                 <GroupBox Header="Descrição" Style="{DynamicResource GroupBoxStyle}" >
-                    <TextBox x:Name="txt_box_Desc" Text="TextBlock" Foreground="{DynamicResource Text}" Background="{x:Null}" BorderBrush="{DynamicResource Border}"/>
+                    <TextBox x:Name="txt_box_Desc" Text="TextBlock" Foreground="{DynamicResource Text}" Background="{x:Null}" BorderBrush="{DynamicResource Border}" TextChanged="Add_Code_TextChanged"/>
                 </GroupBox>
                 <GroupBox Header="Referencia" Style="{DynamicResource GroupBoxStyle}">
-                    <TextBox x:Name="txt_box_Ref" TextWrapping="Wrap" Text="8639562952846" Foreground="{DynamicResource Text}" Background="{x:Null}" BorderBrush="{DynamicResource Border}"/>
+                    <TextBox x:Name="txt_box_Ref" TextWrapping="Wrap" Text="8639562952846" Foreground="{DynamicResource Text}" Background="{x:Null}" BorderBrush="{DynamicResource Border}" TextChanged="Add_Code_TextChanged"/>
                 </GroupBox>
                 <GroupBox Header="Quantidade" Style="{DynamicResource GroupBoxStyle}">
                     <StackPanel Orientation="Horizontal">
                         <TextBox x:Name="txt_box_Qtd" Text="1" Width="50" Foreground="{DynamicResource Text}" Background="{x:Null}" BorderBrush="{DynamicResource Border}"/>
-                        <Button Content="+" Width="15" Foreground="{DynamicResource Text}" Background="{x:Null}" BorderBrush="{DynamicResource Border}"/>
-                        <Button Content="-" Width="15" Foreground="{DynamicResource Text}" Background="{x:Null}" BorderBrush="{DynamicResource Border}"/>
+                        <Button Content="+" Width="15" Foreground="{DynamicResource Text}" Background="{x:Null}" BorderBrush="{DynamicResource Border}" Click="PlusQTDButton_Click"/>
+                        <Button Content="-" Width="15" Foreground="{DynamicResource Text}" Background="{x:Null}" BorderBrush="{DynamicResource Border}" Click="LessQTDButton_Click"/>
+                    </StackPanel>
+                </GroupBox>
+                <GroupBox Header="Tipo" Style="{DynamicResource GroupBoxStyle}">
+                    <ComboBox x:Name="UI_ComboBox_typeOfCode" HorizontalAlignment="Left" Width="120" SelectionChanged="ComboBox_SelectionChanged">
+                    </ComboBox>
+                </GroupBox>
+                <GroupBox Header="Preview" Style="{DynamicResource GroupBoxStyle}">
+                    <StackPanel Orientation="Vertical">
+                        <TextBlock x:Name="preview_code_desc" Text="" FontSize="9"/>
+                        <TextBlock x:Name="preview_code_font" Text="" FontSize="13"/>
+                        <TextBlock x:Name="preview_code" FontSize="8"/>
                     </StackPanel>
                 </GroupBox>
                 <Button x:Name="Add_Button" Content="Adicionar Codigo" Click="Add_Button_Click" Foreground="{DynamicResource Text}" Background="{x:Null}" BorderBrush="{DynamicResource Border}"/>

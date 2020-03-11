@@ -6,15 +6,7 @@ namespace TesteConsole
     {
         static void Main(string[] args)
         {
-            string path = "C:/Users/X510/Downloads/wc-product-export-27-1-2020-1580154044240.csv";
-
-            string[] rows = System.IO.File.ReadAllLines(path);
-
-            for (int i = 0; i < rows.Length; i++)
-            {
-                rows[i] = rows[i].Replace("\"", "");
-                Console.WriteLine(rows[i]);
-            }
+            Console.WriteLine(2 / 3);
             Console.ReadLine();
         }
     }

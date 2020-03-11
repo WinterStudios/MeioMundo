@@ -30,11 +30,14 @@ namespace Tools.Print
                     pd.DefaultPageSettings.Margins = margins;
 
                     PrintPreviewDialog printPrvDlg = new PrintPreviewDialog();
+                    PrintDialog printDialog = new PrintDialog();
 
                     // preview the assigned document or you can create a different previewButton for it
                     printPrvDlg.Document = pd;
                     printPrvDlg.ShowDialog();
-                    pd.Print();
+                    printDialog.Document = pd;
+                    if(printDialog.ShowDialog() == DialogResult.OK)
+                        pd.Print();
                 }
                 catch (Exception ex)
                 {
@@ -56,37 +59,68 @@ namespace Tools.Print
                 int t_celula_altura = 51;
                 // Draw top Table Line
                 ev.Graphics.DrawLine(Pens.Black, 0, 0, ev.MarginBounds.Width, 0);
-                for (int z = 0; z < _CODES.Count; z++)
+                int lines = (_CODES.Count / 3) + (_CODES.Count % 3);
+
+                // Drawing Lines for rows and collumns
+                for (int z = 0; z < lines; z++)
                 {
                     ev.Graphics.DrawLine(Pens.Black, col[0], t_celula_altura * (z), col[0], t_celula_altura * (z + 1));
                     ev.Graphics.DrawLine(Pens.Black, col[1], t_celula_altura * (z), col[1], t_celula_altura * (z + 1));
                     ev.Graphics.DrawLine(Pens.Black, col[2], t_celula_altura * (z), col[2], t_celula_altura * (z + 1));
                     ev.Graphics.DrawLine(Pens.Black, col[3], t_celula_altura * (z), col[3], t_celula_altura * (z + 1));
                     ev.Graphics.DrawLine(Pens.Black, 0, t_celula_altura * (z + 1), ev.MarginBounds.Width, t_celula_altura * (z + 1));
-
-                    int centerPointX = (ev.MarginBounds.Width / 3);
-                    int centerPointY = t_celula_altura / 2;
-
-                    SizeF desc_size = ev.Graphics.MeasureString(_CODES[z].m_Descrição, printFont);
-                    SizeF ref_size = ev.Graphics.MeasureString("*" + _CODES[z].m_Referencia + "*", Barcode.BarcodeInternal.CODE_39.Font);
-                    SizeF ref_size_num_only = ev.Graphics.MeasureString(_CODES[z].m_Referencia, printFont);
-                    // Frist Collmn
-                    ev.Graphics.DrawString(_CODES[z].m_Descrição, printFont, Brushes.Black, centerPointX * 0 + ((centerPointX - desc_size.Width) / 2), 5 + t_celula_altura * z);
-                    ev.Graphics.DrawString("*" + _CODES[z].m_Referencia + "*", Barcode.BarcodeInternal.CODE_39.Font, Brushes.Black, ((centerPointX - ref_size.Width) / 2) + centerPointX * 0, 18 + t_celula_altura * z);
-                    ev.Graphics.DrawString(_CODES[z].m_Referencia, printFont, Brushes.Black, centerPointX * 0 + ((centerPointX - ref_size_num_only.Width) / 2), 35 + t_celula_altura * z);
-
-                    ev.Graphics.DrawString(_CODES[z].m_Descrição, printFont, Brushes.Black, centerPointX * 1 + ((centerPointX - desc_size.Width) / 2), 5 + t_celula_altura * z);
-                    ev.Graphics.DrawString("*" + _CODES[z].m_Referencia + "*", Barcode.BarcodeInternal.CODE_39.Font, Brushes.Black, ((centerPointX - ref_size.Width) / 2) + centerPointX * 1, 18 + t_celula_altura * z);
-                    ev.Graphics.DrawString(_CODES[z].m_Referencia, printFont, Brushes.Black, centerPointX * 1 + ((centerPointX - ref_size_num_only.Width) / 2), 35 + t_celula_altura * z);
-
-                    ev.Graphics.DrawString(_CODES[z].m_Descrição, printFont, Brushes.Black, centerPointX * 2 + ((centerPointX - desc_size.Width) / 2), 5 + t_celula_altura * z);
-                    ev.Graphics.DrawString("*" + _CODES[z].m_Referencia + "*", Barcode.BarcodeInternal.CODE_39.Font, Brushes.Black, ((centerPointX - ref_size.Width) / 2) + centerPointX * 2, 18 + t_celula_altura * z);
-                    ev.Graphics.DrawString(_CODES[z].m_Referencia, printFont, Brushes.Black, centerPointX * 2 + ((centerPointX - ref_size_num_only.Width) / 2), 35 + t_celula_altura * z);
-
-
+                    
                 }
 
+                int centerPointX = (ev.MarginBounds.Width / 3);
+                int centerPointY = t_celula_altura / 2;
+                // Draw the codes
+                for (int x = 0; x < _CODES.Count; x++)
+                {
+                    int line = x / 3;
+                    // Frist Collmn
+                    if (x % 3 == 0)
+                    {
+                        SizeF _desc_size = ev.Graphics.MeasureString(_CODES[x].m_Descrição, printFont);
+                        SizeF _ref_size = ev.Graphics.MeasureString("*" + _CODES[x].m_Referencia + "*", Barcode.BarcodeInternal.CODE_39.Font);
+                        SizeF _ref_size_num_only = ev.Graphics.MeasureString(_CODES[x].m_Referencia, printFont);
+
+
+                        ev.Graphics.DrawString(_CODES[x].m_Descrição, printFont, Brushes.Black, centerPointX * 0 + ((centerPointX - _desc_size.Width) / 2), 5 + t_celula_altura * line);
+                        ev.Graphics.DrawString("*" + _CODES[x].m_Referencia + "*", Barcode.BarcodeInternal.CODE_39.Font, Brushes.Black, ((centerPointX - _ref_size.Width) / 2) + centerPointX * 0, 18 + t_celula_altura * line);
+                        ev.Graphics.DrawString(_CODES[x].m_Referencia, printFont, Brushes.Black, centerPointX * 0 + ((centerPointX - _ref_size_num_only.Width) / 2), 35 + t_celula_altura * line);
+                    }
+                    // Second Collumn
+                    if (x % 3 == 1)
+                    {
+                        SizeF _desc_size = ev.Graphics.MeasureString(_CODES[x].m_Descrição, printFont);
+                        SizeF _ref_size = ev.Graphics.MeasureString("*" + _CODES[x].m_Referencia + "*", Barcode.BarcodeInternal.CODE_39.Font);
+                        SizeF _ref_size_num_only = ev.Graphics.MeasureString(_CODES[x].m_Referencia, printFont);
+
+
+                        ev.Graphics.DrawString(_CODES[x].m_Descrição, printFont, Brushes.Black, centerPointX * 1 + ((centerPointX - _desc_size.Width) / 2), 5 + t_celula_altura * line);
+                        ev.Graphics.DrawString("*" + _CODES[x].m_Referencia + "*", Barcode.BarcodeInternal.CODE_39.Font, Brushes.Black, ((centerPointX - _ref_size.Width) / 2) + centerPointX * 1, 18 + t_celula_altura * line);
+                        ev.Graphics.DrawString(_CODES[x].m_Referencia, printFont, Brushes.Black, centerPointX * 1 + ((centerPointX - _ref_size_num_only.Width) / 2), 35 + t_celula_altura * line);
+                    }
+                    //// Threed Collumn
+                    if (x % 3 == 2)
+                    {
+                        SizeF _desc_size = ev.Graphics.MeasureString(_CODES[x].m_Descrição, printFont);
+                        SizeF _ref_size = ev.Graphics.MeasureString("*" + _CODES[x].m_Referencia + "*", Barcode.BarcodeInternal.CODE_39.Font);
+                        SizeF _ref_size_num_only = ev.Graphics.MeasureString(_CODES[x].m_Referencia, printFont);
+
+
+                        ev.Graphics.DrawString(_CODES[x].m_Descrição, printFont, Brushes.Black, centerPointX * 2 + ((centerPointX - _desc_size.Width) / 2), 5 + t_celula_altura * line);
+                        ev.Graphics.DrawString("*" + _CODES[x].m_Referencia + "*", Barcode.BarcodeInternal.CODE_39.Font, Brushes.Black, ((centerPointX - _ref_size.Width) / 2) + centerPointX * 2, 18 + t_celula_altura * line);
+                        ev.Graphics.DrawString(_CODES[x].m_Referencia, printFont, Brushes.Black, centerPointX * 2 + ((centerPointX - _ref_size_num_only.Width) / 2), 35 + t_celula_altura * line);
+                    }
+                }
+
+
+
             }
+
+            
         }
     }
 }

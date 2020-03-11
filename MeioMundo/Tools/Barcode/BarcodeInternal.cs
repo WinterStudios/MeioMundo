@@ -19,7 +19,7 @@ namespace Tools.Barcode
 
 
 
-        public string GetTypeOfCode(TypesOfCodes type)
+        public static string GetTypeOfCode(TypesOfCodes type)
         {
             string str = string.Empty;
             switch (type)

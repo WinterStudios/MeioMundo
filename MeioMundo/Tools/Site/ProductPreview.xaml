@@ -7,7 +7,6 @@
              mc:Ignorable="d" 
              d:DesignHeight="824" d:DesignWidth="1170">
     <UserControl.Resources>
-        <ResourceDictionary Source="/Tools;component/site/ToolResourceDictionary.xaml"/>
     </UserControl.Resources>
     <Grid>
         <Grid.ColumnDefinitions>
@@ -52,7 +51,7 @@
                 <RowDefinition Height="Auto"/>
             </Grid.RowDefinitions>
             <StackPanel MaxWidth="430" Margin="0,0,0,10">
-                <TextBox x:Name="_NOME" MinHeight="38" MaxHeight="90" FontSize="26" FontWeight="Bold" BorderThickness="0" TextChanged="TextChanged"  TextWrapping="WrapWithOverflow" Background="{StaticResource PP.TextBox.Background}" />
+                <TextBox x:Name="_NOME" MinHeight="38" MaxHeight="90" FontSize="26" FontWeight="Bold" BorderThickness="0" TextChanged="TextChanged"  TextWrapping="WrapWithOverflow" Background="{DynamicResource PP.TextBox.Background}" />
             </StackPanel>
             <StackPanel Grid.Row="1" Margin="0,10" Orientation="Horizontal">
                 <Image HorizontalAlignment="Left" Height="30" Width="30" Source="/Tools;component/Icons/star.png" />
