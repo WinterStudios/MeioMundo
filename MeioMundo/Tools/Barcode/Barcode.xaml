@@ -48,9 +48,9 @@
                 </GroupBox>
                 <GroupBox Header="Preview" Style="{DynamicResource GroupBoxStyle}">
                     <StackPanel Orientation="Vertical">
-                        <TextBlock x:Name="preview_code_desc" Text="" FontSize="9"/>
-                        <TextBlock x:Name="preview_code_font" Text="" FontSize="13"/>
-                        <TextBlock x:Name="preview_code" FontSize="8"/>
+                        <TextBlock x:Name="UI_preview_code_desc" Text="" FontSize="10" TextAlignment="Center"/>
+                        <TextBlock x:Name="UI_preview_code_font" Text="" FontSize="14" TextAlignment="Center"/>
+                        <TextBlock x:Name="UI_preview_code" FontSize="10" TextAlignment="Center"/>
                     </StackPanel>
                 </GroupBox>
                 <Button x:Name="Add_Button" Content="Adicionar Codigo" Click="Add_Button_Click" Foreground="{DynamicResource Text}" Background="{x:Null}" BorderBrush="{DynamicResource Border}"/>

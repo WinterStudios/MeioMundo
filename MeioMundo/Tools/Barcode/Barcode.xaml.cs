@@ -19,13 +19,20 @@ namespace Tools.Barcode
         public List<string> _typesOfCode = new List<string>();
         public List<string> TYPESOFCODES { get { return _typesOfCode; } set { _typesOfCode = value; } }
 
+        private bool m_loading = true;
+
         public Barcode()
         {
             InitializeComponent();
+            m_loading = false;
+
+            LoadPreviewCode();
+
             refs_tabela.ItemsSource = Codes;
             LoadTypeOfCodes();
 
         }
+
         private void LoadTypeOfCodes()
         {
             UI_ComboBox_typeOfCode.ItemsSource = TYPESOFCODES;
@@ -84,17 +91,44 @@ namespace Tools.Barcode
 
         private void Add_Code_TextChanged(object sender, TextChangedEventArgs e)
         {
-
+            PreviewCode();
         }
 
         private void ComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
 
         }
+        private void LoadPreviewCode()
+        {
+            switch (_TypesOfCodes)
+            {
+                case BarcodeInternal.TypesOfCodes.Codebar:
+                    break;
+                case BarcodeInternal.TypesOfCodes.Code_39:
+                    UI_preview_code_font.FontFamily = BarcodeInternal.CODE_39._FONT;
+                    break;
+                case BarcodeInternal.TypesOfCodes.ISBN_10:
+                    break;
+                case BarcodeInternal.TypesOfCodes.ISNB_13:
+                    break;
+                case BarcodeInternal.TypesOfCodes.EAN_8:
+                    break;
+                case BarcodeInternal.TypesOfCodes.EAN_13:
+                    break;
+                default:
+                    break;
+            }
+            
+        }
+
 
         private void PreviewCode()
         {
-
+            if (m_loading)
+                return;
+            UI_preview_code_desc.Text = txt_box_Desc.Text;
+            UI_preview_code_font.Text = "*" + txt_box_Ref.Text + "*";
+            UI_preview_code.Text = txt_box_Ref.Text;
         }
     }
 }
