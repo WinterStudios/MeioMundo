@@ -27,7 +27,7 @@ namespace MeioMundoWPF
         public MainWindow()
         {
             if (System.Diagnostics.Debugger.IsAttached)
-                UpdateSystem.SetVersion();
+                UpdateSystem.SetVersion(true);
             Debug.CheckLog();
             InitializeComponent();
             Theme.LoadTheme(Properties.Settings.Default.Theme);
