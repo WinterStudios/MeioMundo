@@ -46,5 +46,17 @@ namespace MeioMundoWPF.Properties {
                 this["Theme"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool Release {
+            get {
+                return ((bool)(this["Release"]));
+            }
+            set {
+                this["Release"] = value;
+            }
+        }
     }
 }
