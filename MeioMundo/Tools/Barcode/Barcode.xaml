@@ -46,7 +46,7 @@
                     <ComboBox x:Name="UI_ComboBox_typeOfCode" HorizontalAlignment="Left" Width="120" SelectionChanged="ComboBox_SelectionChanged">
                     </ComboBox>
                 </GroupBox>
-                <GroupBox Header="Preview" Style="{DynamicResource GroupBoxStyle}">
+                <GroupBox Header="Pré-visualização" Style="{DynamicResource GroupBoxStyle}">
                     <StackPanel Orientation="Vertical">
                         <TextBlock x:Name="UI_preview_code_desc" Text="" FontSize="10" TextAlignment="Center"/>
                         <TextBlock x:Name="UI_preview_code_font" Text="" FontSize="14" TextAlignment="Center"/>
