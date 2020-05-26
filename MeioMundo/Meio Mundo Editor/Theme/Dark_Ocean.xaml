@@ -1,0 +1,20 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:local="clr-namespace:MeioMundoEditor.Theme">
+    
+    
+    <SolidColorBrush x:Key="Text.Foreground" Color="#8F93A2"/>
+
+    <SolidColorBrush x:Key="Menu.Dynamic.Background" Color="#0F111A"/>
+    <SolidColorBrush x:Key="Menu.Dynamic.Background.Highlight" Color="#FF030406"/>
+    <SolidColorBrush x:Key="Menu.Dynamic.Foreground" Color="#8F93A2"/>
+    <SolidColorBrush x:Key="Menu.Dynamic.Foreground.Highlight" Color="#80CBC4"/>
+    <SolidColorBrush x:Key="Menu.Dynamic.Seperator" Color="#FFAC7ECB"/>
+
+
+    <SolidColorBrush x:Key="Button.Close.Hightlight" Color="Red"/>
+    <SolidColorBrush x:Key="Button.Close.Press" Color="#7FFF0000"/>
+    <SolidColorBrush x:Key="Button.Background.Hightlight" Color="#19FFFFFF"/>
+    <SolidColorBrush x:Key="Button.Foreground" Color="#8F93A2"/>
+    
+</ResourceDictionary>

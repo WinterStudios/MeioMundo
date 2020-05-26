@@ -1,0 +1,26 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:local="clr-namespace:MeioMundoEditor.Theme">
+
+
+    <SolidColorBrush x:Key="Text.Foreground" Color="#8F93A2"/>
+
+    <SolidColorBrush x:Key="Menu.Dynamic.Background" Color="#FFFAFAFA"/>
+    <SolidColorBrush x:Key="Menu.Dynamic.Background.Highlight" Color="#FFF0F0F0"/>
+    <SolidColorBrush x:Key="Menu.Dynamic.Foreground" Color="#FF7E939E"/>
+    <SolidColorBrush x:Key="Menu.Dynamic.Foreground.Highlight" Color="#80CBC4"/>
+    <SolidColorBrush x:Key="Menu.Dynamic.Seperator" Color="#FFAC7ECB"/>
+
+
+    <SolidColorBrush x:Key="Button.Close.Hightlight" Color="Red"/>
+    <SolidColorBrush x:Key="Button.Close.Press" Color="#7FFF0000"/>
+    <SolidColorBrush x:Key="Button.Background.Hightlight" Color="#19000000"/>
+    <SolidColorBrush x:Key="Button.Foreground" Color="#8F93A2"/>
+
+    <SolidColorBrush x:Key="TabControl.TabItem.Background" Color="Transparent"/>
+    <SolidColorBrush x:Key="TabControl.TabItem.Foregound" Color="#FF7E939E"/>
+    <SolidColorBrush x:Key="TabControl.TabItem.CloseButton.Background.Highlight" Color="#19000000"/>
+    <SolidColorBrush x:Key="TabControl.TabItem.Select.Foreground" Color="#FF4C565B"/>
+    <SolidColorBrush x:Key="TabControl.TabItem.Selct.Border" Color="#FF3CCD96"/>
+    
+</ResourceDictionary>

@@ -1,0 +1,50 @@
+﻿<UserControl x:Class="MeioMundoEditor.CustomsControls.ProgressBar"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:MeioMundoEditor.CustomsControls"
+             mc:Ignorable="d" 
+             d:DesignHeight="32" d:DesignWidth="200"
+             x:Name="progressBar">
+
+    <UserControl.Triggers>
+        <EventTrigger RoutedEvent="local:ProgressBar.StateBusy">
+            <!--local:ProgressBar.StateBusy-->
+            <BeginStoryboard x:Name="busyanimation">
+                <Storyboard>
+                    <DoubleAnimationUsingKeyFrames x:Name="loop" Storyboard.TargetName="rect_busy" Storyboard.TargetProperty="RenderTransform.(TranslateTransform.X)">
+                        <EasingDoubleKeyFrame Value="125" KeyTime="0:0:5" >
+                            <EasingDoubleKeyFrame.EasingFunction>
+                                <QuadraticEase EasingMode="EaseOut"/>
+                            </EasingDoubleKeyFrame.EasingFunction>
+                        </EasingDoubleKeyFrame>
+                        <EasingDoubleKeyFrame Value="250" KeyTime="0:0:10">
+                            <EasingDoubleKeyFrame.EasingFunction>
+                                <QuadraticEase EasingMode="EaseIn"/>
+                            </EasingDoubleKeyFrame.EasingFunction>
+                        </EasingDoubleKeyFrame>
+                    </DoubleAnimationUsingKeyFrames>
+                </Storyboard>
+            </BeginStoryboard>
+        </EventTrigger>
+    </UserControl.Triggers>
+    <Grid x:Name="grid" Width="{Binding ActualWidth, ElementName=progressBar}">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="6"/>
+            <ColumnDefinition Width="238"/>
+            <ColumnDefinition Width="6"/>
+        </Grid.ColumnDefinitions>
+        <Border x:Name="border" Grid.Column="1" Width="{Binding ActualWidth, ElementName=dock}" ClipToBounds="True" Margin="0">
+            <Grid>
+                <Rectangle x:Name="fill" Fill="Aqua" HorizontalAlignment="Left" RadiusY="6" RadiusX="6" MinWidth="12"/>
+                <Rectangle x:Name="rect_busy" Fill="#FF01FF2F" Width="12" HorizontalAlignment="Left" RadiusX="6" RadiusY="6" Margin="0" RenderTransformOrigin="0,0.5">
+                    <Rectangle.RenderTransform>
+                        <TranslateTransform x:Name="rect_busy_Tranform" X="-12" />
+                    </Rectangle.RenderTransform>
+                </Rectangle>
+            </Grid>
+        </Border>
+        <TextBlock x:Name="info" Grid.Column="1" Text="{Binding Percentagem, ElementName=progressBar, StringFormat={}{0:0}%}" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+    </Grid>
+</UserControl>

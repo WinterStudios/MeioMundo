@@ -1,0 +1,58 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:local="clr-namespace:MeioMundoEditor.Theme">
+    
+    
+     <!--Top Window Navegation bar e menu-->
+    <SolidColorBrush x:Key="Menu.TopNavBar.Logo.Color" Color="#FFE6E6E6"/>
+    <SolidColorBrush x:Key="Menu.WindowName.Foreground" Color="#FFE6E6E6"/>
+    <SolidColorBrush x:Key="Menu.TopNavBar.Background" Color="#FF2D2D30"/>
+    <SolidColorBrush x:Key="Menu.TopNavBar.Foreground" Color="#FFE6E6E6"/>
+    <SolidColorBrush x:Key="Menu.Background" Color="#FF2D2D30"/>
+    <SolidColorBrush x:Key="Menu.Background.Highlight" Color="#FF353535"/>
+    <SolidColorBrush x:Key="Menu.Foreground" Color="#FFE6E6E6"/>
+    <SolidColorBrush x:Key="Menu.Foreground.Highlight" Color="#FFE8E8E8"/>
+    <SolidColorBrush x:Key="Menu.Seperator" Color="#FFAC7ECB"/>
+
+    <!-- Tab Control Manager and Items-->
+
+    <SolidColorBrush x:Key="TabControl.TabItem.Background" Color="#FF4A4ADC"/>
+    <SolidColorBrush x:Key="TabControl.TabItem.Foregound" Color="#FFA0A0A0"/>
+    <SolidColorBrush x:Key="TabControl.TabItem.WorkArea.Background" Color="#FF1E1E1E"/>
+    <SolidColorBrush x:Key="TabControl.TabItem.WorkArea.Foreground" Color="#FFE6E6E6"/>
+    <SolidColorBrush x:Key="TabControl.TabItem.CloseButton.Background.Highlight" Color="#19000000"/>
+    <SolidColorBrush x:Key="TabControl.TabItem.Select.Foreground" Color="#FFE6E6E6"/>
+    <SolidColorBrush x:Key="TabControl.TabItem.Selct.Border" Color="#FF1E1E1E"/>
+    <SolidColorBrush x:Key="TabControl.NonItem.Background" Color="#FF282828"/>
+    <SolidColorBrush x:Key="TabItem.Selected.Background" Color="#FF1E1E1E"/>
+    <SolidColorBrush x:Key="TabItem.Selected.Border" Color="#ACACAC"/>
+    <SolidColorBrush x:Key="TabItem.NonSelect.Background" Color="#FF373737"/>
+    <SolidColorBrush x:Key="TabItem.NonSelect.Foreground" Color="AliceBlue"/>
+
+    <!--Buttons -->
+    <SolidColorBrush x:Key="Button.Close.Hightlight" Color="Red"/>
+    <SolidColorBrush x:Key="Button.Close.Press" Color="#7FFF0000"/>
+
+    <SolidColorBrush x:Key="Button.Background.Hightlight" Color="#19FFFFFF"/>
+    <SolidColorBrush x:Key="Button.Foreground" Color="#FFE6E6E6"/>
+    
+    <!-- DataGrid -->
+    <SolidColorBrush x:Key="DataGrid.Background" Color="Transparent"/>
+    <SolidColorBrush x:Key="DataGrid.Border" Color="Red"/>
+    <SolidColorBrush x:Key="DataGrid.Foreground" Color="#FF6AA6B8"/>
+    <SolidColorBrush x:Key="DataGrid.Cell.Border" Color="#FF00C5FF"/>
+    <SolidColorBrush x:Key="DataGrid.Cell.Background" Color="Transparent"/>
+    <SolidColorBrush x:Key="DataGrid.Cell.Foreground" Color="Aqua"/>
+    <SolidColorBrush x:Key="DataGrid.Header.Border" Color="#FF00AEFF"/>
+    <SolidColorBrush x:Key="DataGrid.Header.Background" Color="#FF282828"/>
+    <SolidColorBrush x:Key="DataGrid.Header.Foregound" Color="#FFD4D4D4"/>
+    <SolidColorBrush x:Key="DataGrid.Row.Background" Color="Transparent"/>
+    <SolidColorBrush x:Key="DataGrid.Row.Border" Color="Green"/>
+    
+    
+    <!-- Work Area  -->
+    <SolidColorBrush x:Key="WorkArea.Border" Color="#FF009DB6"/>
+    <SolidColorBrush x:Key="WorkArea.Title" Color="#FF99DBE6"/>
+    <SolidColorBrush x:Key="WorkArea.Foreground" Color="#FFFAFAFA"/>
+    <SolidColorBrush x:Key="WorkArea.Foreground.Discrite" Color="#FFB0B0B0"/>
+</ResourceDictionary>

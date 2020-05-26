@@ -1,0 +1,113 @@
+﻿<UserControl x:Class="MeioMundoEditor.UsersControls.Settings.ColorTheme"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:MeioMundoEditor.UsersControls.Settings"
+             mc:Ignorable="d"
+             Width="1280">
+    <UserControl.Resources>
+        <Style x:Key="Color.Theme.MenuItem" TargetType="Button">
+            <Setter Property="OverridesDefaultStyle" Value="True"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate>
+                        <Border x:Name="outBorder" Background="{DynamicResource Menu.Background}">
+                            <Border x:Name="inBorder" CornerRadius="6" Margin="8,10" Background="{DynamicResource Menu.Foreground}"/>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Background" TargetName="outBorder" Value="{DynamicResource Menu.Background.Highlight}"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+
+                </Setter.Value>
+            </Setter>
+        </Style>
+        <Style x:Key="Color.Theme.Button" TargetType="Button">
+            <Setter Property="OverridesDefaultStyle" Value="True"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate>
+                        <Border>
+                            <Border VerticalAlignment="Center" HorizontalAlignment="Center" Width="12" Height="12" Background="{DynamicResource Button.Foreground}" CornerRadius="8" />
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </UserControl.Resources>
+    <Grid >
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="250"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        <Border Grid.ColumnSpan="3" BorderBrush="#FF1689A2" BorderThickness="0,0,0,1" Margin="10,0" />
+        <TextBlock Text="Color Theme" Margin="10,10,0,10" FontSize="36" FontFamily="Segoe UI Semilight" Foreground="{DynamicResource Menu.Foreground}" Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Left"/>
+        <DockPanel Grid.Column="1" Grid.Row="1">
+            <StackPanel Orientation="Vertical">
+                <Grid Margin="0,30,0,0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition  Width="2*"/>
+                        <ColumnDefinition  Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+                    <Border BorderBrush="{DynamicResource WorkArea.Border}" BorderThickness="0,0,0,1" HorizontalAlignment="Left" VerticalAlignment="Top" >
+                        <TextBlock Text="Window Navegation Bar" Margin="10,0,10,5" FontSize="22" Foreground="{DynamicResource WorkArea.Title}"/>
+                    </Border>
+                    <Viewbox Grid.Row="1" Margin="0,20,0,0" VerticalAlignment="Top">
+                        <StackPanel>
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition MinWidth="32" Width="Auto"/>
+                                    <ColumnDefinition Width="Auto"/>
+                                    <ColumnDefinition MinWidth="480"  Width="*"/>
+                                    <ColumnDefinition Width="Auto"/>
+                                </Grid.ColumnDefinitions>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="32"/>
+                                    <RowDefinition Height="100"/>
+                                </Grid.RowDefinitions>
+                                <Rectangle Fill="{DynamicResource Menu.Background}" Grid.ColumnSpan="4"/>
+                                <Image Width="24" Height="24" Margin="8,0" Source="{DynamicResource Logo}" />
+                                <StackPanel Grid.Column="1" Orientation="Horizontal">
+                                    <Button Style="{DynamicResource Color.Theme.MenuItem}" Width="65"/>
+                                    <Button Style="{DynamicResource Color.Theme.MenuItem}" Width="35"/>
+                                    <Button Style="{DynamicResource Color.Theme.MenuItem}" Width="85"/>
+                                </StackPanel>
+                                <DockPanel Grid.Column="2">
+                                    <TextBlock Text="Winter Studio Editor" Foreground="{DynamicResource Menu.WindowName.Foreground}" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                                </DockPanel>
+                                <Rectangle Grid.Column="2" Fill="#00FF4C4C"/>
+                                <StackPanel Grid.Column="3" Orientation="Horizontal">
+                                    <Button Width="46" Height="32" Style="{DynamicResource Color.Theme.Button}" />
+                                    <Button Width="46" Height="32" Style="{DynamicResource Color.Theme.Button}"/>
+                                    <Button Width="46" Height="32" Style="{DynamicResource Color.Theme.Button}"/>
+                                </StackPanel>
+                            </Grid>
+                        </StackPanel>
+                    </Viewbox>
+                    <StackPanel Grid.Column="1" Grid.Row="1" Margin="20,10.3,0,0" VerticalAlignment="Top">
+                        <local:ColorList ObjectName="Logo" Information="Cor do logo" Color="{DynamicResource Menu.TopNavBar.Logo.Color}" />
+                        <local:ColorList ObjectName="Window Bar Background" Information="Cor da barra da janela" Color="{DynamicResource Menu.TopNavBar.Background}"/>
+                        <local:ColorList ObjectName="Window Bar Foreground" Information="Cor do texto da janele" Color="{DynamicResource Menu.TopNavBar.Foreground}"/>
+                        <local:ColorList ObjectName="Menu Item Background" Information="Cor de fundo do menu" Color="{DynamicResource Menu.Background}"/>
+                        <local:ColorList ObjectName="Menu Item Background Hightlight" Information="Cor de fundo do menu on mouseover" Color="{DynamicResource Menu.Background.Highlight}"/>
+                        <local:ColorList ObjectName="Menu Item Foreground" Information="Cor do texto do menu" Color="{DynamicResource Menu.Foreground}"/>
+                        <local:ColorList ObjectName="Menu Item Foreground Hightlight" Information="Cor do texto do menu on mouseover" Color="{DynamicResource Menu.Foreground.Highlight}"/>
+                    </StackPanel>
+                    
+                </Grid>
+            </StackPanel>
+        </DockPanel>
+        
+    </Grid>
+</UserControl>
