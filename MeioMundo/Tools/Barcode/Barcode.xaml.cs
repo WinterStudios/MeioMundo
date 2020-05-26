@@ -127,7 +127,8 @@ namespace Tools.Barcode
             if (m_loading)
                 return;
             UI_preview_code_desc.Text = txt_box_Desc.Text;
-            UI_preview_code_font.Text = "*" + txt_box_Ref.Text + "*";
+            UI_preview_code_font.Text = txt_box_Ref.Text;
+            //UI_preview_code_font.Text = "*" + txt_box_Ref.Text + "*";
             UI_preview_code.Text = txt_box_Ref.Text;
         }
     }

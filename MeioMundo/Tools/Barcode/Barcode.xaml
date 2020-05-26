@@ -49,7 +49,7 @@
                 <GroupBox Header="Pré-visualização" Style="{DynamicResource GroupBoxStyle}">
                     <StackPanel Orientation="Vertical">
                         <TextBlock x:Name="UI_preview_code_desc" Text="" FontSize="10" TextAlignment="Center"/>
-                        <TextBlock x:Name="UI_preview_code_font" Text="" FontSize="14" TextAlignment="Center"/>
+                        <TextBlock x:Name="UI_preview_code_font" Text="" FontSize="32" TextAlignment="Center"/>
                         <TextBlock x:Name="UI_preview_code" FontSize="10" TextAlignment="Center"/>
                     </StackPanel>
                 </GroupBox>
