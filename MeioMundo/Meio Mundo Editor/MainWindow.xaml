@@ -1,55 +1,12 @@
-﻿<Window x:Class="MeioMundoEditor.MainWindow"
+﻿<Window x:Class="Meio_Mundo_Editor.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:MeioMundoEditor" 
-        xmlns:UsersControls="clr-namespace:MeioMundoEditor.UsersControls"
+        xmlns:local="clr-namespace:Meio_Mundo_Editor"
         mc:Ignorable="d"
-       Title="MainWindow" Height="720" Width="1280" WindowStartupLocation="CenterScreen" WindowStyle="None" ResizeMode="NoResize" Icon="Icons/favicon.ico" BorderBrush="{DynamicResource Menu.TopNavBar.Background}" BorderThickness="1">
-
-
-    <Grid Background="{DynamicResource TabControl.NonItem.Background}" >
-        <Grid.RowDefinitions>
-            <RowDefinition Height="32"/>
-            <RowDefinition/>
-            <RowDefinition Height="32"/>
-        </Grid.RowDefinitions>
-        <Grid Background="{DynamicResource Menu.Background}" MouseLeftButtonDown="DockPanel_MouseLeftButtonDown">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition MinWidth="32" Width="Auto"/>
-                <ColumnDefinition Width="Auto"/>
-                <ColumnDefinition Width="*"/>
-                <ColumnDefinition Width="Auto"/>
-            </Grid.ColumnDefinitions>
-            <Image Width="24" Height="24" Margin="8,0" Source="{DynamicResource Logo}"/>
-            <Menu Grid.Column="1">
-                <MenuItem Header="Ficheiro">
-                    <MenuItem Header="Novo" InputGestureText="Ctrl + N"/>
-                    <MenuItem Header="Preferencias">
-                        <MenuItem Header="Tema" Click="UI_MenuItem_Preferencias_Tema_Click"/>
-                        <MenuItem Header="Defenições"/>
-                    </MenuItem>
-                    <MenuItem Header="Sair" Click="Exit_Application" InputGestureText="Alt + F4"/>
-                </MenuItem>
-            </Menu>
-            <DockPanel Grid.Column="2" MouseDown="Window_DragMove" MouseLeftButtonDown="DockPanel_MouseLeftButtonDown">
-                <TextBlock Text="Winter Studio Editor" Foreground="{DynamicResource Menu.WindowName.Foreground}" VerticalAlignment="Center" HorizontalAlignment="Center"/>
-            </DockPanel>
-            <Rectangle Grid.Column="2" MouseDown="Window_DragMove" Fill="#00FF4C4C"/>
-            <StackPanel Grid.Column="3" Orientation="Horizontal">
-                <Button Width="46" Height="32" Style="{DynamicResource ButtonMinimaze}" />
-                <Button x:Name="UI_Button_MaxMin" Width="46" Height="32" Style="{DynamicResource ButtonMinimazeMaximaze}" Click="UI_Button_MaxMin_Click"/>
-                <Button Width="46" Height="32" Style="{DynamicResource ButtonClose}" Click="Exit_Application"/>
-            </StackPanel>
-        </Grid>
-
-        <TabControl x:Name="UI_TabControl" Grid.Row="1">
-            <TabItem Header="Welcome" >
-                <WebBrowser x:Name="UI_WebBrower_Welcome" />
-            </TabItem>
-            <TabItem Header="Settings"/>
-        </TabControl>
-        <UsersControls:StatusBar x:Name="UI_StatusBar" Grid.Row="2" />
+        Title="MainWindow" Height="450" Width="800">
+    <Grid>
+        
     </Grid>
 </Window>

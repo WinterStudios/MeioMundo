@@ -13,7 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace MeioMundoEditor
+namespace Meio_Mundo_Editor
 {
     /// <summary>
     /// Interaction logic for MainWindow.xaml
