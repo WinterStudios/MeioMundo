@@ -27,7 +27,6 @@ namespace MeioMundoEditor.UsersControls.Settings
         public static readonly DependencyProperty ObjectColor = DependencyProperty.Register("Color", typeof(SolidColorBrush), typeof(ColorList));
         public SolidColorBrush Color { get { return (SolidColorBrush)GetValue(ObjectColor); } set { SetValue(ObjectColor, value); } }
 
-
         public ColorList()
         {
             InitializeComponent();
