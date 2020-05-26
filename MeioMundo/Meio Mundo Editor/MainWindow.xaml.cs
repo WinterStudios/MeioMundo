@@ -19,7 +19,7 @@ using MeioMundoEditor.UsersControls;
 using MeioMundoEditor.UsersControls.Settings;
 
 
-namespace Meio_Mundo_Editor
+namespace MeioMundoEditor
 {
     /// <summary>
     /// Interaction logic for MainWindow.xaml
