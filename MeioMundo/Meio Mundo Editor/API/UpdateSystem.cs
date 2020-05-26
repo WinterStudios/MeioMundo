@@ -1,10 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net;
-using System.Text;
+﻿using Octokit;
+using System;
 using System.Threading.Tasks;
-using Octokit;
 
 namespace MeioMundoEditor.API
 {
@@ -12,7 +8,7 @@ namespace MeioMundoEditor.API
     {
         public static async Task GetLastUpdateAsync()
         {
-            var client = new GitHubClient(new ProductHeaderValue("my-cool-app")); 
+            var client = new GitHubClient(new ProductHeaderValue("my-cool-app"));
             var basicAuth = new Credentials("WinterStudios", "ikPnxCVEMuphF35"); // NOTE: not real credentials
             client.Credentials = basicAuth;
             var releases = await client.Repository.Release.GetAll("WinterStudios", "HomeMedia");

@@ -1,7 +1,7 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Windows;
 using System.Windows.Controls;
-using System;
 
 namespace Tools.Barcode
 {
@@ -49,9 +49,9 @@ namespace Tools.Barcode
             List<Print.PrintManager.CODE> _codes = new List<Print.PrintManager.CODE>();
             foreach (var item in Codes)
             {
-                if(item.Qtd == 1)
+                if (item.Qtd == 1)
                     _codes.Add(new Print.PrintManager.CODE { m_Descrição = item.DESCRIÇÂO, m_Referencia = item.CODIGO });
-                if(item.Qtd > 1)
+                if (item.Qtd > 1)
                 {
                     List<Print.PrintManager.CODE> _cc = new List<Print.PrintManager.CODE>();
                     for (int i = 0; i < item.Qtd; i++)
@@ -118,7 +118,7 @@ namespace Tools.Barcode
                 default:
                     break;
             }
-            
+
         }
 
 

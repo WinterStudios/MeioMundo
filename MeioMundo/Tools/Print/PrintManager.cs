@@ -36,7 +36,7 @@ namespace Tools.Print
                     printPrvDlg.Document = pd;
                     printPrvDlg.ShowDialog();
                     printDialog.Document = pd;
-                    if(printDialog.ShowDialog() == DialogResult.OK)
+                    if (printDialog.ShowDialog() == DialogResult.OK)
                         pd.Print();
                 }
                 catch (Exception ex)
@@ -69,7 +69,7 @@ namespace Tools.Print
                     ev.Graphics.DrawLine(Pens.Black, col[2], t_celula_altura * (z), col[2], t_celula_altura * (z + 1));
                     ev.Graphics.DrawLine(Pens.Black, col[3], t_celula_altura * (z), col[3], t_celula_altura * (z + 1));
                     ev.Graphics.DrawLine(Pens.Black, 0, t_celula_altura * (z + 1), ev.MarginBounds.Width, t_celula_altura * (z + 1));
-                    
+
                 }
 
                 int centerPointX = (ev.MarginBounds.Width / 3);
@@ -120,7 +120,7 @@ namespace Tools.Print
 
             }
 
-            
+
         }
     }
 }

@@ -22,7 +22,7 @@ namespace Tools.Site
                 if (box.Text.Length > 0)
                     box.Background = new SolidColorBrush(Color.FromArgb(1, 0, 0, 0));
                 else
-                    box.Background = new SolidColorBrush(Color.FromArgb(1,2,2,2));
+                    box.Background = new SolidColorBrush(Color.FromArgb(1, 2, 2, 2));
             }
         }
 

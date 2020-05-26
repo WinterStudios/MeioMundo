@@ -21,7 +21,7 @@ namespace MeioMundoWPF
             string build = DateTime.Now.Day.ToString();
             string revision = DateTime.Now.Hour.ToString("00") + DateTime.Now.Minute.ToString("00");
 
-            if(!debug)
+            if (!debug)
                 Properties.Settings.Default.Version = string.Format("{0}.{1}.{2}.{3}", major, minor, build, revision);
             else
                 Properties.Settings.Default.Version = string.Format("{0}.{1}.{2}.{3}", major, minor, build, revision);
