@@ -66,6 +66,9 @@
     <Compile Include="CustomsControls\ProgressBar.xaml.cs" />
     <Compile Include="Styles\TabControl.xaml.cs" />
     <Compile Include="Theme\ThemeManager.cs" />
+    <Compile Include="UsersControls\PlugingManager.xaml.cs">
+      <DependentUpon>PlugingManager.xaml</DependentUpon>
+    </Compile>
     <Compile Include="UsersControls\Settings\ColorList.xaml.cs" />
     <Compile Include="UsersControls\Settings\ColorTheme.xaml.cs" />
     <Compile Include="UsersControls\StatusBar.xaml.cs" />
@@ -128,6 +131,10 @@
     <Page Include="Theme\Light.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="UsersControls\PlugingManager.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="UsersControls\Settings\ColorList.xaml">
       <Generator>MSBuild:Compile</Generator>
