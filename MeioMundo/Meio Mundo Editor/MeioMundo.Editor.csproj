@@ -43,6 +43,7 @@
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Core" />
@@ -179,6 +180,12 @@
   <ItemGroup>
     <Resource Include="Icons\favicon.ico" />
     <Content Include="Icons\interface.svg" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Meio Mundo Editor Ferramentas\MeioMundo.Editor.Ferramentas.csproj">
+      <Project>{3db3e263-5bcf-4020-bf4b-822bf8774629}</Project>
+      <Name>MeioMundo.Editor.Ferramentas</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

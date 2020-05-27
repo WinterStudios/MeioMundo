@@ -3,17 +3,13 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.29409.12
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MeioMundo", "MeioMundo\MeioMundo.csproj", "{3FF60CDA-C144-4303-A4F3-9B19D1BE5A8B}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MeioMundoWPF", "MeioMundoWPF\MeioMundoWPF.csproj", "{2234D1ED-85E5-4A71-A711-891B68C120BA}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tools", "Tools\Tools.csproj", "{3966D7FC-C09E-477F-9BA2-26C69B3B04FC}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TesteConsole", "TesteConsole\TesteConsole.csproj", "{44F2B3E9-AA0B-4B51-9953-D1307482260B}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MeioMundo.Editor", "Meio Mundo Editor\MeioMundo.Editor.csproj", "{B8ADB169-34B4-43C6-B7D3-904FE8210ADA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Teste WPF", "Teste WPF\Teste WPF.csproj", "{7B488FCE-8EEF-4B6E-A9DF-3BCACB6DF96F}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Meio Mundo Editor", "Meio Mundo Editor\Meio Mundo Editor.csproj", "{B8ADB169-34B4-43C6-B7D3-904FE8210ADA}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MeioMundo.Editor.Ferramentas", "Meio Mundo Editor Ferramentas\MeioMundo.Editor.Ferramentas.csproj", "{3DB3E263-5BCF-4020-BF4B-822BF8774629}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,10 +17,6 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{3FF60CDA-C144-4303-A4F3-9B19D1BE5A8B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{3FF60CDA-C144-4303-A4F3-9B19D1BE5A8B}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{3FF60CDA-C144-4303-A4F3-9B19D1BE5A8B}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{3FF60CDA-C144-4303-A4F3-9B19D1BE5A8B}.Release|Any CPU.Build.0 = Release|Any CPU
 		{2234D1ED-85E5-4A71-A711-891B68C120BA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{2234D1ED-85E5-4A71-A711-891B68C120BA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2234D1ED-85E5-4A71-A711-891B68C120BA}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -33,18 +25,14 @@ Global
 		{3966D7FC-C09E-477F-9BA2-26C69B3B04FC}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3966D7FC-C09E-477F-9BA2-26C69B3B04FC}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3966D7FC-C09E-477F-9BA2-26C69B3B04FC}.Release|Any CPU.Build.0 = Release|Any CPU
-		{44F2B3E9-AA0B-4B51-9953-D1307482260B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{44F2B3E9-AA0B-4B51-9953-D1307482260B}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{44F2B3E9-AA0B-4B51-9953-D1307482260B}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{44F2B3E9-AA0B-4B51-9953-D1307482260B}.Release|Any CPU.Build.0 = Release|Any CPU
-		{7B488FCE-8EEF-4B6E-A9DF-3BCACB6DF96F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{7B488FCE-8EEF-4B6E-A9DF-3BCACB6DF96F}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{7B488FCE-8EEF-4B6E-A9DF-3BCACB6DF96F}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{7B488FCE-8EEF-4B6E-A9DF-3BCACB6DF96F}.Release|Any CPU.Build.0 = Release|Any CPU
 		{B8ADB169-34B4-43C6-B7D3-904FE8210ADA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{B8ADB169-34B4-43C6-B7D3-904FE8210ADA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B8ADB169-34B4-43C6-B7D3-904FE8210ADA}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B8ADB169-34B4-43C6-B7D3-904FE8210ADA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3DB3E263-5BCF-4020-BF4B-822BF8774629}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3DB3E263-5BCF-4020-BF4B-822BF8774629}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3DB3E263-5BCF-4020-BF4B-822BF8774629}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3DB3E263-5BCF-4020-BF4B-822BF8774629}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

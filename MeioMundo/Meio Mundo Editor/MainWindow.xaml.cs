@@ -80,6 +80,9 @@ namespace MeioMundoEditor
 
             StatusBar.TestStatic(API.System.Version.CurrentBuild);
 
+
+            MeioMundo.Editor.Ferramentas.Barcode.Codes.Code39 code = new MeioMundo.Editor.Ferramentas.Barcode.Codes.Code39();
+            image.Source = code.CreateImage(new MeioMundo.Editor.Ferramentas.Barcode.BarcodeInternal.CODE { Descrição = "Hello" }, new System.Drawing.Size((int)image.Width, (int)image.Height));
         }
 
         private void UI_MenuItem_Tema_Click(object sender, RoutedEventArgs e)

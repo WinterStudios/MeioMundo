@@ -51,5 +51,6 @@
             <TabItem Header="Settings"/>
         </TabControl>
         <UsersControls:StatusBar x:Name="UI_StatusBar" Grid.Row="2" />
+        <Image x:Name="image" HorizontalAlignment="Left" Height="100" Margin="139,314,0,0" Grid.Row="1" VerticalAlignment="Top" Width="246"/>
     </Grid>
 </Window>
