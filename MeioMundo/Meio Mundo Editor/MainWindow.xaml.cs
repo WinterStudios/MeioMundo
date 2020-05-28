@@ -27,7 +27,7 @@ namespace MeioMundoEditor
     public partial class MainWindow : Window
     {
         public static TextBlock BottomBar_TextBloxk_Information { get; private set; }
-
+        
 
         private bool m_windowStateMax = false;
 
@@ -64,7 +64,9 @@ namespace MeioMundoEditor
         public MainWindow()
         {
             InitializeComponent();
+            PlugingManager pluging = new PlugingManager();
 
+            pluging.LoadPlugins();
             API.System.Initialize();
 
 
@@ -80,9 +82,6 @@ namespace MeioMundoEditor
 
             StatusBar.TestStatic(API.System.Version.CurrentBuild);
 
-
-            MeioMundo.Editor.Ferramentas.Barcode.Codes.Code39 code = new MeioMundo.Editor.Ferramentas.Barcode.Codes.Code39();
-            image.Source = code.CreateImage(new MeioMundo.Editor.Ferramentas.Barcode.BarcodeInternal.CODE { Descrição = "Hello" }, new System.Drawing.Size((int)image.Width, (int)image.Height));
         }
 
         private void UI_MenuItem_Tema_Click(object sender, RoutedEventArgs e)

@@ -16,10 +16,28 @@
         </Border>
         <DataGrid Grid.Row="1">
             <DataGrid.Columns>
+                <DataGridCheckBoxColumn Header="Enable" Width="Auto"/>
                 <DataGridTextColumn Header="Nome" Width="200"/>
                 <DataGridTextColumn Header="Descrição" Width="*"/>
-                <DataGridTextColumn Header="Versao" Width="76"/>
-                <DataGridCheckBoxColumn Header="Ativo" Width="100"/>
+                <DataGridTextColumn Header="Versão" Width="100"/>
+                <DataGridTemplateColumn Width="200">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="32"/>
+                                </Grid.ColumnDefinitions>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="*"/>
+                                    <RowDefinition Height="*"/>
+                                </Grid.RowDefinitions>
+                                <TextBlock Grid.Row="0" Grid.Column="0" Text="New Version:v0.3.32f"/>
+                                <ProgressBar Grid.Row="1" Grid.Column="0" Value="96"/>
+                            </Grid>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
             </DataGrid.Columns>
         </DataGrid>
     </Grid>

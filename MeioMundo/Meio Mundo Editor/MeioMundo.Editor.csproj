@@ -182,10 +182,13 @@
     <Content Include="Icons\interface.svg" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Meio Mundo Editor Ferramentas\MeioMundo.Editor.Ferramentas.csproj">
-      <Project>{3db3e263-5bcf-4020-bf4b-822bf8774629}</Project>
-      <Name>MeioMundo.Editor.Ferramentas</Name>
+    <ProjectReference Include="..\MeioMundo.Editor.API\MeioMundo.Editor.API.csproj">
+      <Project>{0585c647-5017-4546-aa03-3441e1cea7ff}</Project>
+      <Name>MeioMundo.Editor.API</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="API\Plugin\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

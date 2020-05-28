@@ -9,7 +9,9 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tools", "Tools\Tools.csproj
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MeioMundo.Editor", "Meio Mundo Editor\MeioMundo.Editor.csproj", "{B8ADB169-34B4-43C6-B7D3-904FE8210ADA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MeioMundo.Editor.Ferramentas", "Meio Mundo Editor Ferramentas\MeioMundo.Editor.Ferramentas.csproj", "{3DB3E263-5BCF-4020-BF4B-822BF8774629}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MeioMundo.Editor.Ferramentas", "..\..\MeioMundo.Editor.Ferramentas\MeioMundo.Editor.Ferramentas\MeioMundo.Editor.Ferramentas.csproj", "{757803AA-7836-4E1E-B4D3-CBC04337BA43}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MeioMundo.Editor.API", "MeioMundo.Editor.API\MeioMundo.Editor.API.csproj", "{0585C647-5017-4546-AA03-3441E1CEA7FF}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -29,10 +31,14 @@ Global
 		{B8ADB169-34B4-43C6-B7D3-904FE8210ADA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B8ADB169-34B4-43C6-B7D3-904FE8210ADA}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B8ADB169-34B4-43C6-B7D3-904FE8210ADA}.Release|Any CPU.Build.0 = Release|Any CPU
-		{3DB3E263-5BCF-4020-BF4B-822BF8774629}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{3DB3E263-5BCF-4020-BF4B-822BF8774629}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{3DB3E263-5BCF-4020-BF4B-822BF8774629}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{3DB3E263-5BCF-4020-BF4B-822BF8774629}.Release|Any CPU.Build.0 = Release|Any CPU
+		{757803AA-7836-4E1E-B4D3-CBC04337BA43}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{757803AA-7836-4E1E-B4D3-CBC04337BA43}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{757803AA-7836-4E1E-B4D3-CBC04337BA43}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{757803AA-7836-4E1E-B4D3-CBC04337BA43}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0585C647-5017-4546-AA03-3441E1CEA7FF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0585C647-5017-4546-AA03-3441E1CEA7FF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0585C647-5017-4546-AA03-3441E1CEA7FF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0585C647-5017-4546-AA03-3441E1CEA7FF}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
