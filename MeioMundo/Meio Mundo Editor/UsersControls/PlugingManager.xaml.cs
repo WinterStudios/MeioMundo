@@ -24,6 +24,8 @@ namespace MeioMundoEditor.UsersControls
     /// </summary>
     public partial class PlugingManager : UserControl
     {
+        public List<PluginInfo> Plugins { get; set; }
+        private List<PluginInfo> _plugins = new List<PluginInfo>();
         public PlugingManager()
         {
             InitializeComponent();
@@ -31,18 +33,22 @@ namespace MeioMundoEditor.UsersControls
         }
         public void LoadPlugins()
         {
-            string currentPath = Directory.GetCurrentDirectory();
+            string currentPath = Directory.GetCurrentDirectory()+"/Plugins";
             string[] dlls = Directory.GetFiles(currentPath).Where(c => c.Contains(".dll")).ToArray();
-
+            var type = typeof(Plugin);
             for (int i = 0; i < dlls.Length; i++)
             {
+                
                 Assembly asm = Assembly.LoadFile(dlls[i]);
-                var types = asm.GetTypes();
+                var types = asm.GetTypes().Where(x => type.IsAssignableFrom(x));                               // -----> Pode ser Interface mas tudos os metedos e parametros tem que estar presentes na class que implementa a interface
+                //var types = asm.GetTypes().Where(x => x.IsSubclassOf(typeof(Plugin)));
                 foreach (var item in types)
                 {
-                    var cs = item.GetInterfaces();
-                    Console.WriteLine("ss");
+                    PropertyInfo[] propertyInfo = item.GetProperties();
+                    Console.WriteLine(propertyInfo.Length);
+                    //Plugins.Add(new PluginInfo { Nome = propertyInfo.Where(z=> z.Name == "Nome")})
                 }
+
             }
         }
     }
