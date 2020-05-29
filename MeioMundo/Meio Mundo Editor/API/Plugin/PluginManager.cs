@@ -29,7 +29,11 @@ namespace MeioMundoEditor.API.Plugin
 
                 foreach (var plug in types)
                 {
-                    string namePlugin = (string)plug.GetProperty("Nome").GetValue(this, null);
+                    var t = Activator.CreateInstance(plug);
+                    PropertyInfo pluginInfoNome = t.GetType().GetProperty("Nome");
+                    PluginInfo pluginInfo = new PluginInfo();
+                    pluginInfo.Nome = (string)pluginInfoNome.GetValue(t, null);
+                    pluginInfo.PluginType = t.GetType();
                 }
                 
 
