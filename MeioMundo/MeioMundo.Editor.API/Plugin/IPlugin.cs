@@ -12,13 +12,9 @@ namespace MeioMundoEditor.API.Plugin
         Page,
         Window
     }
-    public interface Plugin
+    public interface IPlugin
     {
-        string PluginName { get; }
-        string PluginDescription { get; }
-        PluginType PluginType { get; }
-        string PluginMenuItemLocation { get; }
-        PluginInfo PluginInfo { get; }
+        string Nome { get; set; }
     }
     public class PluginInfo
     {

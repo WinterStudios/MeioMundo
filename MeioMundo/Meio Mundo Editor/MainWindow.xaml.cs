@@ -64,9 +64,7 @@ namespace MeioMundoEditor
         public MainWindow()
         {
             InitializeComponent();
-            PlugingManager pluging = new PlugingManager();
-
-            pluging.LoadPlugins();
+            API.Plugin.PluginManager pluginManager = new API.Plugin.PluginManager();
             API.System.Initialize();
 
 

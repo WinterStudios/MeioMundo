@@ -62,6 +62,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="API\Plugin\PluginManager.cs" />
     <Compile Include="API\System.cs" />
     <Compile Include="API\UpdateSystem.cs" />
     <Compile Include="CustomsControls\ProgressBar.xaml.cs" />
@@ -187,8 +188,6 @@
       <Name>MeioMundo.Editor.API</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="API\Plugin\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

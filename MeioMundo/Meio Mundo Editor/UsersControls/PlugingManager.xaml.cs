@@ -35,7 +35,7 @@ namespace MeioMundoEditor.UsersControls
         {
             string currentPath = Directory.GetCurrentDirectory()+"/Plugins";
             string[] dlls = Directory.GetFiles(currentPath).Where(c => c.Contains(".dll")).ToArray();
-            var type = typeof(Plugin);
+            var type = typeof(IPlugin);
             for (int i = 0; i < dlls.Length; i++)
             {
                 
