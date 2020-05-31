@@ -9,7 +9,7 @@ namespace MeioMundoEditor.API.Plugin
     public enum PluginType
     {
         Control,
-        Page,
+        TabPage,
         Window
     }
     /// <summary>
@@ -29,9 +29,19 @@ namespace MeioMundoEditor.API.Plugin
         /// Versão actual do Plugin
         /// </summary>
         string Versão { get; }
-        public
+        /// <summary>
+        /// Aurgumentos para o tipo de implementação do plugin
+        /// </summary>
+        string[] Args { get; }
+        /// <summary>
+        /// Tipo de implementação do plugin
+        /// </summary>
+        PluginType Type { get;  }
     }
-    public class Plugin
+    public class PluginCommand
+    {
+       
+    }
     public class PluginInfo
     {
         /// <summary>
