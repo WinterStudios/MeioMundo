@@ -38,12 +38,16 @@
     <ApplicationIcon>Icons\favicon.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.12.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
     <Reference Include="Octokit, Version=0.47.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Octokit.0.47.0\lib\net46\Octokit.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Numerics" />
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Core" />
@@ -63,13 +67,19 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="API\Plugin\PluginManager.cs" />
+    <Compile Include="API\Storage.cs" />
     <Compile Include="API\System.cs" />
     <Compile Include="API\UpdateSystem.cs" />
     <Compile Include="CustomsControls\ProgressBar.xaml.cs" />
+    <Compile Include="Properties\Plugins.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <DependentUpon>Plugins.settings</DependentUpon>
+    </Compile>
     <Compile Include="Styles\TabControl.xaml.cs" />
     <Compile Include="Theme\ThemeManager.cs" />
-    <Compile Include="UsersControls\PlugingManager.xaml.cs">
-      <DependentUpon>PlugingManager.xaml</DependentUpon>
+    <Compile Include="UsersControls\PluginUControl.xaml.cs">
+      <DependentUpon>PluginUControl.xaml</DependentUpon>
     </Compile>
     <Compile Include="UsersControls\Settings\ColorList.xaml.cs" />
     <Compile Include="UsersControls\Settings\ColorTheme.xaml.cs" />
@@ -134,7 +144,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="UsersControls\PlugingManager.xaml">
+    <Page Include="UsersControls\PluginUControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -170,6 +180,10 @@
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <None Include="packages.config" />
+    <None Include="Properties\Plugins.settings">
+      <Generator>PublicSettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Plugins.Designer.cs</LastGenOutput>
+    </None>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

@@ -165,5 +165,13 @@ namespace MeioMundoEditor
         {
             BottomBar_TextBloxk_Information.Text = text;
         }
+
+        private void PluginsManager_Click(object sender, RoutedEventArgs e)
+        {
+            PluginUControl pluginUControl = new PluginUControl();
+            System.Windows.Window window = new System.Windows.Window();
+            window.Content = pluginUControl;
+            window.ShowDialog();
+        }
     }
 }

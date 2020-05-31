@@ -32,6 +32,9 @@
                     </MenuItem>
                     <MenuItem Header="Sair" Click="Exit_Application" InputGestureText="Alt + F4"/>
                 </MenuItem>
+                <MenuItem Header="Ferramentas">
+                    <MenuItem Header="Plugins" x:Name="PluginsManager" Click="PluginsManager_Click"/>
+                </MenuItem>
             </Menu>
             <DockPanel Grid.Column="2" MouseDown="Window_DragMove" MouseLeftButtonDown="DockPanel_MouseLeftButtonDown">
                 <TextBlock Text="Winter Studio Editor" Foreground="{DynamicResource Menu.WindowName.Foreground}" VerticalAlignment="Center" HorizontalAlignment="Center"/>
