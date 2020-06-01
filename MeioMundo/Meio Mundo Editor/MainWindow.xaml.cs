@@ -171,7 +171,9 @@ namespace MeioMundoEditor
             PluginUControl pluginUControl = new PluginUControl();
             System.Windows.Window window = new System.Windows.Window();
             window.Content = pluginUControl;
-            window.ShowDialog();
+            window.Background = new SolidColorBrush(Color.FromRgb(45, 45, 48));
+            window.Show();
+                Console.WriteLine("sd");
         }
     }
 }

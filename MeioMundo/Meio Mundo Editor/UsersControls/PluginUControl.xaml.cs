@@ -27,11 +27,17 @@ namespace MeioMundoEditor.UsersControls
             InitializeComponent();
             infos = PluginManager.Plugins;
             dataPlguin.ItemsSource = infos;
+            Console.WriteLine(dataPlguin.RowValidationRules.Count);
         }
 
         private void dataPlguin_CellEditEnding(object sender, DataGridCellEditEndingEventArgs e)
         {
-            PluginManager.SaveSetting();
+            //PluginManager.SaveSetting();
+        }
+
+        private void dataPlguin_Error(object sender, ValidationErrorEventArgs e)
+        {
+
         }
     }
 }

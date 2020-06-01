@@ -39,25 +39,33 @@ namespace MeioMundoEditor.API.Plugin
             {
                 Assembly asm = Assembly.LoadFile(dlls[i]);
                 var types = asm.GetTypes().Where(x => x.GetInterfaces().Contains(typeof(IPlugin)));                     // -----> Pode ser Interface mas tudos os metedos e parametros tem que estar presentes na class que implementa a interface
-                
+
+                PluginInfo info = new PluginInfo();
+                List<PluginClass> classes = new List<PluginClass>();
+
+                string t_name = asm.FullName;
+                info.AssemblyName = t_name.Remove(t_name.IndexOf(','));
+
+                string t_version = t_name.Substring(t_name.IndexOf(',') + 10, 7);
+                info.Version = t_version;
+
                 foreach (var plug in types)
                 {
                     var t = Activator.CreateInstance(plug);
 
-                    PropertyInfo pluginInfoNome = t.GetType().GetProperty("Nome");
-                    PropertyInfo pluginInfoDescrição = t.GetType().GetProperty("Descrição");
-                    PropertyInfo pluginInfoVersion = t.GetType().GetProperty("Versão");
+                    PluginClass pluginClass = new PluginClass();
 
-                    PluginInfo pluginInfo = new PluginInfo();
+                    pluginClass.Nome = (string)t.GetType().GetProperty("Nome").GetValue(t);
+                    pluginClass.Descrição = (string)t.GetType().GetProperty("Descrição").GetValue(t);
+                    pluginClass.Type = (PluginType)t.GetType().GetProperty("Type").GetValue(t);
+                    pluginClass.TypeArgs = (string[])t.GetType().GetProperty("Args").GetValue(t);
+                    pluginClass.Versao = (string)t.GetType().GetProperty("Versão").GetValue(t);
+                    pluginClass.Class = plug;
 
-                    pluginInfo.Nome = (string)pluginInfoNome.GetValue(t, null);
-                    pluginInfo.Descrição = (string)pluginInfoDescrição.GetValue(t, null);
-                    pluginInfo.Versão = (string)pluginInfoVersion.GetValue(t, null);
-                    pluginInfo.PluginType = t.GetType();
-                    pluginInfo.AssemblyName = plug.Assembly.FullName;
-
-                    Plugins.Add(pluginInfo);
+                    classes.Add(pluginClass);
                 }
+                info.PluginClasses = classes.ToArray();
+                Plugins.Add(info);
             }
             LoadSettings();
         }
@@ -77,8 +85,8 @@ namespace MeioMundoEditor.API.Plugin
                 for (int z = 0; z < Plugins.Count; z++)
                 {
                     var plug = json.PluginMangers[i];
-                    if(plug.GUID == Plugins[i].PluginType.GUID)
-                        Plugins[i].Enable = plug.Enable;
+                    //if(plug.GUID == Plugins[i].PluginType.GUID)
+                    //    Plugins[i].Enable = plug.Enable;
                 }
             }
 
@@ -92,7 +100,7 @@ namespace MeioMundoEditor.API.Plugin
             List<PluginMangerInfomationJson> t_plugins = new List<PluginMangerInfomationJson>();
             for (int i = 0; i < Plugins.Count; i++)
             {
-                t_plugins.Add(new PluginMangerInfomationJson { Name = Plugins[i].Nome, Assembly = Plugins[i].AssemblyName, Enable = Plugins[i].Enable, Version = Plugins[i].Versão, GUID = Plugins[i].PluginType.GUID });
+                //t_plugins.Add(new PluginMangerInfomationJson { Name = Plugins[i].Nome, Assembly = Plugins[i].AssemblyName, Enable = Plugins[i].Enable, Version = Plugins[i].Versão, GUID = Plugins[i].PluginType.GUID });
             }
             t_json.PluginMangers = t_plugins.ToArray();
             Storage.Json.SaveJsonFile(PluginManagerFile, t_json);

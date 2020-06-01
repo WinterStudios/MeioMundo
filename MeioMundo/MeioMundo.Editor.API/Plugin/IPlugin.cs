@@ -36,7 +36,7 @@ namespace MeioMundoEditor.API.Plugin
         /// <summary>
         /// Tipo de implementação do plugin
         /// </summary>
-        PluginType Type { get;  }
+        PluginType Type { get; }
     }
     public class PluginCommand
     {
@@ -47,26 +47,21 @@ namespace MeioMundoEditor.API.Plugin
         /// <summary>
         /// Nome do Plugin
         /// </summary>
-        public string Nome { get; set; }
-        /// <summary>
-        /// Descrição do Plugin
-        /// </summary>
-        public string Descrição { get; set; }
-        /// <summary>
-        /// Versão do Plugin
-        /// </summary>
-        public string Versão { get; set; }
-        /// <summary>
-        /// Guarda o tipo de class do plugin para iniciar
-        /// </summary>
-        public Type PluginType { get; set; }
-        /// <summary>
-        /// Esta ativo ou não o plugin
-        /// </summary>
-        public bool Enable { get; set; }
-        /// <summary>
-        /// Guarda o nome da Assembly
-        /// </summary>
         public string AssemblyName { get; set; }
+        
+        public PluginClass[] PluginClasses { get; set; }
+        
+        public string Version { get; set; }
+        
+        public bool Enable { get; set; }
+    }
+    public class PluginClass
+    {
+        public string Nome { get; set; }
+        public string Descrição { get; set; }
+        public string Versao { get; set; }
+        public Type Class { get; set; }
+        public PluginType Type { get; set; }
+        public string[] TypeArgs { get; set; }
     }
 }

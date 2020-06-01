@@ -55,4 +55,5 @@
     <SolidColorBrush x:Key="WorkArea.Title" Color="#FF99DBE6"/>
     <SolidColorBrush x:Key="WorkArea.Foreground" Color="#FFFAFAFA"/>
     <SolidColorBrush x:Key="WorkArea.Foreground.Discrite" Color="#FFB0B0B0"/>
+    <SolidColorBrush x:Key="WorkArea.Background" Color=""/>
 </ResourceDictionary>

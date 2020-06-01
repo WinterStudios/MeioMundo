@@ -7,13 +7,38 @@
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
     <Grid>
-        <DataGrid x:Name="dataPlguin" AutoGenerateColumns="False" CanUserAddRows="False" CellEditEnding="dataPlguin_CellEditEnding">
+        <DataGrid x:Name="dataPlguin" AutoGenerateColumns="False" HeadersVisibility="Column" CanUserAddRows="False" CellEditEnding="dataPlguin_CellEditEnding" RowDetailsVisibilityMode="Visible" CanUserReorderColumns="False" Foreground="{DynamicResource WorkArea.Foreground}" CanUserResizeColumns="False" CanUserResizeRows="False" CanUserSortColumns="False" HorizontalScrollBarVisibility="Disabled" SelectionMode="Single" BorderBrush="{x:Null}" GridLinesVisibility="None" SelectionUnit="Cell" RowHeight="48">
             <DataGrid.Columns>
-                <DataGridCheckBoxColumn Header="Activido" Binding="{Binding Enable}" Width="75"/>
-                <DataGridTextColumn Header="Nome" Binding="{Binding Nome}" Width="200"/>
-                <DataGridTextColumn Header="Descrição" Binding="{Binding Descrição}" Width="*"/>
-                <DataGridTextColumn Header="Versão" Binding="{Binding Versão}" Width="100"/>
+                <DataGridCheckBoxColumn Binding="{Binding Enable}" Header="Activido" Width="100"/>
+                <DataGridTextColumn Binding="{Binding AssemblyName}" Header="Nome" Width="Auto" IsReadOnly="True" FontSize="18"/>
+                <DataGridTextColumn Header="Descrição" Width="*" IsReadOnly="True"/>
+                <DataGridTextColumn Binding="{Binding Version}" Header="Versão"  Width="125" IsReadOnly="True" FontSize="18"/>
             </DataGrid.Columns>
+            <DataGrid.RowDetailsTemplate>
+                <DataTemplate>
+                    <Grid Width="{Binding RelativeSource={RelativeSource AncestorType={x:Type ItemsPresenter}}, Path=ActualWidth}">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="100" />
+                            <ColumnDefinition Width="250" />
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="125" />
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                        </Grid.RowDefinitions>
+                        <Border BorderBrush="{DynamicResource WorkArea.Border}" BorderThickness="0,1,0,0" Grid.Column="1" Grid.ColumnSpan="3">
+                            <DataGrid Grid.Row="0" BorderThickness="0"  ItemsSource="{Binding PluginClasses}" HeadersVisibility="None" IsReadOnly="True"  AutoGenerateColumns="False" Foreground="{DynamicResource WorkArea.Foreground.Discrite}" GridLinesVisibility="None">
+                                <DataGrid.Columns>
+                                    <DataGridTextColumn FontStyle="Italic" FontWeight="Thin" Binding="{Binding Nome}" Width="250"/>
+                                    <DataGridTextColumn FontStyle="Italic" FontWeight="Thin" Binding="{Binding Descrição}" Width="*"/>
+                                    <DataGridTextColumn FontStyle="Italic" FontWeight="Thin" Binding="{Binding Versao}" Width="125"/>
+                                </DataGrid.Columns>
+                            </DataGrid>
+                        </Border>
+                    </Grid>
+                </DataTemplate>
+            </DataGrid.RowDetailsTemplate>
         </DataGrid>
+        
     </Grid>
 </UserControl>
