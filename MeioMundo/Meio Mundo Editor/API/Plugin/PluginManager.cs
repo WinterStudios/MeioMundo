@@ -39,7 +39,7 @@ namespace MeioMundoEditor.API.Plugin
             {
                 Assembly asm = Assembly.LoadFile(dlls[i]);
                 var types = asm.GetTypes().Where(x => x.GetInterfaces().Contains(typeof(IPlugin)));                     // -----> Pode ser Interface mas tudos os metedos e parametros tem que estar presentes na class que implementa a interface
-
+                
                 foreach (var plug in types)
                 {
                     var t = Activator.CreateInstance(plug);
