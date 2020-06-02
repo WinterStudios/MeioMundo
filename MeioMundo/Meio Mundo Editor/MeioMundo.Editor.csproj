@@ -71,6 +71,9 @@
     <Compile Include="API\System.cs" />
     <Compile Include="API\UpdateSystem.cs" />
     <Compile Include="CustomsControls\ProgressBar.xaml.cs" />
+    <Compile Include="CustomsControls\ToggleSwicth.xaml.cs">
+      <DependentUpon>ToggleSwicth.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Properties\Plugins.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
@@ -87,6 +90,10 @@
     <Page Include="CustomsControls\ProgressBar.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="CustomsControls\ToggleSwicth.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Icons\interface.xaml">
       <Generator>MSBuild:Compile</Generator>

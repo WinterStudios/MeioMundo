@@ -50,10 +50,18 @@
     <SolidColorBrush x:Key="DataGrid.Row.Border" Color="Green"/>
     
     
+    <!-- Toggle Swicth-->
+    <SolidColorBrush x:Key="ToggleSwicth.Foreground" Color="#FFFAFAFA"/>
+    <SolidColorBrush x:Key="ToggleSwicth.Ball" Color="White"/>
+    <SolidColorBrush x:Key="ToggleSwicth.Border.Background.On" Color="#FF14B4CD"/>
+    <SolidColorBrush x:Key="ToggleSwicth.Border.Background.Off" Color="Transparent"/>
+    
+    
     <!-- Work Area  -->
     <SolidColorBrush x:Key="WorkArea.Border" Color="#FF009DB6"/>
     <SolidColorBrush x:Key="WorkArea.Title" Color="#FF99DBE6"/>
     <SolidColorBrush x:Key="WorkArea.Foreground" Color="#FFFAFAFA"/>
     <SolidColorBrush x:Key="WorkArea.Foreground.Discrite" Color="#FFB0B0B0"/>
-    <SolidColorBrush x:Key="WorkArea.Background" Color=""/>
+    <SolidColorBrush x:Key="WorkArea.Background" Color="#FF2D2D30"/>
+    
 </ResourceDictionary>

@@ -1,4 +1,4 @@
-﻿<UserControl x:Class="MeioMundoEditor.UsersControls.PluginUControl"
+﻿<UserControl xmlns:CustomsControls="clr-namespace:MeioMundoEditor.CustomsControls"  x:Class="MeioMundoEditor.UsersControls.PluginUControl"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
@@ -9,7 +9,13 @@
     <Grid>
         <DataGrid x:Name="dataPlguin" AutoGenerateColumns="False" HeadersVisibility="Column" CanUserAddRows="False" CellEditEnding="dataPlguin_CellEditEnding" RowDetailsVisibilityMode="Visible" CanUserReorderColumns="False" Foreground="{DynamicResource WorkArea.Foreground}" CanUserResizeColumns="False" CanUserResizeRows="False" CanUserSortColumns="False" HorizontalScrollBarVisibility="Disabled" SelectionMode="Single" BorderBrush="{x:Null}" GridLinesVisibility="None" SelectionUnit="Cell" RowHeight="48">
             <DataGrid.Columns>
-                <DataGridCheckBoxColumn Binding="{Binding Enable}" Header="Activido" Width="100"/>
+                <DataGridTemplateColumn Header="Activido" Width="100">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <CustomsControls:ToggleSwicth HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
                 <DataGridTextColumn Binding="{Binding AssemblyName}" Header="Nome" Width="Auto" IsReadOnly="True" FontSize="18"/>
                 <DataGridTextColumn Header="Descrição" Width="*" IsReadOnly="True"/>
                 <DataGridTextColumn Binding="{Binding Version}" Header="Versão"  Width="125" IsReadOnly="True" FontSize="18"/>
