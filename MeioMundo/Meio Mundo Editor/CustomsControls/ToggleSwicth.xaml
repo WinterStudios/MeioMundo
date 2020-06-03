@@ -6,25 +6,23 @@
              xmlns:local="clr-namespace:MeioMundoEditor.CustomsControls"
              mc:Ignorable="d" 
              d:DesignHeight="16" d:DesignWidth="72">
-    <UserControl.Resources>
-        <Storyboard x:Key="on">
-            <DoubleAnimationUsingKeyFrames>
-                <EasingDoubleKeyFrame>
-                    <EasingDoubleKeyFrame.EasingFunction>
-                        
-                    </EasingDoubleKeyFrame.EasingFunction>
-                </EasingDoubleKeyFrame>
-            </DoubleAnimationUsingKeyFrames>
-        </Storyboard>
-    </UserControl.Resources>
-    
+
     <Grid Background="Transparent" RenderOptions.EdgeMode="Unspecified" SnapsToDevicePixels="False">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="36"/>
             <ColumnDefinition Width="36"/>
         </Grid.ColumnDefinitions>
         <Border x:Name="border" BorderBrush="{DynamicResource ToggleSwicth.Border.Background.On}" CornerRadius="8" BorderThickness="1" Height="16">
-            <Ellipse x:Name="ball" Width="8" Height="8" Margin="4,0" HorizontalAlignment="Left" Fill="{DynamicResource ToggleSwicth.Ball}"/>
+            <Ellipse x:Name="ball" Width="8" Height="8" Margin="3,3,0,3" HorizontalAlignment="Left" Fill="{DynamicResource ToggleSwicth.Ball}" RenderTransformOrigin="0.5,0.5">
+                <Ellipse.RenderTransform>
+                    <TransformGroup>
+                        <ScaleTransform/>
+                        <SkewTransform/>
+                        <RotateTransform/>
+                        <TranslateTransform x:Name="ball_transform"/>
+                    </TransformGroup>
+                </Ellipse.RenderTransform>
+            </Ellipse>
         </Border>
         <TextBlock x:Name="text" Grid.Column="1" Text="Off" Margin="8,0" Foreground="{DynamicResource ToggleSwicth.Foreground}"/>
     </Grid>

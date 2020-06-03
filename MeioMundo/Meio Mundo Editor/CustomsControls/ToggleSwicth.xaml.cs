@@ -9,6 +9,7 @@ using System.Windows.Data;
 using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
+using System.Windows.Media.Animation;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
@@ -20,6 +21,8 @@ namespace MeioMundoEditor.CustomsControls
     /// </summary>
     public partial class ToggleSwicth : UserControl
     {
+
+
         #region DependyProperetys
         public bool SwicthState
         {
@@ -29,7 +32,6 @@ namespace MeioMundoEditor.CustomsControls
         // Using a DependencyProperty as the backing store for SwicthState.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty SwicthStateProperty =
             DependencyProperty.Register("SwicthState", typeof(bool), typeof(ToggleSwicth), new PropertyMetadata(false));
-
 
         public string Text
         {
@@ -60,15 +62,15 @@ namespace MeioMundoEditor.CustomsControls
             {
                 case true:
                     text.Text = "On";
-                    ball.HorizontalAlignment = HorizontalAlignment.Right;
                     border.Background = BorderBackgroundOn;
                     border.BorderThickness = new Thickness(0);
+                    AnimationToggleSwicth(swicthState);
                     break;
                 case false:
                     text.Text = "Off";                    
-                    ball.HorizontalAlignment = HorizontalAlignment.Left;
                     border.Background = BorderBackgroundOff;
                     border.BorderThickness = new Thickness(1);
+                    AnimationToggleSwicth(swicthState);
                     break;
             }
         }
@@ -78,5 +80,29 @@ namespace MeioMundoEditor.CustomsControls
             if(e.LeftButton == MouseButtonState.Pressed)
                 SetValue(SwicthState);
         }
+
+        #region Animations
+
+        private void AnimationToggleSwicth(bool b)
+        {
+            DoubleAnimation sliceAnimation = new DoubleAnimation();
+            Duration duration = new Duration(TimeSpan.FromMilliseconds(200));
+            sliceAnimation.Duration = duration;
+            switch (b)
+            {
+                case true:
+                    sliceAnimation.From = 0;
+                    sliceAnimation.To = 20; 
+
+                    break;
+                case false:
+                    sliceAnimation.From = 20;
+                    sliceAnimation.To = 0;
+                    break;
+            }
+            ball_transform.BeginAnimation(TranslateTransform.XProperty, sliceAnimation);  
+        }
+
+        #endregion
     }
 }

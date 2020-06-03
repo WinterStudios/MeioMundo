@@ -32,7 +32,7 @@ namespace MeioMundoEditor.UsersControls
 
         private void dataPlguin_CellEditEnding(object sender, DataGridCellEditEndingEventArgs e)
         {
-            //PluginManager.SaveSetting();
+            PluginManager.SaveSetting();
         }
 
         private void dataPlguin_Error(object sender, ValidationErrorEventArgs e)

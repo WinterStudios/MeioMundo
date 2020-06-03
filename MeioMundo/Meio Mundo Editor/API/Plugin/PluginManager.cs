@@ -100,7 +100,7 @@ namespace MeioMundoEditor.API.Plugin
             List<PluginMangerInfomationJson> t_plugins = new List<PluginMangerInfomationJson>();
             for (int i = 0; i < Plugins.Count; i++)
             {
-                //t_plugins.Add(new PluginMangerInfomationJson { Name = Plugins[i].Nome, Assembly = Plugins[i].AssemblyName, Enable = Plugins[i].Enable, Version = Plugins[i].Versão, GUID = Plugins[i].PluginType.GUID });
+                t_plugins.Add(new PluginMangerInfomationJson { Assembly = Plugins[i].AssemblyName, Enable = Plugins[i].Enable });
             }
             t_json.PluginMangers = t_plugins.ToArray();
             Storage.Json.SaveJsonFile(PluginManagerFile, t_json);

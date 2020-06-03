@@ -12,7 +12,7 @@
                 <DataGridTemplateColumn Header="Activido" Width="100">
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
-                            <CustomsControls:ToggleSwicth HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                            <CustomsControls:ToggleSwicth SwicthState="{Binding Enable}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
                         </DataTemplate>
                     </DataGridTemplateColumn.CellTemplate>
                 </DataGridTemplateColumn>
