@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace MeioMundoEditor.API.Plugin
+namespace MeioMundo.Editor.API.Plugin
 {
     public enum PluginType
     {

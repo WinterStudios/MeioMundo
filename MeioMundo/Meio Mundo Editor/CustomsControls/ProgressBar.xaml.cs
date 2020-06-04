@@ -3,7 +3,7 @@ using System.Windows;
 using System.Windows.Controls;
 
 
-namespace MeioMundoEditor.CustomsControls
+namespace MeioMundo.Editor.CustomsControls
 {
     /// <summary>
     /// Interaction logic for ProgressBar.xaml

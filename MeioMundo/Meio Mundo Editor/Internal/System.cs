@@ -1,7 +1,7 @@
 ﻿using Octokit;
 using System;
 
-namespace MeioMundoEditor.API
+namespace MeioMundo.Editor.Internal
 {
     public class System
     {

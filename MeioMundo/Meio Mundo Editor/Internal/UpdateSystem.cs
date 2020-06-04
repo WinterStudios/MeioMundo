@@ -2,7 +2,7 @@
 using System;
 using System.Threading.Tasks;
 
-namespace MeioMundoEditor.API
+namespace MeioMundo.Editor.Internal
 {
     public class UpdateSystem
     {

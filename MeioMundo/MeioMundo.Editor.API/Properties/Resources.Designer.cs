@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace MeioMundo.Editor.API.Properties {
+namespace MeioMundo.Editor.Properties {
     
     
     /// <summary>

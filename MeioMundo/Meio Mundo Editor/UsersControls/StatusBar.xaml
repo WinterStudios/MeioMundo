@@ -3,8 +3,8 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-             xmlns:local="clr-namespace:MeioMundoEditor.UsersControls"
-             xmlns:CustomsControls="clr-namespace:MeioMundoEditor.CustomsControls" x:Class="MeioMundoEditor.UsersControls.StatusBar"
+             xmlns:local="clr-namespace:MeioMundo.Editor.UsersControls"
+             xmlns:CustomsControls="clr-namespace:MeioMundo.Editor.CustomsControls" x:Class="MeioMundo.Editor.UsersControls.StatusBar"
              mc:Ignorable="d" 
              d:DesignHeight="32" d:DesignWidth="1280">
 

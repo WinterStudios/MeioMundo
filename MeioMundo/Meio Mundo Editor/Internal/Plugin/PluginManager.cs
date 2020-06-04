@@ -9,9 +9,10 @@ using System.Security.Policy;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Navigation;
+using MeioMundo.Editor.API.Plugin;
 using Octokit;
 
-namespace MeioMundoEditor.API.Plugin
+namespace MeioMundo.Editor.Internal.Plugin
 {
     public class PluginManager
     {
@@ -43,6 +44,7 @@ namespace MeioMundoEditor.API.Plugin
                 }
             }
         }
+
         public List<PluginAssemblyInfo> PluginOnlineAssemblyInfos { get; set; }
 
         #endregion
@@ -73,6 +75,11 @@ namespace MeioMundoEditor.API.Plugin
                 var latest = releases[0];
                 string lastBuild = latest.TagName;
 
+                for (int z = 0; z < LocalPluginsAsmNames.Count; z++)
+                {
+                    //if (LocalPluginsAsmNames[z].Version.ToString() == lastBuild)
+                        Console.WriteLine("{0}:{1}", LocalPluginsAsmNames[z].Version.ToString(), lastBuild);
+                }
                 //AssemblyName assemblyName = LocalPluginsAsmNames.First(x => x.)
                 //if (lastBuild != CurrentBuild)
                 //{

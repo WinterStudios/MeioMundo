@@ -6,7 +6,7 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{B8ADB169-34B4-43C6-B7D3-904FE8210ADA}</ProjectGuid>
     <OutputType>WinExe</OutputType>
-    <RootNamespace>MeioMundoEditor</RootNamespace>
+    <RootNamespace>MeioMundo.Editor</RootNamespace>
     <AssemblyName>Meio Mundo Editor</AssemblyName>
     <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
@@ -66,18 +66,13 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="API\Plugin\PluginManager.cs" />
-    <Compile Include="API\Storage.cs" />
-    <Compile Include="API\System.cs" />
-    <Compile Include="API\UpdateSystem.cs" />
+    <Compile Include="Internal\Plugin\PluginManager.cs" />
+    <Compile Include="Internal\Storage.cs" />
+    <Compile Include="Internal\System.cs" />
+    <Compile Include="Internal\UpdateSystem.cs" />
     <Compile Include="CustomsControls\ProgressBar.xaml.cs" />
     <Compile Include="CustomsControls\ToggleSwicth.xaml.cs">
       <DependentUpon>ToggleSwicth.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Properties\Plugins.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTimeSharedInput>True</DesignTimeSharedInput>
-      <DependentUpon>Plugins.settings</DependentUpon>
     </Compile>
     <Compile Include="Styles\TabControl.xaml.cs" />
     <Compile Include="Theme\ThemeManager.cs" />
@@ -187,10 +182,6 @@
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <None Include="packages.config" />
-    <None Include="Properties\Plugins.settings">
-      <Generator>PublicSettingsSingleFileGenerator</Generator>
-      <LastGenOutput>Plugins.Designer.cs</LastGenOutput>
-    </None>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

@@ -1,6 +1,6 @@
 ﻿using System.Windows.Controls;
 
-namespace MeioMundoEditor.UsersControls.Settings
+namespace MeioMundo.Editor.UsersControls.Settings
 {
     /// <summary>
     /// Interaction logic for ColorTheme.xaml

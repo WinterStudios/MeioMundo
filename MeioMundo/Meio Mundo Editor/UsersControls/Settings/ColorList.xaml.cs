@@ -2,7 +2,7 @@
 using System.Windows.Controls;
 using System.Windows.Media;
 
-namespace MeioMundoEditor.UsersControls.Settings
+namespace MeioMundo.Editor.UsersControls.Settings
 {
     /// <summary>
     /// Interaction logic for ColorList.xaml

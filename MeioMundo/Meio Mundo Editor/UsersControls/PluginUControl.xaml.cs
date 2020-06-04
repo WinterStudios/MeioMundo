@@ -1,4 +1,5 @@
-﻿using MeioMundoEditor.API.Plugin;
+﻿using MeioMundo.Editor.API.Plugin;
+using MeioMundo.Editor.Internal.Plugin;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,7 +15,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace MeioMundoEditor.UsersControls
+namespace MeioMundo.Editor.UsersControls
 {
     /// <summary>
     /// Interaction logic for PluginUControl.xaml

@@ -14,7 +14,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace MeioMundoEditor.CustomsControls
+namespace MeioMundo.Editor.CustomsControls
 {
     /// <summary>
     /// Interaction logic for ToggleSwicth.xaml

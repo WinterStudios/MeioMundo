@@ -1,7 +1,7 @@
 ﻿using System.Windows;
 using System.Windows.Controls;
 
-namespace MeioMundoEditor.Styles
+namespace MeioMundo.Editor.Styles
 {
     public partial class TabControl : ResourceDictionary
     {

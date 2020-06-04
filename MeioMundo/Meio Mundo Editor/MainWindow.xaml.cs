@@ -14,18 +14,20 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-using MeioMundoEditor.API;
-using MeioMundoEditor.UsersControls;
-using MeioMundoEditor.UsersControls.Settings;
+using MeioMundo.Editor.Internal;
+using MeioMundo.Editor.Internal.Plugin;
+using MeioMundo.Editor.UsersControls;
+using MeioMundo.Editor.UsersControls.Settings;
 
 
-namespace MeioMundoEditor
+namespace MeioMundo.Editor
 {
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
     public partial class MainWindow : Window
     {
+        public static MainWindow Main { get; private set; }
         public static TextBlock BottomBar_TextBloxk_Information { get; private set; }
         public static Menu NavegationBar { get; private set; }
 
@@ -64,11 +66,11 @@ namespace MeioMundoEditor
         public MainWindow()
         {
             InitializeComponent();
-            API.Plugin.PluginManager pluginManager = new API.Plugin.PluginManager();
-            API.System.Initialize();
-            NavegationBar = this.navegationBar;
-
-            InitializeUI();
+            // PluginManager pluginManager = new PluginManager();
+            // Internal.System.Initialize();
+            // NavegationBar = this.navegationBar;
+            // Main = this;
+            // InitializeUI();
         }
         private void InitializeUI()
         {
@@ -78,7 +80,7 @@ namespace MeioMundoEditor
             //UI_TextBlock_BuildNumber.Text = API.System.Version.CurrentBuild;
             this.UI_WebBrower_Welcome.Navigate(new Uri("https://winterstudios.github.io/HomeMedia/"));
 
-            StatusBar.TestStatic(API.System.Version.CurrentBuild);
+            StatusBar.TestStatic(Internal.System.Version.CurrentBuild);
 
         }
 

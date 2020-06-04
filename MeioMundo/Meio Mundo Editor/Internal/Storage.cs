@@ -8,7 +8,7 @@ using Newtonsoft.Json;
 using System.Runtime.CompilerServices;
 using MeioMundo.Editor.API;
 
-namespace MeioMundoEditor.API
+namespace MeioMundo.Editor.Internal
 {
     public class Storage
     {

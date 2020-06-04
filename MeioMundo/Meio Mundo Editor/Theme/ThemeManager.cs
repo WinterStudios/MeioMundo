@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Windows;
 
-namespace MeioMundoEditor.Theme
+namespace MeioMundo.Editor.Theme
 {
     public class ThemeManager
     {

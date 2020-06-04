@@ -3,7 +3,7 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Threading;
 
-namespace MeioMundoEditor.UsersControls
+namespace MeioMundo.Editor.UsersControls
 {
     /// <summary>
     /// Interaction logic for StatusBar.xaml
