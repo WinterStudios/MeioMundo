@@ -62,10 +62,9 @@
     <Reference Include="PresentationFramework" />
   </ItemGroup>
   <ItemGroup>
-    <ApplicationDefinition Include="App.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </ApplicationDefinition>
+    <Compile Include="App.xaml.cs">
+      <DependentUpon>App.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Internal\Plugin\PluginManager.cs" />
     <Compile Include="Internal\Storage.cs" />
     <Compile Include="Internal\System.cs" />
@@ -82,6 +81,10 @@
     <Compile Include="UsersControls\Settings\ColorList.xaml.cs" />
     <Compile Include="UsersControls\Settings\ColorTheme.xaml.cs" />
     <Compile Include="UsersControls\StatusBar.xaml.cs" />
+    <ApplicationDefinition Include="App.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </ApplicationDefinition>
     <Page Include="CustomsControls\ProgressBar.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -98,10 +101,6 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Compile Include="App.xaml.cs">
-      <DependentUpon>App.xaml</DependentUpon>
-      <SubType>Code</SubType>
-    </Compile>
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
@@ -196,10 +195,9 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\MeioMundo.Editor.API\MeioMundo.Editor.API.csproj">
-      <Project>{0585c647-5017-4546-aa03-3441e1cea7ff}</Project>
+      <Project>{0585C647-5017-4546-AA03-3441E1CEA7FF}</Project>
       <Name>MeioMundo.Editor.API</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

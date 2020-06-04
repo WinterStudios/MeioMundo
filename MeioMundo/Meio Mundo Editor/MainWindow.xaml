@@ -55,5 +55,6 @@
         </TabControl>
         <UsersControls:StatusBar x:Name="UI_StatusBar" Grid.Row="2" />
         <Image x:Name="image" HorizontalAlignment="Left" Height="100" Margin="139,314,0,0" Grid.Row="1" VerticalAlignment="Top" Width="246"/>
+        <DockPanel x:Name="UI_DockPanel_Notification" VerticalAlignment="Bottom" HorizontalAlignment="Right" Grid.Row="1" Width="200" Height="99" Margin="0,0,10,10" />
     </Grid>
 </Window>

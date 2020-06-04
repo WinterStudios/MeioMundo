@@ -33,6 +33,8 @@ namespace MeioMundo.Editor
 
         private bool m_windowStateMax = false;
 
+        public static MeioMundo.Editor.API.Notification NotificationSystem { get; set; }
+
         private struct Window
         {
             public struct Size
@@ -66,6 +68,9 @@ namespace MeioMundo.Editor
         public MainWindow()
         {
             InitializeComponent();
+            NotificationSystem = new API.Notification();
+            NotificationSystem.MainWindow = this;
+            NotificationSystem.ShowNotification(new API.NotificationInformation { Title = "Teste" });
             // PluginManager pluginManager = new PluginManager();
             // Internal.System.Initialize();
             // NavegationBar = this.navegationBar;
