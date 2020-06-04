@@ -9,12 +9,15 @@ using System.Security.Policy;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Navigation;
+using Octokit;
 
 namespace MeioMundoEditor.API.Plugin
 {
     public class PluginManager
     {
+        #region Propriedades
         public static List<PluginInfo> Plugins = new List<PluginInfo>();
+        public static List<AssemblyName> LocalPluginsAsmNames { get; set; }
         /// <summary>
         /// Return C:/User/[userame]/AppData/Local/Meio Mundo/Editor/Plugins.json
         /// </summary>
@@ -24,34 +27,57 @@ namespace MeioMundoEditor.API.Plugin
         /// </summary>
         public static string AppLocalPath { get => Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData) + "\\MeioMundo\\Editor\\"; }
         public static string PluginPath { get => Directory.GetCurrentDirectory() + "/Plugins/"; }
-        public string[] GetDLLs { get { return Directory.GetFiles(PluginPath).Where(c => c.Contains(".dll")).ToArray(); } }
+        public static string[] GetDLLs { get { return Directory.GetFiles(PluginPath).Where(c => c.Contains(".dll")).ToArray(); } }
 
         /// <summary>
         /// Url from there the release is host on GitHub
         /// </summary>
-        public string[] URLs { 
+        public static string[] URLs { 
             get {
                 if (File.Exists(AppLocalPath + "PluginsUrls.json"))
                     return (string[])Storage.Json.GetJsonData<string[]>(AppLocalPath + "PluginsUrls.json");
                 else
+                {
+                    Storage.Json.SaveJsonFile(AppLocalPath + "PluginsUrls.json", (object)new string[] { "" });
                     return new string[0];
+                }
             }
         }
         public List<PluginAssemblyInfo> PluginOnlineAssemblyInfos { get; set; }
+
+        #endregion
 
         public PluginManager()
         {
             //LoadPlugins();
             GetPluginsInfo();
-
+            var c = URLs;
         }
 
-        private void GetPluginsInfo()
+        private async void GetPluginsInfo()
         {
-            //
+            LocalPluginsAsmNames = new List<AssemblyName>();
+            for (int i = 0; i < GetDLLs.Length; i++)
+            {
+                AssemblyName assembly = AssemblyName.GetAssemblyName(GetDLLs[i]);
+                
+                LocalPluginsAsmNames.Add(assembly);
+            }
+            
             for (int i = 0; i < URLs.Length; i++)
             {
+                var client = new GitHubClient(new ProductHeaderValue("my-cool-app"));
+                var basicAuth = new Credentials("WinterStudios", "ikPnxCVEMuphF35"); // NOTE: not real credentials
+                client.Credentials = basicAuth;
+                var releases = await client.Repository.Release.GetAll("WinterStudios", URLs[i]);
+                var latest = releases[0];
+                string lastBuild = latest.TagName;
 
+                //AssemblyName assemblyName = LocalPluginsAsmNames.First(x => x.)
+                //if (lastBuild != CurrentBuild)
+                //{
+                //    Console.WriteLine("Update Avalable:{0}", LastBuild);
+                //}
             }
         }
 
