@@ -23,7 +23,7 @@
                 <ColumnDefinition Width="Auto"/>
             </Grid.ColumnDefinitions>
             <Image Width="24" Height="24" Margin="8,0" Source="{DynamicResource Logo}"/>
-            <Menu Grid.Column="1">
+            <Menu Grid.Column="1" x:Name="navegationBar">
                 <MenuItem Header="Ficheiro">
                     <MenuItem Header="Novo" InputGestureText="Ctrl + N"/>
                     <MenuItem Header="Preferencias">

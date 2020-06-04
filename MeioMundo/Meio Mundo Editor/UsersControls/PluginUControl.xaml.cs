@@ -27,7 +27,7 @@ namespace MeioMundoEditor.UsersControls
             InitializeComponent();
             infos = PluginManager.Plugins;
             dataPlguin.ItemsSource = infos;
-            Console.WriteLine(dataPlguin.RowValidationRules.Count);
+            Console.WriteLine(infos[0].AssemblyEnable);
         }
 
         private void dataPlguin_CellEditEnding(object sender, DataGridCellEditEndingEventArgs e)

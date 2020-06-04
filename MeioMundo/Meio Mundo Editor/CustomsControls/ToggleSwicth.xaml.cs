@@ -31,7 +31,14 @@ namespace MeioMundoEditor.CustomsControls
         }
         // Using a DependencyProperty as the backing store for SwicthState.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty SwicthStateProperty =
-            DependencyProperty.Register("SwicthState", typeof(bool), typeof(ToggleSwicth), new PropertyMetadata(false));
+            DependencyProperty.Register("SwicthState", typeof(bool), typeof(ToggleSwicth), new PropertyMetadata(false, new PropertyChangedCallback(ToggleSwicthChanged)));
+
+        private static void ToggleSwicthChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
+        {
+            Console.WriteLine("Old:{0},\nNew:{1}", e.OldValue, e.NewValue);
+            ToggleSwicth toggle = (ToggleSwicth)d;
+            toggle.UpdateUI((bool)e.NewValue);
+        }
 
         public string Text
         {
@@ -49,11 +56,13 @@ namespace MeioMundoEditor.CustomsControls
         {
             InitializeComponent();
             this.MouseDown += ToggleSwicth_MouseDown;
+            this.Background = Brushes.Transparent;
         }
+
         public void SetValue(bool b)
         {
             SwicthState = !b;
-            UpdateUI(SwicthState);
+            //UpdateUI(SwicthState);
         }
 
         private void UpdateUI(bool swicthState)
@@ -62,14 +71,10 @@ namespace MeioMundoEditor.CustomsControls
             {
                 case true:
                     text.Text = "On";
-                    border.Background = BorderBackgroundOn;
-                    border.BorderThickness = new Thickness(0);
                     AnimationToggleSwicth(swicthState);
                     break;
                 case false:
                     text.Text = "Off";                    
-                    border.Background = BorderBackgroundOff;
-                    border.BorderThickness = new Thickness(1);
                     AnimationToggleSwicth(swicthState);
                     break;
             }
@@ -85,22 +90,34 @@ namespace MeioMundoEditor.CustomsControls
 
         private void AnimationToggleSwicth(bool b)
         {
-            DoubleAnimation sliceAnimation = new DoubleAnimation();
+            DoubleAnimation ballPosDoubleAnimation = new DoubleAnimation();
+            ColorAnimation backgroundDoubleAnimation = new ColorAnimation();
+            ThicknessAnimation borderThicknessDoubleAnimation = new ThicknessAnimation();
             Duration duration = new Duration(TimeSpan.FromMilliseconds(200));
-            sliceAnimation.Duration = duration;
+            ballPosDoubleAnimation.Duration = duration;
+            backgroundDoubleAnimation.Duration = duration;
+            borderThicknessDoubleAnimation.Duration = duration;
             switch (b)
             {
                 case true:
-                    sliceAnimation.From = 0;
-                    sliceAnimation.To = 20; 
-
+                    ballPosDoubleAnimation.From = 0;
+                    ballPosDoubleAnimation.To = 20;
+                    border.Background = new SolidColorBrush(BorderBackgroundOff.Color);
+                    backgroundDoubleAnimation.To = BorderBackgroundOn.Color;
+                    borderThicknessDoubleAnimation.To = new Thickness(0);
                     break;
                 case false:
-                    sliceAnimation.From = 20;
-                    sliceAnimation.To = 0;
+                    ballPosDoubleAnimation.From = 20;
+                    ballPosDoubleAnimation.To = 0;
+                    border.Background = new SolidColorBrush(BorderBackgroundOn.Color);
+                    backgroundDoubleAnimation.To = BorderBackgroundOff.Color;
+                    borderThicknessDoubleAnimation.To = new Thickness(1);
                     break;
             }
-            ball_transform.BeginAnimation(TranslateTransform.XProperty, sliceAnimation);  
+            //if(ball_transform.a)
+            ball_transform.BeginAnimation(TranslateTransform.XProperty, ballPosDoubleAnimation);
+            border.Background.BeginAnimation(SolidColorBrush.ColorProperty, backgroundDoubleAnimation);
+            border.BeginAnimation(BorderThicknessProperty, borderThicknessDoubleAnimation);
         }
 
         #endregion

@@ -58,8 +58,7 @@ namespace MeioMundoEditor.CustomsControls
 
         public ProgressBar()
         {
-            InitializeComponent();
-
+            InitializeComponent();         
         }
 
         #region Secção de Fazer andar o slider da barra

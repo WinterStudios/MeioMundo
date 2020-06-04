@@ -53,7 +53,11 @@ namespace MeioMundoEditor.API.Plugin
         
         public string Version { get; set; }
         
-        public bool Enable { get; set; }
+        public bool AssemblyEnable { get; set; }
+
+        public Guid GUID { get; set; }
+
+        public string Location { get; set; }
     }
     public class PluginClass
     {

@@ -27,7 +27,7 @@ namespace MeioMundoEditor
     public partial class MainWindow : Window
     {
         public static TextBlock BottomBar_TextBloxk_Information { get; private set; }
-        
+        public static Menu NavegationBar { get; private set; }
 
         private bool m_windowStateMax = false;
 
@@ -66,7 +66,7 @@ namespace MeioMundoEditor
             InitializeComponent();
             API.Plugin.PluginManager pluginManager = new API.Plugin.PluginManager();
             API.System.Initialize();
-
+            NavegationBar = this.navegationBar;
 
             InitializeUI();
         }
