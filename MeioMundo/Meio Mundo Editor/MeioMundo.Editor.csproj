@@ -65,6 +65,7 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Internal\PluginEngine.cs" />
     <Compile Include="Internal\Plugin\PluginManager.cs" />
     <Compile Include="Internal\Storage.cs" />
     <Compile Include="Internal\System.cs" />

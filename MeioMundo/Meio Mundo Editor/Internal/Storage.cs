@@ -69,13 +69,17 @@ namespace MeioMundo.Editor.Internal
             /// <returns></returns>
             public static object GetJsonData<T>(string location)
             {
-                using (StreamReader file = File.OpenText(location))
+                if (File.Exists(location))
                 {
-                    JsonSerializer serializer = new JsonSerializer();
-                    object obj = serializer.Deserialize(file, typeof(T)); 
-                    return obj;
+                    using (StreamReader file = File.OpenText(location))
+                    {
+                        JsonSerializer serializer = new JsonSerializer();
+                        object obj = serializer.Deserialize(file, typeof(T));
+                        return obj;
+                    }
                 }
-                
+                else
+                    return typeof(T);
             }
             
         }
