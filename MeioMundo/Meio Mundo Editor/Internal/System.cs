@@ -3,7 +3,7 @@ using System;
 
 namespace MeioMundo.Editor.Internal
 {
-    public class System
+    public class VersionManager
     {
         public class Version
         {

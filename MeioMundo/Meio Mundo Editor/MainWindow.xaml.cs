@@ -69,9 +69,9 @@ namespace MeioMundo.Editor
         {
             InitializeComponent();
             NotificationSystem = new API.Notification();
-            NotificationSystem.MainWindow = this;
+            NotificationSystem.NotificationWindow = this.UI_DockPanel_Notification;
             NotificationSystem.ShowNotification(new API.NotificationInformation { Title = "Teste" });
-            // PluginManager pluginManager = new PluginManager();
+            PluginManager pluginManager = new PluginManager();
             // Internal.System.Initialize();
             // NavegationBar = this.navegationBar;
             // Main = this;
@@ -83,9 +83,9 @@ namespace MeioMundo.Editor
             Window.SetWindowMaxArea(SystemParameters.WorkArea.Height, SystemParameters.WorkArea.Width);
             Theme.ThemeManager.SetTheme(0);
             //UI_TextBlock_BuildNumber.Text = API.System.Version.CurrentBuild;
-            this.UI_WebBrower_Welcome.Navigate(new Uri("https://winterstudios.github.io/HomeMedia/"));
+            //this.UI_WebBrower_Welcome.Navigate(new Uri("https://winterstudios.github.io/HomeMedia/"));
 
-            StatusBar.TestStatic(Internal.System.Version.CurrentBuild);
+            StatusBar.TestStatic(Internal.VersionManager.Version.CurrentBuild);
 
         }
 

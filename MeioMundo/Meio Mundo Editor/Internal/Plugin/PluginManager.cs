@@ -11,6 +11,8 @@ using System.Threading.Tasks;
 using System.Windows.Navigation;
 using MeioMundo.Editor.API.Plugin;
 using Octokit;
+using System.Net;
+using System.Runtime.Remoting.Channels;
 
 namespace MeioMundo.Editor.Internal.Plugin
 {
@@ -27,6 +29,9 @@ namespace MeioMundo.Editor.Internal.Plugin
         /// Return C:/User/[userame]/AppData/Local/Meio Mundo/Editor/
         /// </summary>
         public static string AppLocalPath { get => Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData) + "\\MeioMundo\\Editor\\"; }
+        /// <summary>
+        /// Return -> C:/[path.exe]/Plugins/
+        /// </summary>
         public static string PluginPath { get => Directory.GetCurrentDirectory() + "/Plugins/"; }
         public static string[] GetDLLs { get { return Directory.GetFiles(PluginPath).Where(c => c.Contains(".dll")).ToArray(); } }
 
@@ -53,11 +58,13 @@ namespace MeioMundo.Editor.Internal.Plugin
         {
             //LoadPlugins();
             GetPluginsInfo();
-            var c = URLs;
+            LoadPlugins();
         }
 
         private async void GetPluginsInfo()
         {
+            List<string> pluginsToDownload = new List<string>();
+            List<string> pluginsAssetsNames = new List<string>();
             LocalPluginsAsmNames = new List<AssemblyName>();
             for (int i = 0; i < GetDLLs.Length; i++)
             {
@@ -73,17 +80,64 @@ namespace MeioMundo.Editor.Internal.Plugin
                 client.Credentials = basicAuth;
                 var releases = await client.Repository.Release.GetAll("WinterStudios", URLs[i]);
                 var latest = releases[0];
+                
                 string lastBuild = latest.TagName;
 
-                for (int z = 0; z < LocalPluginsAsmNames.Count; z++)
+                //Check local for update
+                if(LocalPluginsAsmNames.Count > 0)
                 {
-                    //if (LocalPluginsAsmNames[z].Version.ToString() == lastBuild)
-                        Console.WriteLine("{0}:{1}", LocalPluginsAsmNames[z].Version.ToString(), lastBuild);
+                    for (int z = 0; z < LocalPluginsAsmNames.Count; z++)
+                    {
+                        if (LocalPluginsAsmNames[z].Version.ToString() != lastBuild)
+                        {
+                            pluginsToDownload.Add(releases[0].Assets[0].BrowserDownloadUrl);
+                            pluginsAssetsNames.Add(releases[0].Assets[0].Name);
+                        }
+                    }
                 }
-                //AssemblyName assemblyName = LocalPluginsAsmNames.First(x => x.)
-                //if (lastBuild != CurrentBuild)
+                // if doesnt exits add list to download
+                else
+                {
+                    pluginsToDownload.Add(releases[0].Assets[0].BrowserDownloadUrl);
+                    pluginsAssetsNames.Add(releases[0].Assets[0].Name);
+                }
+                
+            }
+            DownloadPlugins(pluginsToDownload.ToArray(), pluginsAssetsNames.ToArray());
+        }
+
+
+        public void DownloadPlugins(string[] urls, string[] filesNames)
+        {
+            for (int i = 0; i < urls.Length; i++)
+            {
+
+                using (WebClient client = new WebClient())
+                {
+                    ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12;
+                    client.Headers.Add("Token", "4b4301af40ecf75f6eef36e883425bec42dd456a");
+                    byte[] data = client.DownloadData(urls[i]);
+                    using (FileStream fileStream = new FileStream(PluginPath + filesNames[i], System.IO.FileMode.Create, FileAccess.Write))
+                    {
+                        fileStream.Write(data, 0, data.Length);
+                        return;
+                    }
+                }
+
+
+                //var githubToken = "4b4301af40ecf75f6eef36e883425bec42dd456a";
+                //var request = (HttpWebRequest)WebRequest.Create("https://github.com/WinterStudios/MeioMundo.Editor.Ferramentas/releases/download/0.2.45/MeioMundo.Editor.Ferramentas.dll");
+                //request.Headers.Add(HttpRequestHeader.Authorization, string.Concat("token ", githubToken));
+                //request.Accept = "application/vnd.github.v3.raw";
+                //request.UserAgent = "test app"; //user agent is required https://developer.github.com/v3/#user-agent-required
+                //using (var response = request.GetResponse())
                 //{
-                //    Console.WriteLine("Update Avalable:{0}", LastBuild);
+                //    var encoding = System.Text.ASCIIEncoding.UTF8;
+
+                //    using (var reader = new System.IO.StreamReader(response.GetResponseStream(), encoding))
+                //    {
+                //        string fileContent = reader.ReadToEnd();
+                //    }
                 //}
             }
         }
@@ -99,8 +153,8 @@ namespace MeioMundo.Editor.Internal.Plugin
             for (int i = 0; i < dlls.Length; i++)
             {
                 AssemblyName assembly = AssemblyName.GetAssemblyName(dlls[i]);
-                AppDomain domain = AppDomain.CreateDomain("ds"); 
-                Assembly asm = domain.Load(assembly); // .Load(dlls[i]);
+
+                Assembly asm =Assembly.Load(assembly); // .Load(dlls[i]);
                 var types = asm.GetTypes().Where(x => x.GetInterfaces().Contains(typeof(IPlugin)));                     // -----> Pode ser Interface mas tudos os metedos e parametros tem que estar presentes na class que implementa a interface
                 Guid asmGuid = Guid.Parse(asm.CustomAttributes.First(x => x.AttributeType.Name == "GuidAttribute").ConstructorArguments[0].Value.ToString());
                 PluginInfo info = new PluginInfo();
@@ -163,7 +217,7 @@ namespace MeioMundo.Editor.Internal.Plugin
         }
         /// <summary>
         /// Save the setting of plugins
-        /// </summary>
+        /// </summary>)
         public static void SaveSetting()
         {
             PluginMangerJson t_json = new PluginMangerJson();

@@ -20,6 +20,7 @@ namespace MeioMundo.Editor.API.UserControls
     /// </summary>
     public partial class NotificationUserControl : UserControl
     {
+        public string Message { get; set; }
         public NotificationUserControl()
         {
             InitializeComponent();
