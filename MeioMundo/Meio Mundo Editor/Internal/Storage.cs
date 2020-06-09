@@ -74,8 +74,8 @@ namespace MeioMundo.Editor.Internal
                     using (StreamReader file = File.OpenText(location))
                     {
                         JsonSerializer serializer = new JsonSerializer();
-                        object obj = serializer.Deserialize(file, typeof(T));
-                        return obj;
+                        var obj = serializer.Deserialize(file, typeof(T));
+                        return (T)obj;
                     }
                 }
                 else

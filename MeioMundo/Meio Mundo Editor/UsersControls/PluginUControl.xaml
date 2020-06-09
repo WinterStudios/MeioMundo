@@ -16,9 +16,25 @@
                         </DataTemplate>
                     </DataGridTemplateColumn.CellTemplate>
                 </DataGridTemplateColumn>
-                <DataGridTextColumn Binding="{Binding AssemblyName}" Header="Nome" Width="Auto" IsReadOnly="True" FontSize="18"/>
+                <DataGridTextColumn Binding="{Binding Name}" Header="Nome" Width="Auto" IsReadOnly="True" FontSize="18"/>
                 <DataGridTextColumn Header="Descrição" Width="*" IsReadOnly="True"/>
-                <DataGridTextColumn Binding="{Binding Version}" Header="Versão"  Width="125" IsReadOnly="True" FontSize="18"/>
+                <DataGridTemplateColumn Header="Versão" Width="125">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <StackPanel Orientation="Vertical">
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock Text="Local:" />
+                                    <TextBlock Text="{Binding LocalVersion}" />
+                                </StackPanel>
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock Text="Online:" />
+                                    <TextBlock Text="{Binding OnlineVersion}" />
+                                </StackPanel>
+                            </StackPanel>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+                <DataGridTextColumn Binding="{Binding LocalVersion}" Header="Versão"  Width="125" IsReadOnly="True" FontSize="18"/>
             </DataGrid.Columns>
             <DataGrid.RowDetailsTemplate>
                 <DataTemplate>

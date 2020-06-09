@@ -1,7 +1,9 @@
 ﻿using MeioMundo.Editor.API;
+using MeioMundo.Editor.UsersControls;
 using Octokit;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.IO;
 using System.Linq;
 using System.Net;
@@ -25,6 +27,10 @@ namespace MeioMundo.Editor.Internal
         /// </summary>
         public static string PluginUrlsAppLocalPath { get => Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData) + "\\MeioMundo\\Editor\\Plugins_URLs.json"; }
         public static string StoragePluginsPath { get => Environment.CurrentDirectory + "\\Plugins\\"; }
+        /// <summary>
+        /// The list of urls of the reposities names 
+        /// <para>(The reposity name has to be equal of assembly name)</para>
+        /// </summary>
         public static string[] PluginUrls { get; set; }
 
         /// <summary>
@@ -42,8 +48,10 @@ namespace MeioMundo.Editor.Internal
         public static void Initialize()
         {
             GetLocalPlugins();
-            PluginUrls = (string[])Storage.Json.GetJsonData<string[]>(PluginAppLocalPath + "PluginsURLs.json");
+
+            PluginUrls = (string[])Storage.Json.GetJsonData<string[]>(PluginAppLocalPath + "PluginsURLs.json") ?? new string[0];
             //LoadLocalPlugins();
+            GetLastVersionReposities();
             var testvar = Task.Run(() => GetLastVersion("MeioMundo.Editor.Ferramentas")).Result;
             Console.WriteLine(testvar.ToString());
         }
@@ -61,6 +69,7 @@ namespace MeioMundo.Editor.Internal
                 pluginInformation.Version = AsmName.Version;
                 pluginInformation.Enable = false;
                 pluginInformation.Location = filesDLLs[i];
+                pluginInformation.LocalVersion = VersionSystem.Parse(String.Format("{0}.{1}.{2}", AsmName.Version.Major, AsmName.Version.Minor, AsmName.Version.Build));
                 Plugins.Add(pluginInformation);
             }
         }
@@ -129,6 +138,23 @@ namespace MeioMundo.Editor.Internal
 
             
 
+        }
+        private static void GetLastVersionReposities() 
+        {
+            for (int i = 0; i < Plugins.Count; i++)
+            {
+                string pluginsName = Plugins[i].Name;
+                bool exitsLocal = false;
+                for (int z = 0; z < PluginUrls.Length; z++)
+                {
+                    if (pluginsName == PluginUrls[z])
+                    {
+                        exitsLocal = true;
+                        Plugins[i].OnlineVersion = Task.Run(() => GetLastVersion(PluginUrls[z])).Result;
+                    }
+
+                }
+            }
         }
 
     }

@@ -1,4 +1,5 @@
 ﻿using MeioMundo.Editor.API.Plugin;
+using MeioMundo.Editor.Internal;
 using MeioMundo.Editor.Internal.Plugin;
 using System;
 using System.Collections.Generic;
@@ -22,13 +23,16 @@ namespace MeioMundo.Editor.UsersControls
     /// </summary>
     public partial class PluginUControl : UserControl
     {
-        public List<PluginInfo> infos = new List<PluginInfo>();
+        public static DataGrid Grid { get; set; }
         public PluginUControl()
         {
             InitializeComponent();
-            infos = PluginManager.Plugins;
-            infos.Add(new PluginInfo() { AssemblyName = "MeioMundo.Editor.Test", Version = "0.0.0.0" });
-            dataPlguin.ItemsSource = infos;
+            Grid = this.dataPlguin;
+            dataPlguin.ItemsSource = PluginEngine.Plugins;
+            foreach (var item in PluginEngine.Plugins)
+            {
+                Console.WriteLine(item.OnlineVersion);
+            }
         }
 
         private void dataPlguin_CellEditEnding(object sender, DataGridCellEditEndingEventArgs e)
