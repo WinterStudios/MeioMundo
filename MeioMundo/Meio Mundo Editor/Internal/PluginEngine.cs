@@ -1,16 +1,12 @@
-﻿using MeioMundo.Editor.API;
-using MeioMundo.Editor.UsersControls;
+﻿using MeioMundo.Editor.API.Plugin;
 using Octokit;
 using System;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
 using System.IO;
+using System.IO.Compression;
 using System.Linq;
 using System.Net;
 using System.Reflection;
-using System.Security.Policy;
-using System.Text;
-using System.Threading;
 using System.Threading.Tasks;
 
 namespace MeioMundo.Editor.Internal
@@ -49,9 +45,10 @@ namespace MeioMundo.Editor.Internal
         {
             GetLocalPlugins();
 
-            PluginUrls = (string[])Storage.Json.GetJsonData<string[]>(PluginAppLocalPath + "PluginsURLs.json") ?? new string[0];
-            //LoadLocalPlugins();
+            PluginUrls = (string[])Storage.Json.GetJsonData<string[]>(PluginUrlsAppLocalPath) ?? new string[0];
             GetLastVersionReposities();
+            GetLocalPlugins();
+            LoadPlugins();
         }
 
         private static void GetLocalPlugins()
@@ -78,6 +75,11 @@ namespace MeioMundo.Editor.Internal
             return urlsReposity;
         }
 
+        /// <summary>
+        /// Get the last version from the reposity
+        /// </summary>
+        /// <param name="url">name of the plugin</param>
+        /// <returns>VerstionSystem of the last version</returns>
         public static async Task<VersionSystem> GetLastVersion(string url)
         {
             var client = new GitHubClient(new ProductHeaderValue("my-cool-app"));
@@ -92,69 +94,126 @@ namespace MeioMundo.Editor.Internal
             return VersionSystem.Parse(lastBuild);
         }
 
-        public static async void DownloadPlugin(string[] urls)
+        /// <summary>
+        /// Download the plugin from reposity to the folder
+        /// </summary>
+        /// <param name="url">nama</param>
+        public static async void DownloadPlugin(string url)
         {
 
-            for (int i = 0; i < urls.Length; i++)
+            var client = new GitHubClient(new ProductHeaderValue("my-cool-app"));
+            var basicAuth = new Credentials("WinterStudios", "ikPnxCVEMuphF35"); // NOTE: not real credentials
+            client.Credentials = basicAuth;
+
+            var releases = await client.Repository.Release.GetAll("WinterStudios", url);
+            var latest = releases[0];
+
+            using (WebClient _webClient = new WebClient())
             {
-                var client = new GitHubClient(new ProductHeaderValue("my-cool-app"));
-                var basicAuth = new Credentials("WinterStudios", "ikPnxCVEMuphF35"); // NOTE: not real credentials
-                client.Credentials = basicAuth;
-
-                var releases = await client.Repository.Release.GetAll("WinterStudios", urls[i]);
-                var latest = releases[0];
-
-                string lastBuild = latest.TagName;
-
-                using (WebClient _webClient = new WebClient())
+                ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12;
+                _webClient.Headers.Add("Token", "4b4301af40ecf75f6eef36e883425bec42dd456a");
+                byte[] data = _webClient.DownloadData(latest.Assets[0].BrowserDownloadUrl);
+                using (FileStream fileStream = new FileStream(PluginAppLocalPath + latest.Assets[0].Name, System.IO.FileMode.Create, FileAccess.Write))
                 {
-                    ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12;
-                    _webClient.Headers.Add("Token", "4b4301af40ecf75f6eef36e883425bec42dd456a");
-                    byte[] data = _webClient.DownloadData(urls[i]);
-                    //using (FileStream fileStream = new FileStream(AppLocalPluginPath + filesNames[i], System.IO.FileMode.Create, FileAccess.Write))
-                    //{
-                    //    fileStream.Write(data, 0, data.Length);
-                    //    return;
-                    //}
+                    fileStream.Write(data, 0, data.Length);
                 }
+                
             }
-            
+            if (latest.Assets[0].Name.Contains(".zip"))
+            {
+                ZipFile.ExtractToDirectory(PluginAppLocalPath + latest.Assets[0].Name, StoragePluginsPath);
+                File.Delete(PluginAppLocalPath + latest.Assets[0].Name);
+            }
+            else
+            {
+                if (File.Exists(StoragePluginsPath + latest.Assets[0].Name))
+                    File.Delete(StoragePluginsPath + latest.Assets[0].Name);
+
+                File.Move(PluginAppLocalPath + latest.Assets[0].Name, StoragePluginsPath + latest.Assets[0].Name);
+            }
 
         }
 
-        private static void LoadLocalPlugins()
+
+        /// <summary>
+        /// Check if the plugin exist localy
+        /// </summary>
+        /// <param name="name">Name the plu</param>
+        /// <returns></returns>
+        private static bool CheckLocal(string name)
+        {
+            bool check = false;
+            for (int i = 0; i < Plugins.Count; i++)
+            {
+                if (name == Plugins[i].Name)
+                    check = true;
+            }
+            return check;
+        }
+
+        private static bool CheckForUpdate(PluginInformation p)
+        {
+            p.OnlineVersion = Task<VersionSystem>.Run(() => GetLastVersion(p.Name)).Result;
+            if (VersionSystem.Compare(p.LocalVersion, p.OnlineVersion))
+                return false;
+
+            return true;
+        }
+
+        private static void GetLastVersionReposities()
+        {
+            for (int i = 0; i < PluginUrls.Length; i++)
+            {
+                // Check for Local plugin
+                if (CheckLocal(PluginUrls[i]))
+                {
+                    // If Exist, check for updates and if true download the update
+                    if (CheckForUpdate(Plugins.First<PluginInformation>(x => x.Name == PluginUrls[i])))
+                        DownloadPlugin(PluginUrls[i]);
+                }
+                else
+                {   // Download the plugin, one theres no prove that he exits localy
+                    DownloadPlugin(PluginUrls[i]);
+                }
+
+            }
+            
+        }
+
+        #region Loading Plugins Region
+
+        private static void LoadPlugins()
         {
             for (int i = 0; i < Plugins.Count; i++)
             {
-                LoadPlugin(Plugins[i]);
+                try
+                {
+                    LoadPlugin(Plugins[i]);
+                }
+                catch(Exception ex)
+                {
+                    Console.WriteLine(ex);
+                }
             }
         }
+
         private static void LoadPlugin(PluginInformation plugin)
         {
 
             byte[] file_dll = File.ReadAllBytes(plugin.Location);
+            Assembly assembly = Assembly.LoadFrom(plugin.Location);
 
-            
+            var _Iplugin = assembly.GetTypes().Where(x => x.GetInterfaces().Contains(typeof(IPlugin)));
 
-        }
-        private static void GetLastVersionReposities() 
-        {
-            for (int i = 0; i < Plugins.Count; i++)
+            foreach (var item in _Iplugin)
             {
-                string pluginsName = Plugins[i].Name;
-                bool exitsLocal = false;
-                for (int z = 0; z < PluginUrls.Length; z++)
-                {
-                    if (pluginsName == PluginUrls[z])
-                    {
-                        exitsLocal = true;
-                        Plugins[i].OnlineVersion = Task.Run(() => GetLastVersion(PluginUrls[z])).Result;
-                        Console.WriteLine("On:{0}",Plugins[i].OnlineVersion);
-                    }
+                var obj = (IPlugin)Activator.CreateInstance(item);
+                Console.WriteLine(obj.Nome);
 
-                }
+
             }
         }
+        #endregion
 
     }
 

@@ -24,7 +24,7 @@
                             <StackPanel Orientation="Vertical">
                                 <StackPanel Orientation="Horizontal">
                                     <TextBlock Text="Local:"/>
-                                    <TextBlock Text="{Binding OnlineVersion}" />
+                                    <TextBlock Text="{Binding LocalVersion}" />
                                 </StackPanel>
                                 <StackPanel Orientation="Horizontal">
                                     <TextBlock Text="Online:"/>

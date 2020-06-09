@@ -12,15 +12,15 @@ namespace MeioMundo.Editor.Internal
         /// <summary>
         /// Major Version
         /// </summary>
-        public string Major { get; set; }
+        public int Major { get; set; }
         /// <summary>
         /// Minor - ex: features on this major
         /// </summary>
-        public string Minor { get; set; }
+        public int Minor { get; set; }
         /// <summary>
         /// How many builds was need to fix this
         /// </summary>
-        public string Build { get; set; }
+        public int Build { get; set; }
         /// <summary>
         /// beta or alpha
         /// </summary>
@@ -35,9 +35,9 @@ namespace MeioMundo.Editor.Internal
         {
             VersionSystem _v = new VersionSystem();
             string[] _s = version.Split('.');
-            _v.Major = _s[0];
-            _v.Minor = _s[1];
-            _v.Build = _s[2];
+            _v.Major = int.Parse(_s[0]);
+            _v.Minor = int.Parse(_s[1]);
+            _v.Build = int.Parse(_s[2]);
             if (_s.Length > 3)
                 _v.Revision = _s[3];
             else
@@ -50,6 +50,14 @@ namespace MeioMundo.Editor.Internal
                 return string.Format("{0}.{1}.{2}.{3}", Major, Minor, Build, Revision);
             else
                 return string.Format("{0}.{1}.{2}", Major, Minor, Build);
+        }
+        public static bool Compare(VersionSystem v1, VersionSystem v2)
+        {
+            bool equal = false;
+            if (v1.Major == v2.Major && v1.Minor == v2.Minor && v1.Build == v2.Build && v1.Revision == v2.Revision)
+                equal = true;
+
+            return equal;
         }
     }
 }
