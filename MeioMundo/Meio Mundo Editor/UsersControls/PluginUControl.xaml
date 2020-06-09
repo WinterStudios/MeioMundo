@@ -23,18 +23,17 @@
                         <DataTemplate>
                             <StackPanel Orientation="Vertical">
                                 <StackPanel Orientation="Horizontal">
-                                    <TextBlock Text="Local:" />
-                                    <TextBlock Text="{Binding LocalVersion}" />
+                                    <TextBlock Text="Local:"/>
+                                    <TextBlock Text="{Binding OnlineVersion}" />
                                 </StackPanel>
                                 <StackPanel Orientation="Horizontal">
-                                    <TextBlock Text="Online:" />
+                                    <TextBlock Text="Online:"/>
                                     <TextBlock Text="{Binding OnlineVersion}" />
                                 </StackPanel>
                             </StackPanel>
                         </DataTemplate>
                     </DataGridTemplateColumn.CellTemplate>
                 </DataGridTemplateColumn>
-                <DataGridTextColumn Binding="{Binding LocalVersion}" Header="Versão"  Width="125" IsReadOnly="True" FontSize="18"/>
             </DataGrid.Columns>
             <DataGrid.RowDetailsTemplate>
                 <DataTemplate>

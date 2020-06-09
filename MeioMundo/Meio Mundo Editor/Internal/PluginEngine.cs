@@ -52,8 +52,6 @@ namespace MeioMundo.Editor.Internal
             PluginUrls = (string[])Storage.Json.GetJsonData<string[]>(PluginAppLocalPath + "PluginsURLs.json") ?? new string[0];
             //LoadLocalPlugins();
             GetLastVersionReposities();
-            var testvar = Task.Run(() => GetLastVersion("MeioMundo.Editor.Ferramentas")).Result;
-            Console.WriteLine(testvar.ToString());
         }
 
         private static void GetLocalPlugins()
@@ -94,7 +92,7 @@ namespace MeioMundo.Editor.Internal
             return VersionSystem.Parse(lastBuild);
         }
 
-        public static async Task DownloadPlugin(string[] urls)
+        public static async void DownloadPlugin(string[] urls)
         {
 
             for (int i = 0; i < urls.Length; i++)
@@ -151,6 +149,7 @@ namespace MeioMundo.Editor.Internal
                     {
                         exitsLocal = true;
                         Plugins[i].OnlineVersion = Task.Run(() => GetLastVersion(PluginUrls[z])).Result;
+                        Console.WriteLine("On:{0}",Plugins[i].OnlineVersion);
                     }
 
                 }
