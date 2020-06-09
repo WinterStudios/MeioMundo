@@ -27,6 +27,8 @@ namespace MeioMundo.Editor
     /// </summary>
     public partial class MainWindow : Window
     {
+        #region Stuff
+
         public static MainWindow Main { get; private set; }
         public static TextBlock BottomBar_TextBloxk_Information { get; private set; }
         public static Menu NavegationBar { get; private set; }
@@ -65,13 +67,18 @@ namespace MeioMundo.Editor
                 Location.Top = (int)top;
             }
         }
+
+#endregion
         public MainWindow()
         {
             InitializeComponent();
             NotificationSystem = new API.Notification();
             NotificationSystem.NotificationWindow = this.UI_DockPanel_Notification;
             NotificationSystem.ShowNotification(new API.NotificationInformation { Title = "Teste" });
-            PluginManager pluginManager = new PluginManager();
+
+            PluginEngine.Initialize();
+
+            //PluginManager pluginManager = new PluginManager();
             // Internal.System.Initialize();
             // NavegationBar = this.navegationBar;
             // Main = this;
@@ -85,7 +92,7 @@ namespace MeioMundo.Editor
             //UI_TextBlock_BuildNumber.Text = API.System.Version.CurrentBuild;
             //this.UI_WebBrower_Welcome.Navigate(new Uri("https://winterstudios.github.io/HomeMedia/"));
 
-            StatusBar.TestStatic(Internal.VersionManager.Version.CurrentBuild);
+            //StatusBar.TestStatic(Internal.VersionManager.Version.CurrentBuild);
 
         }
 

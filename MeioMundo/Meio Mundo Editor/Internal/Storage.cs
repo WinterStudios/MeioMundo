@@ -79,7 +79,7 @@ namespace MeioMundo.Editor.Internal
                     }
                 }
                 else
-                    return typeof(T);
+                    return null;
             }
             
         }
