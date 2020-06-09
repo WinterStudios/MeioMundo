@@ -21,7 +21,7 @@ namespace MeioMundo.Editor.Internal
         public static string PluginAppLocalPath { get => Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData) + "\\MeioMundo\\Editor\\Plugins\\"; }
         /// <summary>
         /// Return 
-        /// <para> C:/User/[username[/AppData/Local/Meio Mundo/Editor/Plugins_URLs.json</para>
+        /// <para> C:/User/[username]/AppData/Local/Meio Mundo/Editor/Plugins_URLs.json</para>
         /// </summary>
         public static string PluginUrlsAppLocalPath { get => Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData) + "\\MeioMundo\\Editor\\Plugins_URLs.json"; }
         public static string StoragePluginsPath { get => Environment.CurrentDirectory + "\\Plugins\\"; }
