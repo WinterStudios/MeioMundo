@@ -4,7 +4,8 @@ It a app that is being create to help on day to day basics of a Enterprise Busin
 
 # Current Status
 
-[![GitHub issues](https://img.shields.io/github/issues-raw/WinterStudios/MeioMundo.Editor.Ferramentas)](https://github.com/WinterStudios/MeioMundo/issues)
+[![GitHub issues](https://img.shields.io/github/issues-raw/WinterStudios/MeioMundo)]
+(https://github.com/WinterStudios/MeioMundo/issues)
 [![GitHub release (latest SemVer)](https://img.shields.io/github/v/release/WinterStudios/MeioMundo?include_prereleases)](https://github.com/WinterStudios/MeioMundo/releases/latest)
 
 
