@@ -12,3 +12,6 @@ It a app that is being create to help on day to day basics of a Enterprise Busin
 
 # Features
 - Support for Plugins
+- Notification System
+- Theme Color Manager
+-- Can edit the top navegation bar
