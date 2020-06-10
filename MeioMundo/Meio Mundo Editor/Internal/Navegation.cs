@@ -14,13 +14,33 @@ namespace MeioMundo.Editor.Internal
         /// Create a new menu item
         /// </summary>
         /// <param name="address">the path of menu<para>Ex: Tools/Options</para></param>
-        public static void AddMenu(string address, object obj)
+        public static void AddMenu(string address, Type type)
         {
             string[] dirs = address.Split('/');
-
-            for (int i = 0; i < dirs.Length; i++)
+            int _treeIndex = 0;
+            MenuItem[] menuItems = NavegationMenu.Items.Cast<MenuItem>().ToArray();
+            int menuItems_index = 0;
+            while (menuItems_index < menuItems.Length)
             {
-                Console.WriteLine(NavegationMenu.ToString());
+                if (menuItems[menuItems_index].Header.ToString() == dirs[_treeIndex])
+                {
+                    _treeIndex++;
+                    menuItems = menuItems[menuItems_index].Items.Cast<MenuItem>().ToArray();
+                    menuItems_index = 0;
+                    Console.WriteLine("Exits - {0}", menuItems[menuItems_index].Header.ToString());
+                }
+                else
+                {
+                    MenuItem _NewItem = new MenuItem();
+                    _NewItem.Header = dirs[_treeIndex];
+                    _NewItem.Click += (sender, e) =>
+                    {
+                        object content = Activator.CreateInstance(type);
+                        TabItem tab = new TabItem();
+                    };
+                    menuItems[menuItems_index].Items.Add(_NewItem);
+                }
+                menuItems_index++;
             }
         }
 

@@ -40,6 +40,6 @@ namespace MeioMundo.Editor.API.Plugin
         /// <summary>
         /// Represent the object class to iniciate
         /// </summary>
-        object Object { get; }
+        Type ObjectType { get; }
     }
 }

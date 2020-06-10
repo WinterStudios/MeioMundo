@@ -8,6 +8,7 @@ using System.IO.Compression;
 using System.Linq;
 using System.Net;
 using System.Reflection;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace MeioMundo.Editor.Internal
@@ -37,17 +38,17 @@ namespace MeioMundo.Editor.Internal
 
         #region Privates Fields and Propeties
 
-
         #endregion
 
-        public static List<AppDomain> PluginsDomains { get; set; }
 
         public static void Initialize()
         {
             GetLocalPlugins();
 
             PluginUrls = (string[])Storage.Json.GetJsonData<string[]>(PluginUrlsAppLocalPath) ?? new string[0];
+
             GetLastVersionReposities();
+
             GetLocalPlugins();
             LoadPlugins();
         }
@@ -60,12 +61,14 @@ namespace MeioMundo.Editor.Internal
             {
                 AssemblyName AsmName = AssemblyName.GetAssemblyName(filesDLLs[i]);
                 PluginInformation pluginInformation = new PluginInformation();
-                pluginInformation.AssemblyName = AsmName;
+                pluginInformation.AssemblyName = null;
                 pluginInformation.Name = AsmName.Name;
                 pluginInformation.Version = AsmName.Version;
                 pluginInformation.Enable = false;
                 pluginInformation.Location = filesDLLs[i];
                 pluginInformation.LocalVersion = VersionSystem.ParseFromLocalAssembly(AsmName.Version.ToString());
+                pluginInformation.OnlineVersion = Task<VersionSystem>.Run(() => GetLastVersion(AsmName.Name)).Result;
+
                 Plugins.Add(pluginInformation);
             }
         }
@@ -99,26 +102,29 @@ namespace MeioMundo.Editor.Internal
         /// Download the plugin from reposity to the folder
         /// </summary>
         /// <param name="url">nama</param>
-        public static async void DownloadPlugin(string url)
+        public static void DownloadPlugin(string url)
         {
 
             var client = new GitHubClient(new ProductHeaderValue("my-cool-app"));
             var basicAuth = new Credentials("WinterStudios", "ikPnxCVEMuphF35"); // NOTE: not real credentials
             client.Credentials = basicAuth;
 
-            var releases = await client.Repository.Release.GetAll("WinterStudios", url);
+            var releases = client.Repository.Release.GetAll("WinterStudios", url).Result;
             var latest = releases[0];
+
+
 
             using (WebClient _webClient = new WebClient())
             {
                 ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12;
                 _webClient.Headers.Add("Token", "4b4301af40ecf75f6eef36e883425bec42dd456a");
                 byte[] data = _webClient.DownloadData(latest.Assets[0].BrowserDownloadUrl);
-                using (FileStream fileStream = new FileStream(PluginAppLocalPath + latest.Assets[0].Name, System.IO.FileMode.Create, FileAccess.Write))
+                using (FileStream fileStream = new FileStream(PluginAppLocalPath + latest.Assets[0].Name, System.IO.FileMode.OpenOrCreate, FileAccess.ReadWrite))
                 {
                     fileStream.Write(data, 0, data.Length);
+                    fileStream.Close();
                 }
-                
+
             }
             if (latest.Assets[0].Name.Contains(".zip"))
             {
@@ -129,7 +135,6 @@ namespace MeioMundo.Editor.Internal
             {
                 if (File.Exists(StoragePluginsPath + latest.Assets[0].Name))
                     File.Delete(StoragePluginsPath + latest.Assets[0].Name);
-
                 File.Move(PluginAppLocalPath + latest.Assets[0].Name, StoragePluginsPath + latest.Assets[0].Name);
             }
 
@@ -171,6 +176,7 @@ namespace MeioMundo.Editor.Internal
                     // If Exist, check for updates and if true download the update
                     if (CheckForUpdate(Plugins.First<PluginInformation>(x => x.Name == PluginUrls[i])))
                         DownloadPlugin(PluginUrls[i]);
+
                 }
                 else
                 {   // Download the plugin, one theres no prove that he exits localy
@@ -178,7 +184,7 @@ namespace MeioMundo.Editor.Internal
                 }
 
             }
-            
+
         }
 
         #region Loading Plugins Region
@@ -187,14 +193,15 @@ namespace MeioMundo.Editor.Internal
         {
             for (int i = 0; i < Plugins.Count; i++)
             {
-                try
-                {
+                //try
+                //{
+                    //Console.WriteLine("Loading - {0}", Plugins[i]);
                     LoadPlugin(Plugins[i]);
-                }
-                catch(Exception ex)
-                {
-                    Console.WriteLine(ex);
-                }
+                //}
+                //catch (Exception ex)
+                //{
+                    //Console.WriteLine(ex);
+                //}
             }
         }
 
@@ -202,20 +209,20 @@ namespace MeioMundo.Editor.Internal
         {
 
             byte[] file_dll = File.ReadAllBytes(plugin.Location);
-            Assembly assembly = Assembly.LoadFrom(plugin.Location);
+            Assembly assembly = Assembly.Load(file_dll);
 
             var _Iplugin = assembly.GetTypes().Where(x => x.GetInterfaces().Contains(typeof(IPlugin)));
-
+            plugin.Details = new List<AdicionalInformation>();
             foreach (var item in _Iplugin)
             {
                 var obj = (IPlugin)Activator.CreateInstance(item);
-
+                plugin.Details.Add(new AdicionalInformation { Name = obj.Nome, Descrição = obj.Descrição, _Version = obj.Version });
                 switch (obj.Type)
                 {
                     case PluginType.Control:
                         break;
                     case PluginType.TabPage:
-                        Navegation.AddMenu(obj.args, obj.Object);
+                        Navegation.AddMenu(obj.args, null);
                         break;
                     case PluginType.Window:
                         break;
@@ -250,5 +257,13 @@ namespace MeioMundo.Editor.Internal
         /// </summary>
         public VersionSystem OnlineVersion { get; set; }
 
+        public List<AdicionalInformation> Details { get; set; }
+
+    }
+    public class AdicionalInformation
+    {
+        public string Name { get; set; }
+        public string Descrição { get; set; }
+        public VersionSystem _Version { get; set; }
     }
 }

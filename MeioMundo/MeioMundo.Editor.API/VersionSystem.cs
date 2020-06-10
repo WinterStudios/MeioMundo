@@ -67,20 +67,20 @@ namespace MeioMundo.Editor.API
                 string rev = versions[3].Remove(0, 1);
                 if (rev != string.Empty)
                 {
-                    string revision = string.Format("aplha-{0}", rev);
+                    string revision = string.Format("alpha.{0}", rev);
                     versionSystem.Revision = revision;
                 }
                 else
                 {
-                    versionSystem.Revision = "aplha";
+                    versionSystem.Revision = "alpha";
                 }
             }
-            if (versions[3].StartsWith("1")) // If start with [2] is Beta
+            if (versions[3].StartsWith("2")) // If start with [2] is Beta
             {
                 string rev = versions[3].Remove(0, 1);
                 if (rev != string.Empty)
                 {
-                    string revision = string.Format("beta-{0}", rev);
+                    string revision = string.Format("beta.{0}", rev);
                     versionSystem.Revision = revision;
                 }
                 else
@@ -108,9 +108,6 @@ namespace MeioMundo.Editor.API
 
             return equal;
         }
-        public static VersionSystem SetVersion(string version)
-        {
-            return Parse(version);
-        }
+        public static VersionSystem SetVersion(string version) => Parse(version);
     }
 }

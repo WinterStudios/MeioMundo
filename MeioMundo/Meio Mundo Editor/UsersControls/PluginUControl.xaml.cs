@@ -30,7 +30,7 @@ namespace MeioMundo.Editor.UsersControls
             dataPlguin.ItemsSource = PluginEngine.Plugins;
             foreach (var item in PluginEngine.Plugins)
             {
-                Console.WriteLine(item.OnlineVersion);
+                Console.WriteLine("Veio do Manager "+item.OnlineVersion);
             }
         }
 

@@ -11,8 +11,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MeioMundo.Editor", "Meio Mu
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MeioMundo.Editor.API", "MeioMundo.Editor.API\MeioMundo.Editor.API.csproj", "{0585C647-5017-4546-AA03-3441E1CEA7FF}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MeioMundo.Editor.Ferramentas", "..\..\MeioMundo.Editor.Ferramentas\MeioMundo.Editor.Ferramentas\MeioMundo.Editor.Ferramentas.csproj", "{E2382350-524A-44B8-8011-4AEC54A15499}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -53,14 +51,6 @@ Global
 		{0585C647-5017-4546-AA03-3441E1CEA7FF}.Release|Any CPU.Build.0 = Release|Any CPU
 		{0585C647-5017-4546-AA03-3441E1CEA7FF}.Release|x64.ActiveCfg = Release|x64
 		{0585C647-5017-4546-AA03-3441E1CEA7FF}.Release|x64.Build.0 = Release|x64
-		{E2382350-524A-44B8-8011-4AEC54A15499}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{E2382350-524A-44B8-8011-4AEC54A15499}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{E2382350-524A-44B8-8011-4AEC54A15499}.Debug|x64.ActiveCfg = Debug|x64
-		{E2382350-524A-44B8-8011-4AEC54A15499}.Debug|x64.Build.0 = Debug|x64
-		{E2382350-524A-44B8-8011-4AEC54A15499}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{E2382350-524A-44B8-8011-4AEC54A15499}.Release|Any CPU.Build.0 = Release|Any CPU
-		{E2382350-524A-44B8-8011-4AEC54A15499}.Release|x64.ActiveCfg = Release|Any CPU
-		{E2382350-524A-44B8-8011-4AEC54A15499}.Release|x64.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

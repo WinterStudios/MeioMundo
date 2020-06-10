@@ -48,11 +48,11 @@
                             <RowDefinition Height="Auto"/>
                         </Grid.RowDefinitions>
                         <Border BorderBrush="{DynamicResource WorkArea.Border}" BorderThickness="0,1,0,0" Grid.Column="1" Grid.ColumnSpan="3">
-                            <DataGrid Grid.Row="0" BorderThickness="0"  ItemsSource="{Binding PluginClasses}" HeadersVisibility="None" IsReadOnly="True"  AutoGenerateColumns="False" Foreground="{DynamicResource WorkArea.Foreground.Discrite}" GridLinesVisibility="None">
+                            <DataGrid Grid.Row="0" BorderThickness="0"  ItemsSource="{Binding Details}" HeadersVisibility="None" IsReadOnly="True"  AutoGenerateColumns="False" Foreground="{DynamicResource WorkArea.Foreground.Discrite}" GridLinesVisibility="None">
                                 <DataGrid.Columns>
-                                    <DataGridTextColumn FontStyle="Italic" FontWeight="Thin" Binding="{Binding Nome}" Width="250"/>
+                                    <DataGridTextColumn FontStyle="Italic" FontWeight="Thin" Binding="{Binding Name}" Width="250"/>
                                     <DataGridTextColumn FontStyle="Italic" FontWeight="Thin" Binding="{Binding Descrição}" Width="*"/>
-                                    <DataGridTextColumn FontStyle="Italic" FontWeight="Thin" Binding="{Binding Versao}" Width="125"/>
+                                    <DataGridTextColumn FontStyle="Italic" FontWeight="Thin" Binding="{Binding _Version}" Width="125"/>
                                 </DataGrid.Columns>
                             </DataGrid>
                         </Border>
