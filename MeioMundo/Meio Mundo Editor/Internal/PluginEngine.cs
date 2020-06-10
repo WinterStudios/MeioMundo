@@ -1,4 +1,5 @@
-﻿using MeioMundo.Editor.API.Plugin;
+﻿using MeioMundo.Editor.API;
+using MeioMundo.Editor.API.Plugin;
 using Octokit;
 using System;
 using System.Collections.Generic;
@@ -64,7 +65,7 @@ namespace MeioMundo.Editor.Internal
                 pluginInformation.Version = AsmName.Version;
                 pluginInformation.Enable = false;
                 pluginInformation.Location = filesDLLs[i];
-                pluginInformation.LocalVersion = VersionSystem.Parse(String.Format("{0}.{1}.{2}", AsmName.Version.Major, AsmName.Version.Minor, AsmName.Version.Build));
+                pluginInformation.LocalVersion = VersionSystem.ParseFromLocalAssembly(AsmName.Version.ToString());
                 Plugins.Add(pluginInformation);
             }
         }
@@ -90,7 +91,7 @@ namespace MeioMundo.Editor.Internal
             var latest = releases[0];
 
             string lastBuild = latest.TagName;
-
+            Console.WriteLine(VersionSystem.Parse(lastBuild));
             return VersionSystem.Parse(lastBuild);
         }
 
@@ -208,9 +209,19 @@ namespace MeioMundo.Editor.Internal
             foreach (var item in _Iplugin)
             {
                 var obj = (IPlugin)Activator.CreateInstance(item);
-                Console.WriteLine(obj.Nome);
 
-
+                switch (obj.Type)
+                {
+                    case PluginType.Control:
+                        break;
+                    case PluginType.TabPage:
+                        Navegation.AddMenu(obj.args, obj.Object);
+                        break;
+                    case PluginType.Window:
+                        break;
+                    default:
+                        break;
+                }
             }
         }
         #endregion

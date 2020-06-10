@@ -1,6 +1,5 @@
 ﻿using MeioMundo.Editor.API.Plugin;
 using MeioMundo.Editor.Internal;
-using MeioMundo.Editor.Internal.Plugin;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -37,7 +36,7 @@ namespace MeioMundo.Editor.UsersControls
 
         private void dataPlguin_CellEditEnding(object sender, DataGridCellEditEndingEventArgs e)
         {
-            PluginManager.SaveSetting();
+
         }
 
         private void dataPlguin_Error(object sender, ValidationErrorEventArgs e)

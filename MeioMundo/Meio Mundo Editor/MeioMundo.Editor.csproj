@@ -88,15 +88,14 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Internal\Navegation.cs" />
     <Compile Include="Internal\PluginEngine.cs" />
-    <Compile Include="Internal\Plugin\PluginManager.cs" />
     <Compile Include="Internal\Storage.cs" />
     <Compile Include="Internal\UpdateSystem.cs" />
     <Compile Include="CustomsControls\ProgressBar.xaml.cs" />
     <Compile Include="CustomsControls\ToggleSwicth.xaml.cs">
       <DependentUpon>ToggleSwicth.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Internal\VersionSystem.cs" />
     <Compile Include="Styles\TabControl.xaml.cs" />
     <Compile Include="Theme\ThemeManager.cs" />
     <Compile Include="UsersControls\PluginUControl.xaml.cs">

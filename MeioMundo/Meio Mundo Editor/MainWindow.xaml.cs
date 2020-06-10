@@ -15,7 +15,6 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using MeioMundo.Editor.Internal;
-using MeioMundo.Editor.Internal.Plugin;
 using MeioMundo.Editor.UsersControls;
 using MeioMundo.Editor.UsersControls.Settings;
 
@@ -76,6 +75,7 @@ namespace MeioMundo.Editor
             NotificationSystem.NotificationWindow = this.UI_DockPanel_Notification;
             NotificationSystem.ShowNotification(new API.NotificationInformation { Title = "Teste" });
 
+            Navegation.NavegationMenu = navegationBar;
             PluginEngine.Initialize();
 
             //PluginManager pluginManager = new PluginManager();

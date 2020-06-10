@@ -28,44 +28,18 @@ namespace MeioMundo.Editor.API.Plugin
         /// <summary>
         /// Versão actual do Plugin
         /// </summary>
-        string Versão { get; }
-        /// <summary>
-        /// Aurgumentos para o tipo de implementação do plugin
-        /// </summary>
-        string[] Args { get; }
+        VersionSystem Version { get; }
+      
         /// <summary>
         /// Tipo de implementação do plugin
         /// </summary>
         PluginType Type { get; }
-    }
-    public class PluginCommand
-    {
-       
-    }
-    public class PluginInfo
-    {
+
+        string args { get; }
+
         /// <summary>
-        /// Nome do Plugin
+        /// Represent the object class to iniciate
         /// </summary>
-        public string AssemblyName { get; set; }
-        
-        public PluginClass[] PluginClasses { get; set; }
-        
-        public string Version { get; set; }
-        
-        public bool AssemblyEnable { get; set; }
-
-        public Guid GUID { get; set; }
-
-        public string Location { get; set; }
-    }
-    public class PluginClass
-    {
-        public string Nome { get; set; }
-        public string Descrição { get; set; }
-        public string Versao { get; set; }
-        public Type Class { get; set; }
-        public PluginType Type { get; set; }
-        public string[] TypeArgs { get; set; }
+        object Object { get; }
     }
 }
