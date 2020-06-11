@@ -76,6 +76,7 @@ namespace MeioMundo.Editor
             NotificationSystem.ShowNotification(new API.NotificationInformation { Title = "Teste" });
 
             Navegation.NavegationMenu = navegationBar;
+            Navegation.TabControl = UI_TabControl;
             PluginEngine.Initialize();
 
             //PluginManager pluginManager = new PluginManager();
