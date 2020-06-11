@@ -20,8 +20,13 @@ namespace MeioMundo.Editor.Internal
             int _treeIndex = 0;
             MenuItem[] menuItems = NavegationMenu.Items.Cast<MenuItem>().ToArray();
             int menuItems_index = 0;
-            while (menuItems_index < menuItems.Length)
+            while (menuItems_index <= menuItems.Length && _treeIndex < dirs.Length)
             {
+                if(menuItems_index == menuItems.Length)
+                {
+                    MenuItem _NewItem = new MenuItem();
+                    _NewItem.Header = dirs[_treeIndex];
+                }
                 if (menuItems[menuItems_index].Header.ToString() == dirs[_treeIndex])
                 {
                     _treeIndex++;
@@ -29,18 +34,23 @@ namespace MeioMundo.Editor.Internal
                     menuItems_index = 0;
                     Console.WriteLine("Exits - {0}", menuItems[menuItems_index].Header.ToString());
                 }
-                else
-                {
-                    MenuItem _NewItem = new MenuItem();
-                    _NewItem.Header = dirs[_treeIndex];
-                    _NewItem.Click += (sender, e) =>
-                    {
-                        object content = Activator.CreateInstance(type);
-                        TabItem tab = new TabItem();
-                    };
-                    menuItems[menuItems_index].Items.Add(_NewItem);
-                }
-                menuItems_index++;
+                return;
+                //else
+                //{
+                //    MenuItem _NewItem = new MenuItem();
+                //    _NewItem.Header = dirs[_treeIndex];
+                //    if(dirs.Length == _treeIndex - 1)
+                //    {
+                //        _NewItem.Click += (sender, e) =>
+                //        {
+                //            object content = Activator.CreateInstance(type);
+                //            TabItem tab = new TabItem();
+                //        };
+                //    }
+                //    menuItems[menuItems_index].Items.Add(_NewItem);
+                //    menuItems_index++;
+
+                //}
             }
         }
 
