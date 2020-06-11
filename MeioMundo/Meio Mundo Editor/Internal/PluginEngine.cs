@@ -47,9 +47,11 @@ namespace MeioMundo.Editor.Internal
 
             PluginUrls = (string[])Storage.Json.GetJsonData<string[]>(PluginUrlsAppLocalPath) ?? new string[0];
 
-            GetLastVersionReposities();
-
-            GetLocalPlugins();
+            if (Properties.Settings.Default.Update)
+            {
+                GetLastVersionReposities();
+                GetLocalPlugins();
+            }
             LoadPlugins();
         }
 
@@ -94,7 +96,7 @@ namespace MeioMundo.Editor.Internal
             var latest = releases[0];
 
             string lastBuild = latest.TagName;
-            Console.WriteLine(VersionSystem.Parse(lastBuild));
+            Console.WriteLine((lastBuild));
             return VersionSystem.Parse(lastBuild);
         }
 
@@ -222,7 +224,7 @@ namespace MeioMundo.Editor.Internal
                     case PluginType.Control:
                         break;
                     case PluginType.TabPage:
-                        Navegation.AddMenu(obj.args, null);
+                        Navegation.AddMenu(obj.args, obj.ObjectType);
                         break;
                     case PluginType.Window:
                         break;

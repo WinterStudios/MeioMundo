@@ -48,7 +48,7 @@ namespace MeioMundo.Editor.Internal
                         object content = new object();
                         try
                         {
-                            Activator.CreateInstance(type);
+                            content = Activator.CreateInstance(type);
                         }
                         catch (Exception ex)
                         {

@@ -34,19 +34,20 @@ namespace MeioMundo.Editor.API
         public static VersionSystem Parse(string version)
         {
             VersionSystem _v = new VersionSystem();
-            string[] _s = version.Split(new char[] { '.' }, 3);
-            _v.Major = int.Parse(_s[0]);
-            _v.Minor = int.Parse(_s[1]);
+            string[] _s = version.Split(new char[] { '.' }, 4);
             
-            if (_s[2].Contains("-"))
+            _v.Major = int.Parse(_s[1]);
+            _v.Minor = int.Parse(_s[2]);
+            
+            if (_s[3].Contains("-"))
             {
-                string[] _b_r = _s[2].Split('-');
+                string[] _b_r = _s[3].Split('-');
                 _v.Build = int.Parse(_b_r[0]);
                 _v.Revision = _b_r[1];
             }
             else
             {
-                _v.Build = int.Parse(_s[2]);
+                _v.Build = int.Parse(_s[3]);
                 _v.Revision = string.Empty;
             }
             return _v;
