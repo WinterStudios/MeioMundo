@@ -11,6 +11,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MeioMundo.Editor", "Meio Mu
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MeioMundo.Editor.API", "MeioMundo.Editor.API\MeioMundo.Editor.API.csproj", "{0585C647-5017-4546-AA03-3441E1CEA7FF}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MeioMundo.Editor.Ferramentas", "..\..\MeioMundo.Editor.Ferramentas\MeioMundo.Editor.Ferramentas\MeioMundo.Editor.Ferramentas.csproj", "{757803AA-7836-4E1E-B4D3-CBC04337BA43}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MeioMundo.Test.Console", "MeioMundo.Test.Console\MeioMundo.Test.Console.csproj", "{63511A7B-69F8-4117-AB72-F7549DECFD52}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -51,6 +55,22 @@ Global
 		{0585C647-5017-4546-AA03-3441E1CEA7FF}.Release|Any CPU.Build.0 = Release|Any CPU
 		{0585C647-5017-4546-AA03-3441E1CEA7FF}.Release|x64.ActiveCfg = Release|x64
 		{0585C647-5017-4546-AA03-3441E1CEA7FF}.Release|x64.Build.0 = Release|x64
+		{757803AA-7836-4E1E-B4D3-CBC04337BA43}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{757803AA-7836-4E1E-B4D3-CBC04337BA43}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{757803AA-7836-4E1E-B4D3-CBC04337BA43}.Debug|x64.ActiveCfg = Debug|x64
+		{757803AA-7836-4E1E-B4D3-CBC04337BA43}.Debug|x64.Build.0 = Debug|x64
+		{757803AA-7836-4E1E-B4D3-CBC04337BA43}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{757803AA-7836-4E1E-B4D3-CBC04337BA43}.Release|Any CPU.Build.0 = Release|Any CPU
+		{757803AA-7836-4E1E-B4D3-CBC04337BA43}.Release|x64.ActiveCfg = Release|x64
+		{757803AA-7836-4E1E-B4D3-CBC04337BA43}.Release|x64.Build.0 = Release|x64
+		{63511A7B-69F8-4117-AB72-F7549DECFD52}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{63511A7B-69F8-4117-AB72-F7549DECFD52}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{63511A7B-69F8-4117-AB72-F7549DECFD52}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{63511A7B-69F8-4117-AB72-F7549DECFD52}.Debug|x64.Build.0 = Debug|Any CPU
+		{63511A7B-69F8-4117-AB72-F7549DECFD52}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{63511A7B-69F8-4117-AB72-F7549DECFD52}.Release|Any CPU.Build.0 = Release|Any CPU
+		{63511A7B-69F8-4117-AB72-F7549DECFD52}.Release|x64.ActiveCfg = Release|Any CPU
+		{63511A7B-69F8-4117-AB72-F7549DECFD52}.Release|x64.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

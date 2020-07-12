@@ -69,7 +69,8 @@ namespace MeioMundo.Editor.Internal
                 pluginInformation.Enable = false;
                 pluginInformation.Location = filesDLLs[i];
                 pluginInformation.LocalVersion = VersionSystem.ParseFromLocalAssembly(AsmName.Version.ToString());
-                pluginInformation.OnlineVersion = Task<VersionSystem>.Run(() => GetLastVersion(AsmName.Name)).Result;
+                if(Properties.Settings.Default.Update)
+                    pluginInformation.OnlineVersion = Task<VersionSystem>.Run(() => GetLastVersion(AsmName.Name)).Result;
 
                 Plugins.Add(pluginInformation);
             }
@@ -88,9 +89,9 @@ namespace MeioMundo.Editor.Internal
         /// <returns>VerstionSystem of the last version</returns>
         public static async Task<VersionSystem> GetLastVersion(string url)
         {
-            var client = new GitHubClient(new ProductHeaderValue("my-cool-app"));
-            var basicAuth = new Credentials("WinterStudios", "ikPnxCVEMuphF35"); // NOTE: not real credentials
-            client.Credentials = basicAuth;
+            var client = new GitHubClient(new ProductHeaderValue("meio-mundo-editor"));
+            //var basicAuth = new Credentials("WinterStudios", "ikPnxCVEMuphF35"); // NOTE: not real credentials
+            //client.Credentials = basicAuth;
 
             var releases = await client.Repository.Release.GetAll("WinterStudios", url);
             var latest = releases[0];
@@ -227,6 +228,8 @@ namespace MeioMundo.Editor.Internal
                         Navegation.AddMenu(obj.args, obj.ObjectType);
                         break;
                     case PluginType.Window:
+                        break;
+                    case PluginType.None:
                         break;
                     default:
                         break;

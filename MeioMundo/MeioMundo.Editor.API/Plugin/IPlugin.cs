@@ -8,6 +8,7 @@ namespace MeioMundo.Editor.API.Plugin
 {
     public enum PluginType
     {
+        None,
         Control,
         TabPage,
         Window
