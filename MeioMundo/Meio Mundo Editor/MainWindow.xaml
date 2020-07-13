@@ -56,7 +56,11 @@
             <TabItem Header="Settings"/>
         </TabControl>
         <UsersControls:StatusBar x:Name="UI_StatusBar" Grid.Row="2" />
-        <DockPanel x:Name="UI_DockPanel_Notification" VerticalAlignment="Bottom" HorizontalAlignment="Right" Grid.Row="1" Margin="0,0,10,10"/>
+        <DockPanel x:Name="UI_DockPanel_Notification" VerticalAlignment="Bottom" HorizontalAlignment="Right" Grid.Row="1" Margin="0,0,10,10" RenderTransformOrigin="1,1">
+            <DockPanel.RenderTransform>
+                <TranslateTransform x:Name="UI_DockPanel_Notification_Translate" X="5"/>
+            </DockPanel.RenderTransform>
+        </DockPanel>
 
         <Image x:Name="image" HorizontalAlignment="Left" Height="100" Margin="139,314,0,0" Grid.Row="1" VerticalAlignment="Top" Width="246"/>
 

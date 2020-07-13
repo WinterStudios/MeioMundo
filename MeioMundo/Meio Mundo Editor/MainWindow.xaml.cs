@@ -34,7 +34,6 @@ namespace MeioMundo.Editor
 
         private bool m_windowStateMax = false;
 
-        public static MeioMundo.Editor.API.Notification NotificationSystem { get; set; }
 
         private struct Window
         {
@@ -72,7 +71,7 @@ namespace MeioMundo.Editor
         {
             InitializeComponent();
 
-            Editor.API.NotificationSystem.Initialize(UI_DockPanel_Notification);
+            Editor.API.NotificationSystem.Initialize(UI_DockPanel_Notification, UI_DockPanel_Notification_Translate);
 
             Navegation.NavegationMenu = navegationBar;
             Navegation.TabControl = UI_TabControl;

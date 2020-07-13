@@ -218,7 +218,7 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\MeioMundo.Editor.API\MeioMundo.Editor.API.csproj">
-      <Project>{0585C647-5017-4546-AA03-3441E1CEA7FF}</Project>
+      <Project>{0585c647-5017-4546-aa03-3441e1cea7ff}</Project>
       <Name>MeioMundo.Editor.API</Name>
     </ProjectReference>
   </ItemGroup>
