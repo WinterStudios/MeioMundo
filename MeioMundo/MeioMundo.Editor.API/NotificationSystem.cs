@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MeioMundo.Editor.API.Icon;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -7,6 +8,7 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
 using System.Windows.Media.Animation;
+using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using System.Windows.Threading;
 
@@ -31,12 +33,13 @@ namespace MeioMundo.Editor.API
                 Timer = new DispatcherTimer();
             Timer.Interval = new TimeSpan(0, 0, 5);
             Timer.Tick += Timer_Tick;
-            Timer.Start();
+            //Timer.Start();
         }
 
         private static void Timer_Tick(object sender, EventArgs e)
         {
             Close();
+            Timer.Stop();
         }
 
         private static void CreateWindow()
@@ -45,20 +48,24 @@ namespace MeioMundo.Editor.API
             
             MainPanel.Width = size.Width;
             MainPanel.Height = size.Height;
-
-            MainPanel.Background = new SolidColorBrush(Color.FromRgb(255, 0, 0));
+            
+            MainPanel.Background = new SolidColorBrush(Color.FromRgb(40, 40, 40));
+            Border border = new Border();
 
             GridContent = new Grid();
-            MainPanel.Children.Add(GridContent);
+            MainPanel.Children.Add(border);
+            border.Child = GridContent;
+            //border.BorderThickness = new Thickness(1);
+            //border.BorderBrush = new SolidColorBrush(Color.FromRgb(80, 80, 80));
 
             ColumnDefinition column1 = new ColumnDefinition();
             ColumnDefinition column2 = new ColumnDefinition();
-            column1.Width = new GridLength(40, GridUnitType.Pixel);
+            column1.Width = new GridLength(56, GridUnitType.Pixel);
             column2.Width = new GridLength(1, GridUnitType.Star);
 
             RowDefinition row1 = new RowDefinition();
             RowDefinition row2 = new RowDefinition();
-            row1.Height = new GridLength(40, GridUnitType.Pixel);
+            row1.Height = new GridLength(56, GridUnitType.Pixel);
             row2.Height = new GridLength(1, GridUnitType.Star);
 
             GridContent.ColumnDefinitions.Add(column1);
@@ -66,9 +73,31 @@ namespace MeioMundo.Editor.API
             GridContent.RowDefinitions.Add(row1);
             GridContent.RowDefinitions.Add(row2);
 
-            Rectangle rectangle = new Rectangle();
-            GridContent.Children.Add(rectangle);
-            rectangle.Fill = new SolidColorBrush(Color.FromRgb(0, 255, 0));
+            Image icon = new Image();
+            icon.Width = 32;
+            icon.Height = 32;
+            icon.HorizontalAlignment = HorizontalAlignment.Center;
+            icon.VerticalAlignment = VerticalAlignment.Center;
+            GridContent.Children.Add(icon);
+            Grid.SetRow(icon, 0);
+            Grid.SetColumn(icon, 0);
+            Icons.DarkTheme = true;
+            icon.Source = Icons.GetImage(Icons.Icon.Download);
+
+
+            StackPanel stackPanel_Header = new StackPanel();
+            stackPanel_Header.Orientation = Orientation.Vertical;
+
+            GridContent.Children.Add(stackPanel_Header);
+            Grid.SetRow(stackPanel_Header, 0);
+            Grid.SetColumn(stackPanel_Header, 1);
+
+            TextBlock textBlock_Title = new TextBlock();
+            textBlock_Title.Text = "Plugin Update";
+
+            TextBlock textBlock_ = new TextBlock();
+
+
 
         }
         public static void Show()
