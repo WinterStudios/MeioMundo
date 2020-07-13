@@ -74,7 +74,7 @@
   <ItemGroup>
     <Compile Include="Extenstions.cs" />
     <Compile Include="Log.cs" />
-    <Compile Include="Notification.cs" />
+    <Compile Include="NotificationSystem.cs" />
     <Compile Include="Page.cs" />
     <Compile Include="PluginInformation.cs" />
     <Compile Include="Plugin\IPlugin.cs" />

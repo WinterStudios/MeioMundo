@@ -71,9 +71,8 @@ namespace MeioMundo.Editor
         public MainWindow()
         {
             InitializeComponent();
-            NotificationSystem = new API.Notification();
-            NotificationSystem.NotificationWindow = this.UI_DockPanel_Notification;
-            NotificationSystem.ShowNotification(new API.NotificationInformation { Title = "Teste" });
+
+            Editor.API.NotificationSystem.Initialize(UI_DockPanel_Notification);
 
             Navegation.NavegationMenu = navegationBar;
             Navegation.TabControl = UI_TabControl;
