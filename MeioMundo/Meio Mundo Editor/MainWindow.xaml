@@ -35,6 +35,9 @@
                 <MenuItem Header="Ferramentas">
                     <MenuItem Header="Plugins" x:Name="PluginsManager" Click="PluginsManager_Click"/>
                 </MenuItem>
+                <MenuItem Header="Ajuda">
+                    <MenuItem Header="Teste No" Click="MenuItem_Click_1"/>
+                </MenuItem>
             </Menu>
             <DockPanel Grid.Column="2" MouseDown="Window_DragMove" MouseLeftButtonDown="DockPanel_MouseLeftButtonDown">
                 <TextBlock Text="Winter Studio Editor" Foreground="{DynamicResource Menu.WindowName.Foreground}" VerticalAlignment="Center" HorizontalAlignment="Center"/>

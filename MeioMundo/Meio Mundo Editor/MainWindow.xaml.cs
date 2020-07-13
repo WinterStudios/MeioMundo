@@ -190,5 +190,10 @@ namespace MeioMundo.Editor
             window.Show();
                 Console.WriteLine("sd");
         }
+
+        private void MenuItem_Click_1(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }
