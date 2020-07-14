@@ -73,5 +73,10 @@ namespace MeioMundo.Editor.API
                 action(i);
             }
         }
+
+        public static string GetSender(this object senderclass)
+        {
+            return senderclass.ToString();
+        }
     }
 }

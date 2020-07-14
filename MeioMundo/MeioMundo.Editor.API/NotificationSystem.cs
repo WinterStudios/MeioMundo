@@ -21,19 +21,32 @@ namespace MeioMundo.Editor.API
         public static TranslateTransform TranslateTransform { get; private set; }
         public static bool IsShowing { get; private set; }
         public static Grid GridContent { get; private set; }
+        /// <summary>
+        /// Active Notification 
+        /// </summary>
+        public static Notification CurrentNotification { get; set; }
+        public static List<Notification> NotificationsQueue { get; set; }
+
+        private static NotificationControls NotificationControls { get; set; }
+
 
         public static void Initialize(DockPanel UI_DockPanel_Notification, TranslateTransform translateTransform)
         {
+            CurrentNotification = new Notification();
             MainPanel = UI_DockPanel_Notification;
             TranslateTransform = translateTransform;
             MainPanel.RenderTransformOrigin = new Point(1, 1);
-            
+            NotificationControls = new NotificationControls();
             CreateWindow();
             if (Timer == null)
                 Timer = new DispatcherTimer();
             Timer.Interval = new TimeSpan(0, 0, 5);
             Timer.Tick += Timer_Tick;
-            //Timer.Start();
+            Notification notification = new Notification { Icon = Icons.GetImage(Icons.Icon.Download), Title = "Teste Notification", Sender = NotificationSystem. };
+
+            Show(notification);
+
+            Timer.Start();
         }
 
         private static void Timer_Tick(object sender, EventArgs e)
@@ -45,7 +58,7 @@ namespace MeioMundo.Editor.API
         private static void CreateWindow()
         {
             Size size = new Size(300, 150);
-            
+            TranslateTransform.X = 330;   
             MainPanel.Width = size.Width;
             MainPanel.Height = size.Height;
             
@@ -82,25 +95,32 @@ namespace MeioMundo.Editor.API
             Grid.SetRow(icon, 0);
             Grid.SetColumn(icon, 0);
             Icons.DarkTheme = true;
-            icon.Source = Icons.GetImage(Icons.Icon.Download);
+            icon.Source = CurrentNotification.Icon;
 
 
             StackPanel stackPanel_Header = new StackPanel();
             stackPanel_Header.Orientation = Orientation.Vertical;
+            stackPanel_Header.VerticalAlignment = VerticalAlignment.Center;
 
             GridContent.Children.Add(stackPanel_Header);
             Grid.SetRow(stackPanel_Header, 0);
             Grid.SetColumn(stackPanel_Header, 1);
 
             TextBlock textBlock_Title = new TextBlock();
-            textBlock_Title.Text = "Plugin Update";
+            textBlock_Title.Text = CurrentNotification.Title;
+            textBlock_Title.Foreground = (SolidColorBrush)Application.Current.Resources["WorkArea.Foreground"];
 
-            TextBlock textBlock_ = new TextBlock();
+            NotificationControls.Origin = new TextBlock();
+            NotificationControls.Origin.Text = CurrentNotification.Sender;
+            NotificationControls.Origin.FontSize = 8;
+            NotificationControls.Origin.Foreground = (SolidColorBrush)Application.Current.Resources["WorkArea.Foreground.Discrite"];
 
 
+            stackPanel_Header.Children.Add(textBlock_Title);
+            stackPanel_Header.Children.Add(NotificationControls.Origin);
 
         }
-        public static void Show()
+        public static void Show(Notification notification)
         {
             IsShowing = true;
             DoubleAnimation doubleAnimation = new DoubleAnimation();
@@ -109,6 +129,8 @@ namespace MeioMundo.Editor.API
             doubleAnimation.Duration = new Duration(TimeSpan.FromSeconds(1));
             doubleAnimation.EasingFunction = new CubicEase { EasingMode = EasingMode.EaseOut };
             TranslateTransform.BeginAnimation(TranslateTransform.XProperty, doubleAnimation);
+            CurrentNotification = notification;
+            NotificationControls.SetNotification(CurrentNotification);
         }
         private static void Close()
         {
@@ -120,6 +142,25 @@ namespace MeioMundo.Editor.API
             TranslateTransform.BeginAnimation(TranslateTransform.XProperty, doubleAnimation);
 
             IsShowing = false;
+        }
+    }
+
+    public class Notification
+    {
+        public string Title { get; set; }
+        public string Sender { get; set; }
+        public string Message { get; set; }
+        public BitmapImage Icon { get; set; }
+    }
+    class NotificationControls
+    {
+        public TextBlock Title { get; set; }
+        public TextBlock Origin { get; set; }
+        public TextBlock Message { get; set; }
+
+        public void SetNotification(Notification notification)
+        {
+            Origin.Text = notification.Sender;
         }
     }
 }
