@@ -9,7 +9,7 @@ namespace MeioMundo.Editor.API.Icon
 {
     public static class Icons
     {
-        public static bool DarkTheme { get; set; }
+        public static bool DarkTheme { get { return true; } }
         public static BitmapImage GetImage(Icon icon)
         {
             BitmapImage bitmapImage = new BitmapImage();
