@@ -43,7 +43,7 @@ namespace MeioMundo.Editor.API
             NotificationControls = new NotificationControls();
             CreateWindow();
             Timer = new DispatcherTimer();
-            Timer.Interval = new TimeSpan(0, 0, 2);
+            Timer.Interval = new TimeSpan(0, 0, 6);
             Timer.Tick += Timer_Tick;
             // Notification notification = new Notification { Icon = Icons.GetImage(Icons.Icon.Download), Title = "Teste Notification", Sender = typeof(NotificationSystem).FullName };
             // 
@@ -52,14 +52,15 @@ namespace MeioMundo.Editor.API
             //Timer.Start();
         }
 
+
         private static void Timer_Tick(object sender, EventArgs e)
         {
             Close();
             Timer.Stop();
             DispatcherTimer timer = new DispatcherTimer();
-            timer.Interval = TimeSpan.FromMilliseconds(1500);
+            timer.Interval = TimeSpan.FromMilliseconds(1200);
             timer.Start();
-            timer.Tick += (sender, e) => {
+            timer.Tick += (object obj, EventArgs arg) => {
                 QUEUE(null);
                 timer.Stop();
             };
@@ -132,13 +133,25 @@ namespace MeioMundo.Editor.API
             stackPanel_Header.Children.Add(NotificationControls.Title);
             stackPanel_Header.Children.Add(NotificationControls.Origin);
 
+            NotificationControls.Message = new TextBlock();
+            NotificationControls.Message.Foreground = (SolidColorBrush)Application.Current.Resources["WorkArea.Foreground"];
+            NotificationControls.Message.Text = CurrentNotification.Message;
+            NotificationControls.Message.Margin = new Thickness(0, 0, 16, 16);
+            NotificationControls.Message.TextWrapping = TextWrapping.WrapWithOverflow;
+            Grid.SetColumn(NotificationControls.Message, 1);
+            Grid.SetRow(NotificationControls.Message, 1);
+            GridContent.Children.Add(NotificationControls.Message);
+
+
         }
         public static void PopUpWindow()
         {
 
             Timer.Start();
             NotificationControls.Icon.Source = CurrentNotification.Icon;
-
+            NotificationControls.Title.Text = CurrentNotification.Title;
+            NotificationControls.Origin.Text = CurrentNotification.Sender;
+            NotificationControls.Message.Text = CurrentNotification.Message;
 
             IsShowing = true;
             DoubleAnimation doubleAnimation = new DoubleAnimation();
@@ -150,6 +163,8 @@ namespace MeioMundo.Editor.API
         }
         public static void Show(Notification notification, [CallerMemberName]string sender = "")
         {
+            if(notification.Sender == string.Empty)
+                notification.Sender = sender;
             QUEUE(notification);
         }
 

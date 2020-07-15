@@ -191,8 +191,8 @@ namespace MeioMundo.Editor
 
         private void MenuItem_Click_1(object sender, RoutedEventArgs e)
         {
-            API.NotificationSystem.Show(new API.Notification { Icon = API.Icon.Icons.GetImage(API.Icon.Icons.Icon.Download), Title = "Teste", Sender = this.GetType().FullName });
-            API.NotificationSystem.Show(new API.Notification { Icon = API.Icon.Icons.GetImage(API.Icon.Icons.Icon.Download), Title = "Teste 2" }, this.GetType().FullName);
+            API.NotificationSystem.Show(new API.Notification { Icon = API.Icon.Icons.GetImage(API.Icon.Icons.Icon.Download), Title = "Teste", Sender = this.GetType().FullName, Message = "Teste Messagem vinda do notificationSystem." });
+            API.NotificationSystem.Show(new API.Notification { Icon = API.Icon.Icons.GetImage(API.Icon.Icons.Icon.Download), Title = "Teste 2", Sender = this.GetType().FullName });
         }
     }
 }

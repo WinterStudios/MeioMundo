@@ -7,6 +7,6 @@
              mc:Ignorable="d" 
              d:DesignHeight="100" d:DesignWidth="200">
     <Grid Background="#4C14BCA1">
-        <TextBlock Text="{Binding Message}"/>
+        <TextBlock Text="Soemtjdisajd dsad klsajdl lksadklsandjsfjksaldnsa" TextWrapping="Wrap"/>
     </Grid>
 </UserControl>

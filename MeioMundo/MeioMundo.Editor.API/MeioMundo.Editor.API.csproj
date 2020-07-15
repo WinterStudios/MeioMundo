@@ -75,6 +75,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Extenstions.cs" />
+    <Compile Include="GitHub.cs" />
     <Compile Include="Icons.cs" />
     <Compile Include="Log.cs" />
     <Compile Include="NotificationSystem.cs" />

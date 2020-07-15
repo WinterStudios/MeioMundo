@@ -8,6 +8,7 @@ using System.IO.Compression;
 using System.Linq;
 using System.Net;
 using System.Reflection;
+using System.Runtime.CompilerServices;
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -185,6 +186,7 @@ namespace MeioMundo.Editor.Internal
                 {   // Download the plugin, one theres no prove that he exits localy
                     DownloadPlugin(PluginUrls[i]);
                 }
+                API.NotificationSystem.Show(new API.Notification { Icon = API.Icon.Icons.GetImage(API.Icon.Icons.Icon.Download), Sender = typeof(PluginEngine).FullName, Title = "Pluign Update", Message = string.Format("{0}\nUpdate to:{1}",Plugins[i].Name,Plugins[i].OnlineVersion) });
 
             }
 
