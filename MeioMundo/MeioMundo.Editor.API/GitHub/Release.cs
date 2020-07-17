@@ -42,6 +42,10 @@ namespace MeioMundo.Editor.API.GitHub
         /// Published date of the release
         /// </summary>
         public DateTime PublishedDate { get; protected set; }
+        /// <summary>
+        /// Assets of release
+        /// </summary>
+        public List<ReleaseAsset> ReleaseAssets { get; protected set; }
     }
 
 }

@@ -6,7 +6,8 @@ using System.Threading.Tasks;
 
 namespace MeioMundo.Editor.API.GitHub
 {
-    class ReleaseAsset
+    public class ReleaseAsset
     {
+
     }
 }
