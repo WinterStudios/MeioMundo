@@ -46,6 +46,23 @@ namespace MeioMundo.Editor.API.GitHub
         /// Assets of release
         /// </summary>
         public List<ReleaseAsset> ReleaseAssets { get; protected set; }
+
+
+        public Release()
+        {
+
+        }
+        public Release(string url, string assetsUrl, string webUrl, int id, string tagnNme, bool preRelease, string date, ReleaseAsset[] assets)
+        {
+            Url = url;
+            AssetsUrl = AssetsUrl;
+            WebUrl = webUrl;
+            ID = id;
+            TagName = tagnNme;
+            PreRelease = preRelease;
+            PublishedDate = DateTime.Parse(date)
+
+        }
     }
 
 }

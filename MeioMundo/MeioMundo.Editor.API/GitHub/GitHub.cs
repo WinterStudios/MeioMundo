@@ -56,6 +56,10 @@ namespace MeioMundo.Editor.API.GitHub
         public string Username { get; set; }
         public string RepositoryName { get; set; }
         public List<Release> Releases { get; set; }
+
+        public string ReleaseURL { get; protected set; }
+        public 
+
         public GitHub()
         {
             Releases = new List<Release>();
@@ -82,6 +86,9 @@ namespace MeioMundo.Editor.API.GitHub
             webRequest.Method = "GET";
             webRequest.UserAgent = "Anything";
             webRequest.ServicePoint.Expect100Continue = false;
+
+            var responseJson = Newtonsoft.Json.
+
         }
         public Release[] GetReleases() => Releases.ToArray();
 
