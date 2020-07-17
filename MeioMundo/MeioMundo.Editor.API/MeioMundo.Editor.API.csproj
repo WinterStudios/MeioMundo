@@ -76,12 +76,12 @@
   <ItemGroup>
     <Compile Include="Extenstions.cs" />
     <Compile Include="GitHub\GitHub.cs" />
+    <Compile Include="GitHub\GitHubClient.cs" />
     <Compile Include="GitHub\Release.cs" />
+    <Compile Include="GitHub\ReleaseAsset.cs" />
     <Compile Include="Icons.cs" />
     <Compile Include="Log.cs" />
     <Compile Include="NotificationSystem.cs" />
-    <Compile Include="Page.cs" />
-    <Compile Include="PluginInformation.cs" />
     <Compile Include="Plugin\IPlugin.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
@@ -99,6 +99,9 @@
     <Compile Include="UserControls\NotificationUserControl.xaml.cs">
       <DependentUpon>NotificationUserControl.xaml</DependentUpon>
     </Compile>
+    <Compile Include="UserControls\ProgressBar.xaml.cs">
+      <DependentUpon>ProgressBar.xaml</DependentUpon>
+    </Compile>
     <Compile Include="VersionSystem.cs" />
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -113,6 +116,10 @@
   </ItemGroup>
   <ItemGroup>
     <Page Include="UserControls\NotificationUserControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UserControls\ProgressBar.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

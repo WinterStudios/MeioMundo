@@ -56,7 +56,9 @@
     <SolidColorBrush x:Key="ToggleSwicth.Border.Background.On" Color="#FF14B4CD"/>
     <SolidColorBrush x:Key="ToggleSwicth.Border.Background.Off" Color="Transparent"/>
     
-    
+    <!-- Custom Progress Bar -->
+    <SolidColorBrush x:Key="UC.ProgressBar.Foreground" Color="#FFB0B0B0"/>
+
     <!-- Work Area  -->
     <SolidColorBrush x:Key="WorkArea.Border" Color="#FF009DB6"/>
     <SolidColorBrush x:Key="WorkArea.Title" Color="#FF99DBE6"/>

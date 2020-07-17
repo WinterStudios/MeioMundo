@@ -100,6 +100,14 @@ namespace MeioMundo.Editor.API
             else
                 return string.Format("{0}.{1}.{2}", Major, Minor, Build);
         }
+        public static string ToString(VersionSystem version)
+        {
+            if(!string.IsNullOrEmpty(version.Revision))
+                return string.Format("v.{0}.{1}.{2}-{3}", version.Major, version.Minor, version.Build, version.Revision);
+            else
+                return string.Format("v.{0}.{1}.{2}", version.Major, version.Minor, version.Build);
+        }
+
         public static bool Compare(VersionSystem v1, VersionSystem v2)
         {
             bool equal = false;

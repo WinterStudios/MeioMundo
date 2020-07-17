@@ -10,19 +10,23 @@ namespace MeioMundo.Editor.UsersControls
     /// </summary>
     public partial class StatusBar : UserControl
     {
-        public static TextBlock TextBlock { get; set; }
+        public static TextBlock VersionText { get; set; }
         private int i = 0;
         DispatcherTimer timer;
 
         public StatusBar()
         {
             InitializeComponent();
-            TextBlock = this.UI_TextBlock_BuildNumber;
+            VersionText = this.UI_TextBlock_BuildNumber;
             timer = new DispatcherTimer();
-            UI_progressBar.ProgressBarCompleted += UI_progressBar_ProgressBarCompleted;
             timer.Interval = new TimeSpan(0, 0, 0, 0, 100);
             timer.Tick += Timer_Tick;
             timer.Start();
+        }
+
+        public static void SetVersionDisplay(string v)
+        {
+            VersionText.Text = v;
         }
 
         private void UI_progressBar_ProgressBarCompleted(object sender, EventArgs e)
@@ -33,17 +37,19 @@ namespace MeioMundo.Editor.UsersControls
         private void Timer_Tick(object sender, EventArgs e)
         {
             i++;
-            UI_progressBar.SetBarValue(i);
         }
 
         public static void TestStatic(string text)
         {
-            TextBlock.Text = text;
+            VersionText.Text = text;
         }
-
+        int id = 0;
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-
+            id += 10;
+            if (id > 70)
+                id = 20;
+            UC_Progress.SetValue(id);
         }
     }
 }

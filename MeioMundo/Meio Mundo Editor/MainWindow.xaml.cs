@@ -72,6 +72,7 @@ namespace MeioMundo.Editor
             InitializeComponent();
 
             Editor.API.NotificationSystem.Initialize(UI_DockPanel_Notification, UI_DockPanel_Notification_Translate);
+            UpdateSystem.Initialize();
 
             Navegation.NavegationMenu = navegationBar;
             Navegation.TabControl = UI_TabControl;
@@ -81,7 +82,7 @@ namespace MeioMundo.Editor
             // Internal.System.Initialize();
             // NavegationBar = this.navegationBar;
             // Main = this;
-            // InitializeUI();
+            InitializeUI();
         }
         private void InitializeUI()
         {
