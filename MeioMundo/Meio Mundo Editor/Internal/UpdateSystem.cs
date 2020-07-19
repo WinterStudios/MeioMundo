@@ -1,4 +1,6 @@
 ﻿using MeioMundo.Editor.API;
+using MeioMundo.Editor.API.GitHub;
+using MeioMundo.Editor.API.GitHub.Extensions;
 using MeioMundo.Editor.UsersControls;
 using Octokit;
 using System;
@@ -11,7 +13,7 @@ namespace MeioMundo.Editor.Internal
 
         public static API.VersionSystem Version { get; private set; }
 
-
+        public static GitHub GitHubApp { get; private set; }
         public static void Initialize()
         {
 #if DEBUG
@@ -26,22 +28,16 @@ namespace MeioMundo.Editor.Internal
 
             Version = VersionSystem.Parse(Properties.Settings.Default.Version);
             StatusBar.SetVersionDisplay(version.ToString());
+
+            GitHubApp = new GitHub("winterstudios", "MeioMundo");
+            VersionSystem OnlineVersion = VersionSystem.Parse(GitHubApp.Releases.GetLastRelease().tag_name);
+            bool update = VersionSystem.Compare(Version, OnlineVersion);
+
         }
 
         public static async Task GetLastUpdateAsync()
         {
-            var client = new GitHubClient(new ProductHeaderValue("my-cool-app"));
-            var basicAuth = new Credentials("WinterStudios", "ikPnxCVEMuphF35"); // NOTE: not real credentials
-            client.Credentials = basicAuth;
-            var releases = await client.Repository.Release.GetAll("WinterStudios", "HomeMedia");
-            var latest = releases[0];
-            Console.WriteLine(
-                "The latest release is tagged at {0} and is named {1}",
-                latest.TagName,
-                latest.Name);
-
-            /// Para fazer o download --> https://github.com/WinterStudios/HomeMedia/releases/latest/download/HomeServerEditor.zip
-            ///                           https://github.com/WinterStudios/HomeMedia/releases/download/0.1.6/Release.zip
+            
         }
     }
 }
