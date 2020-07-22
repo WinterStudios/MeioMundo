@@ -43,7 +43,7 @@ namespace MeioMundo.Editor.API
             NotificationControls = new NotificationControls();
             CreateWindow();
             Timer = new DispatcherTimer();
-            Timer.Interval = new TimeSpan(0, 0, 6);
+            Timer.Interval = new TimeSpan(0, 0, 11);
             Timer.Tick += Timer_Tick;
             // Notification notification = new Notification { Icon = Icons.GetImage(Icons.Icon.Download), Title = "Teste Notification", Sender = typeof(NotificationSystem).FullName };
             // 

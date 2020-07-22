@@ -44,6 +44,9 @@ namespace MeioMundo.Editor.Internal
 
         public static void Initialize()
         {
+            if (!Directory.Exists(StoragePluginsPath.Remove(StoragePluginsPath.Length - 1)))
+                Directory.CreateDirectory(StoragePluginsPath.Remove(StoragePluginsPath.Length - 1));
+
             GetLocalPlugins();
 
             PluginUrls = (string[])Storage.Json.GetJsonData<string[]>(PluginUrlsAppLocalPath) ?? new string[0];
@@ -141,6 +144,7 @@ namespace MeioMundo.Editor.Internal
                     File.Delete(StoragePluginsPath + latest.Assets[0].Name);
                 File.Move(PluginAppLocalPath + latest.Assets[0].Name, StoragePluginsPath + latest.Assets[0].Name);
             }
+            API.NotificationSystem.Show(new API.Notification { Icon = API.Icon.Icons.GetImage(API.Icon.Icons.Icon.Download), Sender = typeof(PluginEngine).FullName, Title = "Pluign Update", Message = string.Format("{0}\nUpdate to: {1}", url, VersionSystem.Parse(latest.TagName).ToString()) });
 
         }
 
@@ -186,10 +190,8 @@ namespace MeioMundo.Editor.Internal
                 {   // Download the plugin, one theres no prove that he exits localy
                     DownloadPlugin(PluginUrls[i]);
                 }
-                API.NotificationSystem.Show(new API.Notification { Icon = API.Icon.Icons.GetImage(API.Icon.Icons.Icon.Download), Sender = typeof(PluginEngine).FullName, Title = "Pluign Update", Message = string.Format("{0}\nUpdate to:{1}",Plugins[i].Name,Plugins[i].OnlineVersion) });
 
             }
-
         }
 
         #region Loading Plugins Region

@@ -34,6 +34,9 @@ namespace MeioMundo.Editor.API
         public static VersionSystem Parse(string version)
         {
             VersionSystem _v = new VersionSystem();
+
+            if (version[1] != '.')
+                version = version.Insert(1, ".");
             string[] _s = version.Split(new char[] { '.' }, 4);
             
             _v.Major = int.Parse(_s[1]);

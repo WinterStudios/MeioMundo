@@ -4,6 +4,7 @@ using System.IO;
 using System.Net;
 using System.Text.RegularExpressions;
 using MeioMundo.Editor.API.GitHub.Extensions;
+using MeioMundo.Editor.API;
 
 namespace MeioMundo.Test_Console
 {
@@ -13,8 +14,9 @@ namespace MeioMundo.Test_Console
         {
             Editor.API.GitHub.GitHub gitHub = new Editor.API.GitHub.GitHub("winterstudios", "MeioMundo");
 
-
-            Console.WriteLine(gitHub.Releases.GetLastRelease(true).tag_name);
+            VersionSystem version = new VersionSystem();
+            version = VersionSystem.Parse(gitHub.Releases.GetLastRelease(true).tag_name);
+            Console.WriteLine(version);
 
             Console.ReadLine();
         }

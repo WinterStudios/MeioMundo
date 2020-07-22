@@ -16,18 +16,20 @@ namespace MeioMundo.Editor.Internal
         public static GitHub GitHubApp { get; private set; }
         public static void Initialize()
         {
-#if DEBUG
             VersionSystem version = new VersionSystem();
-            version.Major = 0;
-            version.Minor = 5;
-            version.Build = int.Parse(string.Format("{0}{1}", DateTime.Today.Month, DateTime.Today.Day));
-            version.Revision = "rc.1";
-            Properties.Settings.Default.Version = VersionSystem.ToString(version);
-            Properties.Settings.Default.Save();
-#endif
+            if (System.Diagnostics.Debugger.IsAttached)
+            {
+
+                version.Major = DateTime.Today.Year;
+                version.Minor = 5;
+                version.Build = int.Parse(string.Format("{0}{1}", DateTime.Today.Month, DateTime.Today.Day));
+                version.Revision = "rc.1";
+                Properties.Settings.Default.Version = VersionSystem.ToString(version);
+                Properties.Settings.Default.Save();
+            }
 
             Version = VersionSystem.Parse(Properties.Settings.Default.Version);
-            StatusBar.SetVersionDisplay(version.ToString());
+            StatusBar.SetVersionDisplay(Version.ToString());
 
             GitHubApp = new GitHub("winterstudios", "MeioMundo");
             VersionSystem OnlineVersion = VersionSystem.Parse(GitHubApp.Releases.GetLastRelease().tag_name);
