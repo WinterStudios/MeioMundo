@@ -91,8 +91,8 @@ namespace MeioMundo.Editor.API.GitHub
             webRequest.Method = "GET";
             webRequest.UserAgent = "Anything";
             webRequest.ServicePoint.Expect100Continue = false;
-
-            WebResponse response =  webRequest.GetResponse();
+            WebResponse response;
+            response = webRequest.GetResponse();
             StreamReader reader = new StreamReader(response.GetResponseStream());
             string jsonString = reader.ReadToEnd();
 

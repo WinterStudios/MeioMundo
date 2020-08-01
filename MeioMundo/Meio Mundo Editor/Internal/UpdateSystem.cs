@@ -31,9 +31,17 @@ namespace MeioMundo.Editor.Internal
             Version = VersionSystem.Parse(Properties.Settings.Default.Version);
             StatusBar.SetVersionDisplay(Version.ToString());
 
-            GitHubApp = new GitHub("winterstudios", "MeioMundo");
-            VersionSystem OnlineVersion = VersionSystem.Parse(GitHubApp.Releases.GetLastRelease().tag_name);
-            bool update = VersionSystem.Compare(Version, OnlineVersion);
+            try
+            {
+                GitHubApp = new GitHub("winterstudios", "MeioMundo"); 
+                VersionSystem OnlineVersion = VersionSystem.Parse(GitHubApp.Releases.GetLastRelease().tag_name);
+                bool update = VersionSystem.Compare(Version, OnlineVersion);
+            }
+            catch (Exception ex)
+            {
+
+            }
+            
 
         }
 
