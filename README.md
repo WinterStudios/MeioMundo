@@ -14,4 +14,4 @@ It a app that is being create to help on day to day basics of a Enterprise Busin
 - Support for Plugins
 - Notification System
 - Theme Color Manager
--- Can edit the top navegation bar
+  - Ability to edit the top navegation bar (current isn't enable)
